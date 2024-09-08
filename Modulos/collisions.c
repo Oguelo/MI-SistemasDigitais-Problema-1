@@ -6,270 +6,82 @@
 
 #include "prototype.h"
 
-/**
- * Função para exibir a bola na tela
- * @param coordX Coordenada do centro da bola no eixo x
- * @param coordY Coordenada do centro da bola no eixo y
- * @param cor Cor da bola
- * @return void
-*/
-void bola9x9 (int coordX, int coordY, short cor) {
-    video_box(coordX - 1, coordY - 4, coordX + 1, coordY - 4, cor);
-	video_box(coordX - 3, coordY - 3, coordX + 3, coordY - 2, cor);
-	video_box(coordX - 4, coordY - 1, coordX + 4, coordY + 1, cor);
-	video_box(coordX - 3, coordY + 2, coordX + 3, coordY + 3, cor);
-	video_box(coordX - 1, coordY + 4, coordX + 1, coordY + 4, cor);
-}
-
-/**
- * Função para verificar coliões entre retangulos e circulos
- * @param x_rect Coordenada do canto superior esquerdo do retangulo no eixo x
- * @param y_rect Coordenada do canto superior esquerdo do retangulo no eixo y
- * @param length_rect Comprimento do retangulo
- * @param width_rect Largura do retangulo
- * @param x_boll Coordenada do centro da bola no eixo x
- * @param y_boll Coordenada do centro da bola no eixo y
- * @param ray Raio da bola
- * @param x_point Coordenada do ponto de impacto no eixo x
- * @param y_point Coordenada do ponto de impacto no eixo y
- * @return 1 se houve colisão, 0 caso contrário
-*/
-int detect_collision(int x_rect, int y_rect, int length_rect, int width_rect,  int x_boll, int y_boll, int ray, int *x_point, int *y_point) {
-
-    *x_point = x_boll;  /* Ponto de impacto em x */
-    *y_point = y_boll;  /* ponto de impacto em y */
+void atualizarJogo() {
+    // Limpar a tela onde a peça estava
+    limparTela(x * BLOCK_SIZE, y * BLOCK_SIZE, 4 * BLOCK_SIZE, 4 * BLOCK_SIZE, pixel_buffer);
     
-    /* Procurar o ponto mais proximo do circulo no eixo x */
-    if (x_boll < x_rect)
-        (*x_point) = x_rect;
-    else if (x_boll > x_rect + length_rect) 
-        (*x_point) = x_rect + length_rect;
-
-    /* Procurar o ponto mais proximo do circulo no eixo y */
-    if (y_boll < y_rect)
-        (*y_point) = y_rect;
-    else if (y_boll > y_rect + width_rect) 
-        (*y_point) = y_rect + width_rect;
-
-    /* Calcular distancia e verificar se a bola esta dentro bloco */
-    int dist_x = x_boll - *x_point;
-    int dist_y = y_boll - *y_point;
-    int distance = round(sqrt(dist_x * dist_x + dist_y * dist_y));
-
-    if (distance <= ray)
-        return 1;
-
-    return 0;
-}
-
-/**
- * Função para verificar se uma coordenada pertence a um bloco
- * @param coordX Coordenada do ponto no eixo x
- * @param coordY Coordenada do ponto no eixo y
- * @param blocksList Lista de blocos
- * @return 1 se a coordenada pertence a um bloco, 0 caso contrário
-*/
-int pertenceBloco(int coordX, int coordY, Block blocksList[]) {
-    for (int i = 0; i < QUANTITY_BLOCKS; i++) {
-        if ((blocksList[i].coordX <= coordX && coordX <= (blocksList[i].coordX + BLOCK_LENGTH)) && 
-            (blocksList[i].coordY <= coordY && coordY <= (blocksList[i].coordY + BLOCK_WIDHT)) && 
-            blocksList[i].flagVisible == 1) 
-                return 1;
-        
-    }
-    return 0;
-}
-
-/**
- * Função para verificar o tipo de colisão
- * @param ball Bola
- * @param blocksList Lista de blocos
- * @param bar Barra
- * @return 1 para colisões em  x e y, 2 para colisões em x, 3 para colisões em y, 4 para colisões na barra, -1 caso contrário
-*/
-int getTypeCollision(Ball *ball, Block blocksList[], Bar *bar) {
-    int x_point, y_point;
-
-    /* Paredes: colisão na parte superior à esquerda */
-    if ((ball->ballPositionX - COLLISION_RADIUS == WALL_WIDHT_X) && 
-        (ball->ballPositionY - COLLISION_RADIUS == (WALL_WIDHT_X + WALL_WIDHT_Y)))
-        return 1;
-        
-    /* Paredes: colisão na parte superior à direita */ 
-    else if ((ball->ballPositionX + COLLISION_RADIUS == (SCREEN_X - WALL_WIDHT_X) && 
-            (ball->ballPositionY - COLLISION_RADIUS == (WALL_WIDHT_X + WALL_WIDHT_Y))))
-        return 1;
-
-    /* Barra e parede - Trocar para peça e parede - colocar para verificar o tipo da peça */
-    else if ((detect_collision(bar->coordX - BAR_SIZE, bar->coordY - BAR_WIDHT, (BAR_SIZE * 2 + 1), (BAR_WIDHT * 2 + 1),
-            ball->ballPositionX, ball->ballPositionY, COLLISION_RADIUS, &x_point, &y_point) == 1) &&
-            ((ball->ballPositionX - COLLISION_RADIUS == WALL_WIDHT_X) ||
-             (ball->ballPositionX + COLLISION_RADIUS == (SCREEN_X - WALL_WIDHT_X)))) 
-    	return 1; 
-
-    /* Paredes: colisões na esquerda e direita */  
-    else if ((ball->ballPositionX - COLLISION_RADIUS == WALL_WIDHT_X) ||
-            (ball->ballPositionX + COLLISION_RADIUS == (SCREEN_X - WALL_WIDHT_X))) 
-        return 2;
-
-    /* Paredes: colisão na parte superior */
-    else if ((ball->ballPositionY - COLLISION_RADIUS == (WALL_WIDHT_X + WALL_WIDHT_Y)))
-        return 3;
-
-    /* Colisões na barra */
-    else if ((detect_collision(bar->coordX - BAR_SIZE, bar->coordY - BAR_WIDHT, (BAR_SIZE * 2 + 1), 
-            (BAR_WIDHT * 2 + 1), ball->ballPositionX, ball->ballPositionY, COLLISION_RADIUS, &x_point, &y_point)) == 1)
-        return 4;
-
-    /* Colisões nos blocos */
-    for (int i = 0; i < QUANTITY_BLOCKS; i++) {
-
-        if ((detect_collision(blocksList[i].coordX, blocksList[i].coordY, BLOCK_LENGTH, BLOCK_WIDHT, ball->ballPositionX,
-             ball->ballPositionY, COLLISION_RADIUS, &x_point, &y_point) == 1) && (blocksList[i].flagVisible == 1)) {
-
-             /* Colisão à esquerda */
-             if (y_point > blocksList[i].coordY && y_point < (blocksList[i].coordY + BLOCK_WIDHT) && x_point == blocksList[i].coordX)
-                return 2;
-
-            /* Colisão à direita */
-            else if (y_point > blocksList[i].coordY && y_point < (blocksList[i].coordY + BLOCK_WIDHT) && x_point == (blocksList[i].coordX + BLOCK_LENGTH))
-                return 2;
-
-            /* Colisão na parte superior */
-            else if (y_point == blocksList[i].coordY && (x_point >= blocksList[i].coordX && x_point <= (blocksList[i].coordX + BLOCK_LENGTH))){
-            	if (((x_point == blocksList[i].coordX) || (x_point == (blocksList[i].coordX + BLOCK_LENGTH)))
-                     && ((ball->ballSpeedY < 0) || (ball->ballSpeedY > 0 && pertenceBloco(x_point, y_point - 5, blocksList))))
-            		return 2;
-                return 3;
-            }
-
-            /* Colisão na parte inferior */
-            else if (y_point == (blocksList[i].coordY + BLOCK_WIDHT) && (x_point >= blocksList[i].coordX && x_point <= (blocksList[i].coordX + BLOCK_LENGTH))){
-            	if ((x_point == blocksList[i].coordX || x_point == (blocksList[i].coordX + BLOCK_LENGTH)) &&
-                    ((ball->ballSpeedY > 0 ) || (ball->ballSpeedY < 0 && pertenceBloco(x_point, y_point + 5, blocksList))))
-            		return 2;
-                return 3;
-              }
-        }
-    }
-
-    return -1;
-}
-
-/**
- * Função para pegar a velocidade a partir da colisão com a barra
- * @param ball Bola
- * @param bar Barra
- * @return void
-*/
-void getVelc(Ball *ball, Bar *bar){
-    if ((bar->coordX - ball->ballPositionX) / 6 != 0)
-        ball->ballSpeedX = (bar->coordX - ball->ballPositionX) / 6;
-
-    if ((bar->coordX - ball->ballPositionX) / 6 > 3 ){
-        ball->ballSpeedY = 1;
+    // Mover a peça para baixo
+    if (!verificarColisao(tabuleiro, peca, x + 1, y)) {
+        x++;
     } else {
-        ball->ballSpeedY = 2;
+        fixarPecaNoTabuleiro(tabuleiro, peca, x, y, pixel_buffer);
+        removerLinhasCompletas(tabuleiro, pixel_buffer);
+        gerarNovaPeca();
     }
 
-}
+bool verificarColisao(int tabuleiro[LINHAS][COLUNAS], int peca[4][4], int x, int y) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (peca[i][j] == 1) {
+                int posX = x + i;
+                int posY = y + j;
 
-/**
- * Função para pegar o próximo movimento da bola
- * @param ball Bola
- * @param blocksList Lista de blocos
- * @param bar Barra
- * @return 1 para colisões em  x e y, 2 para colisões em x, 3 para colisões em y, 4 para colisões na barra, -1 caso contrário
-*/
-int getMoveBall(Ball *ball, Block blocksList[], Bar *bar) {
-    Ball auxBall = *ball;
+                if (posX < 0 || posX >= LINHAS || posY < 0 || posY >= COLUNAS) {
+                    return true; // Colisão detectada
+                }
 
-    int pontosIntermediarios = 100;
-    float tempo = 0.0;
-    int typeCollision;
-
-    /* Verificação de colisão nos pontos intermediários */
-    for (int i = 0; i <= pontosIntermediarios; i++) {
-        tempo =  i / (float)  pontosIntermediarios;
-
-        /* Valores para verificar se há colisão */
-        auxBall.ballPositionX = (int) round(ball->ballPositionX + ball->ballSpeedX * tempo);
-        auxBall.ballPositionY = (int) round(ball->ballPositionY  + ball->ballSpeedY * tempo);
-
-        /* Verifica se houve colisão */
-        typeCollision = getTypeCollision(&auxBall, blocksList, bar);
-
-        if (typeCollision != -1 &&  ball->collision != typeCollision && ball->collision != 1) { 
-            *ball = auxBall;
-            ball->collision = typeCollision;
-
-            return typeCollision;
+                if (tabuleiro[posX][posY] == 1) {
+                    return true; // Colisão detectada
+                }
+            }
         }
     }
 
-    /* Sem colisão */
-    ball->ballPositionX += ball->ballSpeedX;
-    ball->ballPositionY += ball->ballSpeedY;
-    ball->collision = -1;
+    if (y >= LINHAS - 4) {
+        return true; // Colisão com o fundo detectada
+    }
 
-    return -1;
+    return false;
 }
+void fixarPecaNoTabuleiro(int tabuleiro[LINHAS][COLUNAS], int peca[4][4], int x, int y, alt_up_pixel_buffer_dma_dev* pixel_buffer) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (peca[i][j] == 1) {
+                int posX = x + i;
+                int posY = y + j;
+                tabuleiro[posX][posY] = 1; // Marca como ocupado
 
-
-/**
- * Função para mover a bola
- * @param ball Bola
- * @param blocksList Lista de blocos
- * @param bar Barra
- * @return void
-*/
-void moveBall(Ball *ball, Block blocksList[], Bar *bar) {
-
-    /* Switch para inversão da velocidade da bola*/
-    switch (getMoveBall(ball, blocksList, bar)) {
-    
-    case (1):
-        if ((ball->ballPositionY - COLLISION_RADIUS == (WALL_WIDHT_X + WALL_WIDHT_Y))){ //Superior
-            if (ball->ballSpeedY < 0){
-                ball->ballSpeedX = -ball->ballSpeedX;
+                // Atualizar a tela
+                desenharBloco(posY * BLOCK_SIZE, posX * BLOCK_SIZE, pixel_buffer, 0xFFFF); // Desenha a peça
             }
-        } else{ // Inferior
-            if (ball->ballSpeedY > 0){
-                ball->ballSpeedX = -ball->ballSpeedX;
+        }
+    }
+}
+void removerLinhasCompletas(int tabuleiro[LINHAS][COLUNAS], alt_up_pixel_buffer_dma_dev* pixel_buffer) {
+    for (int i = 0; i < LINHAS; i++) {
+        bool linhaCompleta = true;
+        for (int j = 0; j < COLUNAS; j++) {
+            if (tabuleiro[i][j] == 0) {
+                linhaCompleta = false;
+                break;
             }
         }
 
-        // Encontrar o lado que houve a clisão
-        if ((ball->ballPositionX - COLLISION_RADIUS == WALL_WIDHT_X)) {  // Esquerdo
-            if (ball->ballSpeedX < 0){
-                ball->ballSpeedX = -ball->ballSpeedX;
+        if (linhaCompleta) {
+            // Move todas as linhas acima da linha completa uma linha para baixo
+            for (int k = i; k > 0; k--) {
+                for (int l = 0; l < COLUNAS; l++) {
+                    tabuleiro[k][l] = tabuleiro[k - 1][l];
+                    // Atualizar a tela
+                    desenharBloco(l * BLOCK_SIZE, k * BLOCK_SIZE, pixel_buffer, (tabuleiro[k][l] == 1 ? 0xFFFF : 0x0000));
+                }
             }
-        }else{ //Direita
-            if (ball->ballSpeedX > 0){
-                ball->ballSpeedX = -ball->ballSpeedX;
+            // Limpa a primeira linha
+            for (int l = 0; l < COLUNAS; l++) {
+                tabuleiro[0][l] = 0;
+                // Atualizar a tela
+                desenharBloco(l * BLOCK_SIZE, 0, pixel_buffer, 0x0000);
             }
         }
-        break;
-
-    case (2):
-        ball->ballSpeedX = -ball->ballSpeedX;
-        break;
-
-    case (3):
-        ball->ballSpeedY = -ball->ballSpeedY;
-        break;
-
-    case (4):
-        getVelcBall(ball, bar);
-
-        ball->ballSpeedY = -ball->ballSpeedY;
-        /* Variação da velocidade no eixo x */
-        if (ball->ballPositionX < bar->coordX && (bar->coordX - ball->ballPositionX) / 6 != 0 ){
-            ball->ballSpeedX = -ball->ballSpeedX;
-;
-        } else if (ball->ballPositionX > bar->coordX && (bar->coordX - ball->ballPositionX) / 6 != 0 ){
-            ball->ballSpeedX = -ball->ballSpeedX;
-
-        } break;
     }
 }
