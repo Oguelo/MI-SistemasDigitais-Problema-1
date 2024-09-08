@@ -9,6 +9,7 @@ typedef struct {
     int pecaSpeedX;
     int pecaSpeedY;
     int collision;
+    int pecaType
 } Peca;
 
 #endif // STRUCTS_H_INCLUDED
