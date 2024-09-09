@@ -5,8 +5,6 @@
 #define SCREEN_Y                240
 #define WALL_WIDHT_X            3 //Aumentar
 #define WALL_WIDHT_Y            15 //Diminuir um pouco
-#define RADIUS                  4
-#define COLLISION_RADIUS        5
 #define BLOCK_LENGTH            37 
 #define BLOCK_WIDHT             12
 
