@@ -1,16 +1,8 @@
-/**
- *  Chamadas das funções de conexão do driver da VGA. Exibição de caracteres e imagens.
- */
+#include "prototype"
+
 
 /**
- * Exibição do título da tela inicial. O título exibe a palavra "breakout".
- * 
- * @param coordX Coordenada X do canto superior esquerdo da região onde o título será exibido.
- * @param coordY Coordenada Y do canto superior esquerdo da região onde o título será exibido.
- * @return void
- */
-/**
- * Chamadas das funções de conexão do driver da VGA. Exibição de caracteres e imagens.
+ *  Chamadas das funções de conexão do driver da VGA. Exibição de caracteres e imagens.
  */
 
 /**

@@ -1,7 +1,6 @@
-#include <stdlib.h>   // Para rand() e srand()
-#include <string.h>   // Para memcpy()
-#include <time.h>     // Para srand(time(NULL)) se for necessário gerar números aleatórios com semente
-#include "tetris.h"   // Para Tetromino, constantes de cores, dimensões e macros do jogo
+#include "prototype"
+
+
 
 void gerarQ(Tetromino* tetromino) {
     int q[4][4] = {

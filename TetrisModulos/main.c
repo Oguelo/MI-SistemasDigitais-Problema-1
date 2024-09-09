@@ -1,9 +1,4 @@
-#include "tetris.h"
-#include "board.h"
-#include "constants.h"
-#include <intelfpgaup/video.h>
-#include <intelfpgaup/accel.h>
-#include <intelfpgaup/KEY.h>
+#include "prototype.h"  
 
 
 int main() {

@@ -1,4 +1,5 @@
-#include "renderer.h"
+#include "prototype.h"  
+
 
 // Função para desenhar o tabuleiro
 void desenharTabuleiro(Tetris* tetris) {

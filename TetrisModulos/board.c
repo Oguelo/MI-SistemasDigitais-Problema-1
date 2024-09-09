@@ -1,5 +1,5 @@
-#include "board.h"
-#include "tetromino.h"
+#include "prototype"
+
 
 // Inicializa o tabuleiro
 void inicializarBoard(Board* board) {

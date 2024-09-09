@@ -1,14 +1,4 @@
-/**
- *  Funções de lógica da exibição de dados no monitor.
- */
-
-#include <stdio.h>      
-#include <stdlib.h>     
-#include <string.h>    
-
-#include "video.h"      
-#include "constants.h"  
-#include "title.h"      // Para a função title, se definida em outro arquivo
+#include "prototype.h"  
 
 
 /**

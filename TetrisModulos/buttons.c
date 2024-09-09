@@ -1,9 +1,5 @@
-/**
- *  Função de utilização dos dados dos botões.
- */
+#include "prototype"
 
-
-#include "buttons.h"
 
 /**
  * Alteração do estado atual do jogo.
