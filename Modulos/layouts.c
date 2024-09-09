@@ -88,23 +88,6 @@ void screen_defeat (int score) {
 }
 
 /**
- * Exibe a tela inicial do jogo
- * 
- * É exibido o título do jogo e a frase "start game", utilizando a função de exibição do título 
- * e de exibição de frase.
- * 
- * @return void
- */
-void create_menu () {
-
-    char start_game[] = "start game";
-
-    phrase(96, 160, start_game, 10, 0xDD82);
-
-    title(40, 30);
-}
-
-/**
  * Exibe o campo de jogo. 
  * 
  * São mostradas: as linhas que delimitam a área de jogo; todos os blocos não destruídos; 
