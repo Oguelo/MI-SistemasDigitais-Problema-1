@@ -16,7 +16,7 @@ void phrase           (int coordX, int coordY, char *list, int lenList, short co
 void write_score      (int coordX, int coordY, int score);
 void screen_defeat    (int score);
 void create_menu      ();
-void game_field       (Block blocksList[], int score, int state_game);
+void game_field       (int score, int state_game);
 void title            (int coordX, int coordY);
 void alphanumeric     (int coordX, int coordY, char caracter, short cor);
 void change_state     (int *pointer_state, int *pointer_buttons);

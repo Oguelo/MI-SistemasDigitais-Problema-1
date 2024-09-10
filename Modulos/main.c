@@ -1,3 +1,4 @@
+
 #include "prototype.h"
 
 int main()
@@ -20,19 +21,19 @@ int main()
 
     /* Inicializar os elementos do jogo */
     int score;
-    Tetris tetris;
+   // Tetris tetris;
 
     /* Loop principal do jogo */
     while (1)
     {
-
+	printf("Ola xereca");
         /* Resetar os dados e iniciar a máquina de estado */
         state_game = 0;
-        iniciarTetris(&tetris);
+       // iniciarTetris(&tetris);
 
         /* Loop da partida do jogo */
-        while (checkLose(&tetris))
-        {
+       // while (checkLose(&tetris))
+       // {
             // Leitura dos botões e do acelerômetro
             KEY_read(&buttons);
             change_state(&state_game, &buttons);
@@ -42,35 +43,34 @@ int main()
 
             if (state_game == 1)
             {
-                game_field(score, state_game)
+                game_field(score, state_game);
                 accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
 
                 video_show();
 
-                moverTetromino(&tetris, (velX < -LIMITE_ESQUERDA) ? -1 : (velX > LIMITE_DIREITA) ? 1:0,0);         // Movimenta a peça com base no acelerômetro
-                aplicarGravidade(&tetris); // Aplica a gravidade
+                         // Movimenta a peça com base no acelerômetro
+               // aplicarGravidade(&tetris); // Aplica a gravidade
             }
-
             if (state_game == 0)
             { // Estado de pausa/menu
                 // Lógica para exibir o menu inicial ou pausa
                 video_show();
             }
-        }
+       // }
 
         /* Finalização do jogo */
-        if (checkLose(&tetris) == 0)
-        {
+       // if (checkLose(&tetris) == 0)
+       // {
             // Exibe tela de derrota
-            video_clear();
-            video_erase();
-            screen_defeat(score);
-            video_show();
-        }
-        else
-        {
-            screen_victory();
-        }
+           // video_clear();
+           // video_erase();
+            //screen_defeat(score);
+           // video_show();
+       // }
+       // else
+       // {
+        //    screen_victory();
+       // }
     }
 
     return 0;

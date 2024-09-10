@@ -1,5 +1,4 @@
-#include "prototype"
-
+#include "prototype.h"
 
 
 void gerarQ(Tetromino* tetromino) {

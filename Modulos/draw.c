@@ -1,4 +1,4 @@
-#include "prototype"
+#include "prototype.h"
 
 
 /**
@@ -76,12 +76,12 @@ void title (int coordX, int coordY) {
 
     // Letra S
 
-    video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color);
-    video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color);
-    video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
-    video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color);
-    video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
-    video_box(coordX    , coordY + 8, coordX + 9, coordY + 9, color);
+    video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color1);
+    video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color1);
+    video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color1);
+    video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color1);
+    video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color1);
+    video_box(coordX    , coordY + 8, coordX + 9, coordY + 9, color1);
 
 }
 
