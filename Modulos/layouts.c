@@ -1,9 +1,5 @@
-/**
- *  Funções de lógica da exibição de dados no monitor.
- */
+#include "prototype.h"  
 
-
-#include "prototype.h"
 
 /**
  * Desenha uma frase na tela.
@@ -89,23 +85,6 @@ void screen_defeat (int score) {
     phrase(110 - sub_coordX, 145, score_message, 6, COLOR_YELLOW);
     write_score(188 - sub_coordX,  145, score);
 
-}
-
-/**
- * Exibe a tela inicial do jogo
- * 
- * É exibido o título do jogo e a frase "start game", utilizando a função de exibição do título 
- * e de exibição de frase.
- * 
- * @return void
- */
-void create_menu () {
-
-    char start_game[] = "start game";
-
-    phrase(96, 160, start_game, 10, 0xDD82);
-
-    title(40, 30);
 }
 
 /**
