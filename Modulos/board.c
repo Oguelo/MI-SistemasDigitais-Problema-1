@@ -2,8 +2,8 @@
 
 
 void initBoard(Board* board) {
-    for (int i = 0; i < LINHAS; i++) {
-        for (int j = 0; j < COLUNAS; j++) {
+    for (int i = 0; i < LINES; i++) {
+        for (int j = 0; j < COLUMNS; j++) {
             board->grid[i][j] = 0;
         }
     }
@@ -17,7 +17,7 @@ int verifyCollision(Board* board, Tetromino* tetromino, int x, int y) {
                 int posX = x + i;
                 int posY = y + j;
 
-                if (posX < 0 || posX >= LINHAS || posY < 0 || posY >= COLUNAS) {
+                if (posX < 0 || posX >= LINES || posY < 0 || posY >= COLUMNS) {
                     return 1; 
                 }
 
@@ -44,9 +44,9 @@ void fixTetromino(Board* board, Tetromino* tetromino, int x, int y) {
 }
 
 void removeFullLines(Board* board) {
-    for (int i = 0; i < LINHAS; i++) {
+    for (int i = 0; i < LINES; i++) {
         int fullLine = 1;
-        for (int j = 0; j < COLUNAS; j++) {
+        for (int j = 0; j < COLUMNS; j++) {
             if (board->grid[i][j] == 0) {
                 fullLine = 0;
                 break;
@@ -55,11 +55,11 @@ void removeFullLines(Board* board) {
 
         if (fullLine) {
             for (int k = i; k > 0; k--) {
-                for (int l = 0; l < COLUNAS; l++) {
+                for (int l = 0; l < COLUMNS; l++) {
                     board->grid[k][l] = board->grid[k - 1][l];
                 }
             }
-            for (int l = 0; l < COLUNAS; l++) {
+            for (int l = 0; l < COLUMNS; l++) {
                 board->grid[0][l] = 0;
             }
         }

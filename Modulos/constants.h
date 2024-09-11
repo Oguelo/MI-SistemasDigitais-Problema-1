@@ -7,8 +7,9 @@
 #define WALL_WIDHT_Y            15 //Diminuir um pouco
 #define BLOCK_LENGTH            37 
 #define BLOCK_WIDHT             12
-#define LINHAS                  20
-#define COLUNAS                 10
+#define LINES                   20
+#define COLUMNS                 10
+#define BLOCK_SIZE              20
 
 #define COLOR_WHITE             0xFFFF
 #define COLOR_YELLOW            0xFFE0
@@ -22,10 +23,10 @@
 #define COLOR_ORANGE            0xFC00
 
 typedef enum {
-    TETROMINO_Q,         // Quadrado
-    TETROMINO_L,         // L
-    TETROMINO_I,         // I em pé
-    TETROMINO_I_ROTACIONADO // I rotacionado
+    TETROMINO_Q,         
+    TETROMINO_L,        
+    TETROMINO_I,         
+    TETROMINO_I_ROTACIONADO 
 } TetrominoTipo;
 
-#endif // CONSTANTS_H_INCLUDED
+#endif

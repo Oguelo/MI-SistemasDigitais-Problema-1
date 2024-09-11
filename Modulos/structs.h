@@ -14,7 +14,7 @@ typedef struct {
 
 typedef struct {
 
-    int grid[LINHAS][COLUNAS];
+    int grid[LINES][COLUMNS];
 
 } Board;
 

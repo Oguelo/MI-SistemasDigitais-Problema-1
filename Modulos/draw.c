@@ -490,9 +490,9 @@ void alphanumeric(int coordX, int coordY, char caracter, short color) {
 
 void drawBoard(Tetris* tetris) {
 
-    for (int i = 0; i < LINHAS; i++) {
+    for (int i = 0; i < LINES; i++) {
 
-        for (int j = 0; j < COLUNAS; j++) {
+        for (int j = 0; j < COLUMNS; j++) {
 
             if (tetris->board.grid[i][j] != 0) {
                
