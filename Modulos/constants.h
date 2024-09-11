@@ -7,8 +7,8 @@
 #define WALL_WIDHT_Y            15 //Diminuir um pouco
 #define BLOCK_LENGTH            37 
 #define BLOCK_WIDHT             12
-#define LINHAS 20
-#define COLUNAS 10
+#define LINHAS                  20
+#define COLUNAS                 10
 
 #define COLOR_WHITE             0xFFFF
 #define COLOR_YELLOW            0xFFE0

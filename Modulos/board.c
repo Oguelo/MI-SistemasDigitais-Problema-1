@@ -1,69 +1,66 @@
 #include "prototype.h"
 
 
-// Inicializa o tabuleiro
-void inicializarBoard(Board* board) {
+void initBoard(Board* board) {
     for (int i = 0; i < LINHAS; i++) {
         for (int j = 0; j < COLUNAS; j++) {
-            board->tabuleiro[i][j] = 0;
+            board->grid[i][j] = 0;
         }
     }
 }
 
-// Verifica se há colisão
-int verificarColisao(Board* board, Tetromino* tetromino, int x, int y) {
+
+int verifyCollision(Board* board, Tetromino* tetromino, int x, int y) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            if (tetromino->matriz[i][j] == 1) {
+            if (tetromino->pattern[i][j] == 1) {
                 int posX = x + i;
                 int posY = y + j;
 
                 if (posX < 0 || posX >= LINHAS || posY < 0 || posY >= COLUNAS) {
-                    return 1; // Colisão com bordas
+                    return 1; 
                 }
 
-                if (board->tabuleiro[posX][posY] == 1) {
-                    return 1; // Colisão com outras peças
+                if (board->grid[posX][posY] == 1) {
+                    return 1; 
                 }
             }
         }
     }
 
-    return 0; // Sem colisão
+    return 0; 
 }
 
-// Fixar o tetromino no tabuleiro
-void fixarTetrominoNoTabuleiro(Board* board, Tetromino* tetromino) {
+void fixTetromino(Board* board, Tetromino* tetromino, int x, int y) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            if (tetromino->matriz[i][j] == 1) {
-                int posX = tetromino->x + i;
-                int posY = tetromino->y + j;
-                board->tabuleiro[posX][posY] = 1;
+            if (tetromino->pattern[i][j] == 1) {
+                int posX = x + i;
+                int posY = y + j;
+                board->grid[posX][posY] = 1;
             }
         }
     }
 }
 
-// Remove linhas completas
-void removerLinhasCompletas(Board* board) {
+void removeFullLines(Board* board) {
     for (int i = 0; i < LINHAS; i++) {
-        int linhaCompleta = 1;
+        int fullLine = 1;
         for (int j = 0; j < COLUNAS; j++) {
-            if (board->tabuleiro[i][j] == 0) {
-                linhaCompleta = 0;
+            if (board->grid[i][j] == 0) {
+                fullLine = 0;
                 break;
             }
         }
 
-        if (linhaCompleta) {
+        if (fullLine) {
             for (int k = i; k > 0; k--) {
                 for (int l = 0; l < COLUNAS; l++) {
-                    board->tabuleiro[k][l] = board->tabuleiro[k - 1][l];
+                    board->grid[k][l] = board->grid[k - 1][l];
                 }
             }
             for (int l = 0; l < COLUNAS; l++) {
-                board->tabuleiro[0][l] = 0;
+                board->grid[0][l] = 0;
             }
         }
     }

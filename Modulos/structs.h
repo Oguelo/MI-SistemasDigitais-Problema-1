@@ -5,21 +5,26 @@
 
 
 typedef struct {
-    int matriz[4][4];
-    int x, y;
-    unsigned int cor;
-    void (*gerar)(struct Tetromino*); // Ponteiro para a função de geração específica
+
+    int pattern[4][4];
+    unsigned int color;
+    void (*generate)(struct Tetromino*);
+
 } Tetromino;
 
 typedef struct {
-    int tabuleiro[LINHAS][COLUNAS];
+
+    int grid[LINHAS][COLUNAS];
+
 } Board;
 
 typedef struct {
-    int board[LINHAS][COLUNAS];  // Representa o tabuleiro do jogo
-   // Peca tetrominoAtual;  // O tetromino que está caindo
-    int x, y;  // Coordenadas da peça atual
+
+    Board board;
+    Tetromino currentTetromino;
+    int x, y;
+
 } Tetris;
 
 
-#endif // STRUCTS_H_INCLUDED
+#endif

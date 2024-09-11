@@ -1,41 +1,57 @@
 #include "prototype.h"
 
 
-void iniciarTetris(Tetris* tetris) {
-    inicializarBoard(&tetris->board);
-    gerarNovoTetromino(&tetris->tetrominoAtual);
+void initTetris(Tetris* tetris) {
+
+    initBoard(&tetris->board);
+    generateTetromino(&tetris->currentTetromino);
     tetris->x = 0;
     tetris->y = COLUNAS / 2;
+
 }
 
-void atualizarTetris(Tetris* tetris) {
+void updateTetris(Tetris* tetris) {
     
     desenharBloco(tetris->x * BLOCK_SIZE, tetris->y * BLOCK_SIZE, pixel_buffer, 0x0000); // Limpa a área ocupada
 
-    if (!verificarColisao(&tetris->board, &tetris->tetrominoAtual, tetris->x + 1, tetris->y)) {
+    if (!verifyCollision(&tetris->board, &tetris->tetrominoAtual, tetris->x + 1, tetris->y)) {
+
         tetris->x++;
+
     } else {
-        fixarTetrominoNoTabuleiro(&tetris->board, &tetris->tetrominoAtual);
-        removerLinhasCompletas(&tetris->board);
-        gerarNovoTetromino(&tetris->tetrominoAtual);
+
+        fixTetromino(&tetris->board, &tetris->currentTetromino, &tetris->x, &tetris->y);
+        removeFullLines(&tetris->board);
+        generateTetromino(&tetris->currentTetromino);
+
     }
-    // Desenhar o tetromino atual na tela
+    
     desenharTetromino(tetris->x, tetris->y, &tetris->tetrominoAtual, pixel_buffer);
+
 }
 
-void moverTetromino(Tetris* tetris, int dx, int dy) {
+void moveTetromino(Tetris* tetris, int dx, int dy) {
+
     if (!verificarColisao(&tetris->board, &tetris->tetrominoAtual, tetris->x + dx, tetris->y + dy)) {
+
         tetris->x += dx;
         tetris->y += dy;
+
     }
 }
 
-void aplicarGravidade(Tetris* tetris) {
-    if (!verificarColisao(&tetris->board, &tetris->tetrominoAtual, tetris->x + 1, tetris->y)) {
-        tetris->x++;
+
+void applyGravity(Tetris* tetris) {
+
+    if (!verifyCollision(&tetris->board, &tetris->tetrominoAtual, tetris->x, tetris->y+1)) {
+
+        tetris->y++;
+
     } else {
-        fixarTetrominoNoTabuleiro(&tetris->board, &tetris->tetrominoAtual);
-        removerLinhasCompletas(&tetris->board);
-        gerarNovoTetromino(&tetris->tetrominoAtual);
+
+        fixTetromino(&tetris->board, &tetris->tetrominoAtual);
+        removeFullLines(&tetris->board);
+        gerarNovoTetromino(&tetris->currentTetromnino);
+
     }
 }

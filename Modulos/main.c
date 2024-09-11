@@ -21,15 +21,14 @@ int main()
 
     /* Inicializar os elementos do jogo */
     int score;
-   // Tetris tetris;
+    Tetris tetris;
 
     /* Loop principal do jogo */
     while (1)
     {
-	printf("Ola xereca");
-        /* Resetar os dados e iniciar a máquina de estado */
+
         state_game = 0;
-       // iniciarTetris(&tetris);
+        iniciarTetris(&tetris);
 
         /* Loop da partida do jogo */
        // while (checkLose(&tetris))

@@ -488,4 +488,54 @@ void alphanumeric(int coordX, int coordY, char caracter, short color) {
     }
 }
 
+void drawBoard(Tetris* tetris) {
+
+    for (int i = 0; i < LINHAS; i++) {
+
+        for (int j = 0; j < COLUNAS; j++) {
+
+            if (tetris->board.grid[i][j] != 0) {
+               
+                int x = j * BLOCK_SIZE;
+                int y = i * BLOCK_SIZE;
+  
+                video_box(x, y, x + BLOCK_SIZE, y + BLOCK_SIZE, tetris->board.matriz[i][j]);
+
+            }
+
+        }
+
+    }
+    
+}
+
+void drawTetromino(Tetris* tetris) {
+
+    for (int i = 0; i < 4; i++) { 
+
+        for (int j = 0; j < 4; j++) {
+
+            if (tetris->currentTetromino.pattern[i][j] != 0) {
+              
+                int x = (tetris->x + j) * BLOCK_SIZE;
+                int y = (tetris->y + i) * BLOCK_SIZE;
+                
+                video_box(x, y, x + BLOCK_SIZE, y + BLOCK_SIZE, tetris->currentTetromino.color);
+
+            }
+
+        }
+
+    }
+
+}
+
+
+void updateBoard(Tetris* tetris) {
+
+    drawBoard(tetris);
+    drawTetromino(tetris);
+
+}
+
 
