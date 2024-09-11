@@ -516,12 +516,13 @@ void drawTetromino(Tetris* tetris) {
         for (int j = 0; j < 4; j++) {
 
             if (tetris->currentTetromino.pattern[i][j] != 0) {
-              
-                int x = (tetris->x + j) * BLOCK_SIZE;
-                int y = (tetris->y + i) * BLOCK_SIZE;
-                
-                video_box(x, y, x + BLOCK_SIZE, y + BLOCK_SIZE, tetris->currentTetromino.color);
-
+                video_box(
+                    tetris->SCREEN_X / 2 - 2 * BLOCK_SIZE,
+                    tetris->y + i * BLOCK_SIZE,
+                    tetris->x + (j+1) * BLOCK_SIZE,
+                    tetris->y + (i+1) * BLOCK_SIZE,
+                    tetris->currentTetromino.color // Cor definida pelo Tetromino
+                );
             }
 
         }
