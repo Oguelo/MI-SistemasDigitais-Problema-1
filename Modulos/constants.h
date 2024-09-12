@@ -9,7 +9,7 @@
 #define BLOCK_WIDHT             12
 #define LINES                   20
 #define COLUMNS                 10
-#define BLOCK_SIZE              20
+#define BLOCK_SIZE              5
 
 #define COLOR_WHITE             0xFFFF
 #define COLOR_YELLOW            0xFFE0

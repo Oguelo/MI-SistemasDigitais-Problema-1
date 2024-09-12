@@ -40,6 +40,9 @@ int main()
                 game_field(score, state_game);
                 accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
 
+                updateTetris(&tetris);
+
+
                 video_show();
                 //applyGravity(&tetris); // Aplica a gravidade
             }
