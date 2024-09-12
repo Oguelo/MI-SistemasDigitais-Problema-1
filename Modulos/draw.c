@@ -107,6 +107,8 @@ void alphanumeric(int coordX, int coordY, char caracter, short color) {
         video_box(coordX + 6, coordY + 3, coordX + 7, coordY + 6, color);
         video_box(coordX + 8, coordY + 4, coordX + 9, coordY + 5, color);
 
+        break;
+
     case '<':
 
         video_box(coordX + 2, coordY + 4, coordX + 3, coordY + 5, color);
@@ -488,55 +490,55 @@ void alphanumeric(int coordX, int coordY, char caracter, short color) {
     }
 }
 
-void drawBoard(Tetris* tetris) {
+// void drawBoard(Tetris* tetris) {
 
-    for (int i = 0; i < LINES; i++) {
+//     for (int i = 0; i < LINES; i++) {
 
-        for (int j = 0; j < COLUMNS; j++) {
+//         for (int j = 0; j < COLUMNS; j++) {
 
-            if (tetris->board.grid[i][j] != 0) {
+//             if (tetris->board.grid[i][j] != 0) {
                
-                int x = j * BLOCK_SIZE;
-                int y = i * BLOCK_SIZE;
+//                 int x = j * BLOCK_SIZE;
+//                 int y = i * BLOCK_SIZE;
   
-                video_box(x, y, x + BLOCK_SIZE, y + BLOCK_SIZE, tetris->board.matriz[i][j]);
+//                 video_box(x, y, x + BLOCK_SIZE, y + BLOCK_SIZE, tetris->currentTetromino.color);
 
-            }
+//             }
 
-        }
+//         }
 
-    }
+//     }
     
-}
+// }
 
-void drawTetromino(Tetris* tetris) {
+// void drawTetromino(Tetris* tetris) {
 
-    for (int i = 0; i < 4; i++) { 
+//     for (int i = 0; i < 4; i++) { 
 
-        for (int j = 0; j < 4; j++) {
+//         for (int j = 0; j < 4; j++) {
 
-            if (tetris->currentTetromino.pattern[i][j] != 0) {
-                video_box(
-                    tetris->SCREEN_X / 2 - 2 * BLOCK_SIZE,
-                    tetris->y + i * BLOCK_SIZE,
-                    tetris->x + (j+1) * BLOCK_SIZE,
-                    tetris->y + (i+1) * BLOCK_SIZE,
-                    tetris->currentTetromino.color // Cor definida pelo Tetromino
-                );
-            }
+//             if (tetris->currentTetromino.pattern[i][j] != 0) {
+//                 video_box(
+//                     tetris->x * SCREEN_X / 2,
+//                     tetris->y + i * BLOCK_SIZE,
+//                     tetris->x + (j+1) * BLOCK_SIZE,
+//                     tetris->y + (i+1) * BLOCK_SIZE,
+//                     tetris->currentTetromino.color
+//                 );
+//             }
 
-        }
+//         }
 
-    }
+//     }
 
-}
+// }
 
 
-void updateBoard(Tetris* tetris) {
+// void updateBoard(Tetris* tetris) {
 
-    drawBoard(tetris);
-    drawTetromino(tetris);
+//     drawBoard(tetris);
+//     drawTetromino(tetris);
 
-}
+// }
 
 
