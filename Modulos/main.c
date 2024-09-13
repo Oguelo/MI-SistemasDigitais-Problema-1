@@ -10,15 +10,15 @@ int main()
 
     /* Botões */
     int state_game, buttons;
-    //KEY_open();
-    //KEY_read(&buttons);
+    KEY_open();
+    KEY_read(&buttons);
 
     int ready, tap, dtap, velX, velY, velZ, mg_per_lsb;
-    //accel_open();
-    //accel_init();
-    //accel_calibrate();
+    accel_open();
+    accel_init();
+    accel_calibrate();
 
-    //video_open();
+    video_open();
 
     int score = 0;
     Tetromino currentTetromino;
@@ -26,14 +26,13 @@ int main()
 
     resetBoard(boardMatrix);
     state_game = 1;
+    initTetromino(&currentTetromino, boardMatrix);
 
     while (1)
     {
-        initTetromino(&currentTetromino, boardMatrix);
-        printf("Tetris Terminal State:\n");
-        drawBoardTerminal(boardMatrix);
-        drawCurrentTetrominoTerminal(currentTetromino);
-        sleep(5000);
+        //printf("Tetris Terminal State:\n");
+        //drawBoardTerminal(boardMatrix);
+        //drawCurrentTetrominoTerminal(currentTetromino);
         
         //while (checkLose(&tetris))
         //{
@@ -41,18 +40,17 @@ int main()
             //KEY_read(&buttons);
             change_state(&state_game, &buttons);
 
-            //video_clear();
-            //video_erase();
+            video_clear();
+            video_erase();
 
             if (state_game == 1)
             {
                 game_field(score, state_game);
-                //accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
+                accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
 
                 updateTetris(&currentTetromino, boardMatrix);
 
-
-                //video_show();
+                video_show();
                 //applyGravity(&tetris); // Aplica a gravidade
             }
             if (state_game == 0)
