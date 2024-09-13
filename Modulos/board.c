@@ -1,16 +1,17 @@
 #include "prototype.h"
 
 
-void initBoard(Board* board) {
+void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS]) {
     for (int i = 0; i < LINES; i++) {
         for (int j = 0; j < COLUMNS; j++) {
-            board->grid[i][j] = 0;
+            boardMatrix[i][j].isNotEmpty = 0;
+            boardMatrix[i][j].color = COLOR_WHITE;
         }
     }
 }
 
 
-int verifyCollision(Board* board, Tetromino* tetromino, int x, int y) {
+int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int x, int y) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             if (tetromino->pattern[i][j] == 1) {
@@ -21,7 +22,7 @@ int verifyCollision(Board* board, Tetromino* tetromino, int x, int y) {
                     return 1; 
                 }
 
-                if (board->grid[posX][posY] == 1) {
+                if (boardMatrix[posX][posY].isNotEmpty == 1) {
                     return 1; 
                 }
             }
@@ -31,23 +32,23 @@ int verifyCollision(Board* board, Tetromino* tetromino, int x, int y) {
     return 0; 
 }
 
-void fixTetromino(Board* board, Tetromino* tetromino, int x, int y) {
+void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int x, int y) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             if (tetromino->pattern[i][j] == 1) {
                 int posX = x + i;
                 int posY = y + j;
-                board->grid[posX][posY] = 1;
+                boardMatrix[posX][posY].isNotEmpty= 1;
             }
         }
     }
 }
 
-void removeFullLines(Board* board) {
+void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS]) {
     for (int i = 0; i < LINES; i++) {
         int fullLine = 1;
         for (int j = 0; j < COLUMNS; j++) {
-            if (board->grid[i][j] == 0) {
+            if (boardMatrix[i][j].isNotEmpty == 0) {
                 fullLine = 0;
                 break;
             }
@@ -56,11 +57,12 @@ void removeFullLines(Board* board) {
         if (fullLine) {
             for (int k = i; k > 0; k--) {
                 for (int l = 0; l < COLUMNS; l++) {
-                    board->grid[k][l] = board->grid[k - 1][l];
+                    boardMatrix[k][l] = boardMatrix[k-1][l];
                 }
             }
             for (int l = 0; l < COLUMNS; l++) {
-                board->grid[0][l] = 0;
+                boardMatrix[0][l].isNotEmpty = 0;
+                boardMatrix[0][l].color = COLOR_WHITE;
             }
         }
     }

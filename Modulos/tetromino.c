@@ -74,3 +74,36 @@ void generateTetromino(Tetromino* tetromino) {
 
     tetromino->generate(tetromino);
 }
+
+void initTetromino(Tetromino* tetromino) {
+
+    generateTetromino(tetromino);
+    tetromino->x = SCREEN_X /2;
+    tetromino->y = COLUMNS / 2;
+
+}
+
+void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int dx, int dy) {
+
+    if (!verifyCollision(boardMatrix, tetromino, tetromino->x + dx, tetromino->y + dy)) {
+
+        tetromino->x += dx;
+
+    }
+}
+
+
+void applyGravity(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino) {
+
+    if (!verifyCollision(boardMatrix, tetromino, tetromino->x, tetromino->y+1)) {
+
+        tetromino->y++;
+
+    } else {
+
+        fixTetromino(&boardMatrix, &tetromino, &tetromino->x, &tetromino->y);
+        removeFullLines(&boardMatrix);
+        generateTetromino(&tetromino);
+
+    }
+}

@@ -10,49 +10,55 @@ int main()
 
     /* Botões */
     int state_game, buttons;
-    KEY_open();
-    KEY_read(&buttons);
+    //KEY_open();
+    //KEY_read(&buttons);
 
     int ready, tap, dtap, velX, velY, velZ, mg_per_lsb;
-    accel_open();
-    accel_init();
-    accel_calibrate();
+    //accel_open();
+    //accel_init();
+    //accel_calibrate();
 
-    video_open();
+    //video_open();
 
     int score = 0;
-    Tetris tetris;
+    Tetromino currentTetromino;
+    PartTetromino boardMatrix[LINES][COLUMNS];
+
+    resetBoard(boardMatrix);
+    state_game = 1;
 
     while (1)
     {
-
-        state_game = 1;
-        initTetris(&tetris);
-
+        initTetromino(&currentTetromino, boardMatrix);
+        printf("Tetris Terminal State:\n");
+        drawBoardTerminal(boardMatrix);
+        drawCurrentTetrominoTerminal(currentTetromino);
+        sleep(5000);
+        
         //while (checkLose(&tetris))
         //{
 
-            KEY_read(&buttons);
+            //KEY_read(&buttons);
             change_state(&state_game, &buttons);
 
-            video_clear();
-            video_erase();
+            //video_clear();
+            //video_erase();
 
             if (state_game == 1)
             {
                 game_field(score, state_game);
-                accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
+                //accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
 
-                updateTetris(&tetris);
+                updateTetris(&currentTetromino, boardMatrix);
 
 
-                video_show();
+                //video_show();
                 //applyGravity(&tetris); // Aplica a gravidade
             }
             if (state_game == 0)
             { // Estado de pausa/menu
-                // Lógica para exibir o menu inicial ou pausa
-                video_show();
+                
+                //video_show();
             }
         //}
 

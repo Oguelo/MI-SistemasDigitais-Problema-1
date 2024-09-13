@@ -6,6 +6,7 @@
 
 typedef struct {
 
+    int x, y;
     int pattern[4][4];
     unsigned int color;
     void (*generate)(struct Tetromino*);
@@ -14,15 +15,14 @@ typedef struct {
 
 typedef struct {
 
-    int grid[LINES][COLUMNS];
+    int isNotEmpty;
+    unsigned int color;
 
-} Board;
+} PartTetromino;
 
 typedef struct {
 
-    Board board;
     Tetromino currentTetromino;
-    int x, y;
 
 } Tetris;
 
