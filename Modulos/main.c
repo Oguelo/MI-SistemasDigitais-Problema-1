@@ -1,6 +1,9 @@
 
 #include "prototype.h"
 
+// cd ./TEC499/TP01/G02 
+// make -f makefile.txt
+
 int main()
 {
     /* Inicialização dos periféricos */
