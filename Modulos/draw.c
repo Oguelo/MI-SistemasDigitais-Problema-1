@@ -519,7 +519,7 @@ void drawTetromino(Tetris* tetris) {
 
              if (tetris->currentTetromino.pattern[i][j] != 0) {
                  video_box(
-                     tetris->x * SCREEN_X / 2,
+                     tetris->x + j * BLOCK_SIZE
                      tetris->y + i * BLOCK_SIZE,
                      tetris->x + (j+1) * BLOCK_SIZE,
                      tetris->y + (i+1) * BLOCK_SIZE,

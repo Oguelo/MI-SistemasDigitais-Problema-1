@@ -5,8 +5,8 @@ void initTetris(Tetris* tetris) {
 
     initBoard(&tetris->board);
     generateTetromino(&tetris->currentTetromino);
-    tetris->x = SCREEN_X /2;
-    tetris->y = COLUMNS / 2;
+    tetris->x = SCREEN_X/2;
+    tetris->y = SCREEN_Y/10;
 
 }
 
