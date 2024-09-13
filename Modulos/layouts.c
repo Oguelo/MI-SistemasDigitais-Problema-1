@@ -101,7 +101,7 @@ void game_field(int score, int state_game) {
 
     char text_score[6] = "score:";
 
-    phrase(0, 0, text_score, 6, COLOR_YELLOW);
+    phrase(0, 0, text_score, 6, COLOR_WHITE);
     write_score(78, 0, score);
 
     if (state_game == 1) {
@@ -123,9 +123,9 @@ void game_field(int score, int state_game) {
         
     }
 
-    video_box(0, 15, 2, 239, COLOR_GREY);
-    video_box(3, 15, 319, 17, COLOR_GREY);
-    video_box(317, 18, 319, 239, COLOR_GREY);
+    video_box(108, 18, 110, 239, COLOR_BLUE); // LADO ESQUERDO
+    video_box(109, 237, 209, 239, COLOR_BLUE); // CENTRO
+    video_box(208, 18, 210, 239, COLOR_BLUE);
 
 }
 

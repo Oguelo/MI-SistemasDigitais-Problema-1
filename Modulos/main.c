@@ -1,6 +1,9 @@
 
 #include "prototype.h"
 
+// cd ./TEC499/TP01/G02 
+// make -f makefile.txt
+
 int main()
 {
     /* Inicialização dos periféricos */
@@ -10,30 +13,25 @@ int main()
     KEY_open();
     KEY_read(&buttons);
 
-    /* Acelerômetro */
     int ready, tap, dtap, velX, velY, velZ, mg_per_lsb;
     accel_open();
     accel_init();
     accel_calibrate();
 
-    /*Vídeo*/
     video_open();
 
-    /* Inicializar os elementos do jogo */
-    int score;
+    int score = 0;
     Tetris tetris;
 
-    /* Loop principal do jogo */
     while (1)
     {
 
-        state_game = 0;
-        iniciarTetris(&tetris);
+        state_game = 1;
+        initTetris(&tetris);
 
-        /* Loop da partida do jogo */
-       // while (checkLose(&tetris))
-       // {
-            // Leitura dos botões e do acelerômetro
+        //while (checkLose(&tetris))
+        //{
+
             KEY_read(&buttons);
             change_state(&state_game, &buttons);
 
@@ -45,31 +43,28 @@ int main()
                 game_field(score, state_game);
                 accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
 
-                video_show();
+                updateTetris(&tetris);
 
-                         // Movimenta a peça com base no acelerômetro
-               // aplicarGravidade(&tetris); // Aplica a gravidade
+
+                video_show();
+                //applyGravity(&tetris); // Aplica a gravidade
             }
             if (state_game == 0)
             { // Estado de pausa/menu
                 // Lógica para exibir o menu inicial ou pausa
                 video_show();
             }
-       // }
+        //}
 
-        /* Finalização do jogo */
-       // if (checkLose(&tetris) == 0)
-       // {
-            // Exibe tela de derrota
-           // video_clear();
-           // video_erase();
-            //screen_defeat(score);
-           // video_show();
-       // }
-       // else
-       // {
-        //    screen_victory();
-       // }
+        // if (checkLose(&tetris) == 0)
+        // {
+
+        //     video_clear();
+        //     video_erase();
+        //     screen_defeat(score);
+        //     video_show();
+
+        // }
     }
 
     return 0;

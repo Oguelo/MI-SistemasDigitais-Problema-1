@@ -22,7 +22,7 @@ void alphanumeric(int coordX, int coordY, char caracter, short cor);
 void change_state(int *pointer_state, int *pointer_buttons);
 void initBoard(Board* board);
 int verifyCollision(Board* board, Tetromino* tetromino, int x, int y);
-void fixTetromino(Board* board, Tetromino* tetromino);
+void fixTetromino(Board* board, Tetromino* tetromino, int x, int y); 
 void removeFullLines(Board* board);
 void drawBoard(Tetris* tetris);
 void drawTetromino(Tetris* tetris);
