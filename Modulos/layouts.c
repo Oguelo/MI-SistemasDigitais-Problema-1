@@ -102,7 +102,7 @@ void game_field(int score, int state_game) {
     char text_score[6] = "score:";
 
     phrase(0, 0, text_score, 6, COLOR_WHITE);
-    write_score(78, 0, score);
+    write_score(70, 0, score);
 
     if (state_game == 1) {
 

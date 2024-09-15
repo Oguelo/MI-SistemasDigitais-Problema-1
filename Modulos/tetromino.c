@@ -79,7 +79,7 @@ void initTetromino(Tetromino* tetromino) {
 
     generateTetromino(tetromino);
     tetromino->x = SCREEN_X /2;
-    tetromino->y = COLUMNS / 2;
+    tetromino->y = SCREEN_Y/ 10;
 
 }
 
