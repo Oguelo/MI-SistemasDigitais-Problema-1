@@ -38,12 +38,15 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromin
             if (tetromino->pattern[i][j] == 1) {
                 int posX = x + i;
                 int posY = y + j;
-                boardMatrix[posX][posY].isNotEmpty= 1;
-                boardMatrix[posX][posY].color = tetromino->color
+                
+                boardMatrix[posX][posY].isNotEmpty = 1; 
+                boardMatrix[posX][posY].color = tetromino->color;
+
             }
         }
     }
 }
+
 
 void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS]) {
     for (int i = 0; i < LINES; i++) {

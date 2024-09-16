@@ -78,8 +78,8 @@ void generateTetromino(Tetromino* tetromino) {
 void initTetromino(Tetromino* tetromino) {
 
     generateTetromino(tetromino);
-    tetromino->x = SCREEN_X /2;
-    tetromino->y = SCREEN_Y/ 10;
+    tetromino->x = (COLUMNS / 2) - 2;
+    tetromino->y = 0;
 
 }
 
@@ -87,7 +87,16 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromi
 
     if (!verifyCollision(boardMatrix, tetromino, tetromino->x + dx, tetromino->y + dy)) {
 
+        printf("%d",tetromino->x);
+        printf("%d",tetromino->y);
+
         tetromino->x += dx;
+
+    }else{
+  
+        fixTetromino(&boardMatrix, &tetromino, tetromino->x, tetromino->y);
+        //removeFullLines(&boardMatrix);
+        //generateTetromino(&tetromino);
 
     }
 }

@@ -20,11 +20,4 @@ typedef struct {
 
 } PartTetromino;
 
-typedef struct {
-
-    Tetromino currentTetromino;
-
-} Tetris;
-
-
 #endif
