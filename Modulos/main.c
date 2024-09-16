@@ -55,7 +55,6 @@ int main()
                 getchar();
                 //updateTetris(&currentTetromino, boardMatrix);
                 //video_show();
-                applyGravity(&currentTetromino, boardMatrix); // Aplica a gravidade
             }
             if (state_game == 0)
             { // Estado de pausa/menu

@@ -21,7 +21,7 @@ void title(int coordX, int coordY);
 void alphanumeric(int coordX, int coordY, char caracter, short cor);
 void change_state(int *pointer_state, int *pointer_buttons);
 void initBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
-int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int x, int y);
+int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int dx, int dy);
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int x, int y); 
 void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS]);
 //void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
@@ -31,11 +31,11 @@ void drawTetrominoTerminal(Tetromino tetromino);
 void initTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino);
 void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino);
 void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int dx, int dy);
-void applyGravity(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino);
 void generateQPattern(Tetromino* tetromino);
 void generateLPattern(Tetromino* tetromino);
 void generateIPattern(Tetromino* tetromino);
 void gerarIPatternRotate(Tetromino* tetromino);
 void generateTetromino(Tetromino* tetromino);
+void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino);
 
 #endif 

@@ -83,36 +83,21 @@ void initTetromino(Tetromino* tetromino) {
 
 }
 
-void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int dx, int dy) {
+void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy) {
+    
+    clearTetromino(boardMatrix, tetromino);
 
-    if (!verifyCollision(boardMatrix, tetromino, tetromino->x + dx, tetromino->y + dy)) {
+    tetromino->x += dx;
+    tetromino->y += dy;
 
-        printf("%d",tetromino->x);
-        printf("%d",tetromino->y);
-
-        tetromino->x += dx;
-
-    }else{
-  
-        fixTetromino(&boardMatrix, &tetromino, tetromino->x, tetromino->y);
-        //removeFullLines(&boardMatrix);
-        //generateTetromino(&tetromino);
-
-    }
-}
-
-
-void applyGravity(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino) {
-
-    if (!verifyCollision(boardMatrix, tetromino, tetromino->x, tetromino->y+1)) {
-
-        tetromino->y++;
-
+    if (verifyCollision(boardMatrix, tetromino, tetromino->x, tetromino->y)) {
+        
+        tetromino->x -= dx;
+        tetromino->y -= dy;
+    
+        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
     } else {
-
-        fixTetromino(&boardMatrix, &tetromino, &tetromino->x, &tetromino->y);
-        removeFullLines(&boardMatrix);
-        generateTetromino(&tetromino);
-
+        
+        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
     }
 }
