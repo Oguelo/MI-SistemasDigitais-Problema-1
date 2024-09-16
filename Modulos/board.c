@@ -35,7 +35,9 @@ int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetrom
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int x, int y) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
+            
             if (tetromino->pattern[i][j] == 1) {
+                
                 int posX = x + i;
                 int posY = y + j;
                 
