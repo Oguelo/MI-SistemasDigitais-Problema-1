@@ -61,6 +61,7 @@ void ADXL345_REG_WRITE(uint8_t address, uint8_t value){
     
     // Send value
     *I2C0_DATA_CMD = value;
+    
 }
 
 // Read value from internal register at address

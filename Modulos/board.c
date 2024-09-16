@@ -39,6 +39,7 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromin
                 int posX = x + i;
                 int posY = y + j;
                 boardMatrix[posX][posY].isNotEmpty= 1;
+                boardMatrix[posX][posY].color = tetromino->color
             }
         }
     }
