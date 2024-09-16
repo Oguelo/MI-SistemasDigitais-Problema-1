@@ -25,7 +25,7 @@ void phrase(int coordX, int coordY, char *list, int lenList, short color) {
         if (list[i] != ' ') {
 
             X = coordX + i * 13;
-            //alphanumeric(X, coordY, list[i], color);
+            alphanumeric(X, coordY, list[i], color);
 
         }
     }
@@ -52,7 +52,7 @@ void write_score( int coordX, int coordY, int score) {
 
     for (int i = 0; i < len; i++) {
 
-        //alphanumeric(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
+        alphanumeric(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
     }
 }
 
