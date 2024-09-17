@@ -88,16 +88,32 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
     clearTetromino(boardMatrix, tetromino);
 
     tetromino->x += dx;
-    tetromino->y += dy;
 
-    if (verifyCollision(boardMatrix, tetromino, tetromino->x, tetromino->y)) {
+    if (verifyCollisionHorizontal(boardMatrix, tetromino)) {
         
-        tetromino->x -= dx;
-        tetromino->y -= dy;
+        printf("Entrei na colisão horizontal");
+        tetromino->x -= dx;    
+        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+
+    }else{
+
+        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+
+    }
+
+    clearTetromino(boardMatrix, tetromino);
+
+    tetromino->y += dy;
     
-        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
-    } else {
+    if (verifyCollisionVertical(boardMatrix, tetromino)) {
         
+        printf("Entrei na colisão vertical");
+        tetromino->y -= dy;
         fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+
+    } else {
+
+        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+
     }
 }

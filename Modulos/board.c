@@ -12,30 +12,7 @@ void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
-int verifyCollisionHorizontal(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx)
-{
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if (tetromino->pattern[i][j] == 1)
-            {
-                int posX = tetromino->x + j + dx;
-                int posY = tetromino->y + i;
-
-                if (posX < 0 || posX >= COLUMNS || boardMatrix[posY][posX].isNotEmpty) 
-                {
-                    return 1;
-                }
-
-            }
-        }
-    }
-
-    return 0;
-}
-
-int verifyCollisionVertical(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dy)
+int verifyCollisionHorizontal(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -44,13 +21,35 @@ int verifyCollisionVertical(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino
             if (tetromino->pattern[i][j] == 1)
             {
                 int posX = tetromino->x + j;
-                int posY = tetromino->y + i + dy;
+                int posY = tetromino->y + i;
 
-                if (posY < 0 || posY >= LINES || boardMatrix[posY][posX].isNotEmpty) {
+                if (posX < 0 || posY >= COLUMNS || boardMatrix[posY][posX].isNotEmpty)
+                {
+
+                    return 1;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
+int verifyCollisionVertical(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (tetromino->pattern[i][j] == 1)
+            {
+                int posX = tetromino->x + j;
+                int posY = tetromino->y + i;
+
+                if (posY < 0 || posX >= LINES || boardMatrix[posY][posX].isNotEmpty)
                 {
                     return 1;
                 }
-
             }
         }
     }
@@ -61,41 +60,42 @@ int verifyCollisionVertical(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int x, int y)
 {
     printf("Fixando o Tetromino na posição (%d, %d):\n", x, y);
-    
+
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
             if (tetromino->pattern[i][j] == 1)
             {
-                int posX = x + j; 
-                int posY = y + i; 
+                int posX = x + j;
+                int posY = y + i;
 
-                if (posX >= 0 && posX < LINES && posY >= 0 && posY < COLUMNS)
+
+                if (posX >= 0 && posY < LINES && posY >= 0 && posX < COLUMNS)
                 {
                     boardMatrix[posY][posX].isNotEmpty = 1;
                     boardMatrix[posY][posX].color = tetromino->color;
 
                     printf("Colocando bloco na posição (%d, %d), Cor: %d\n", posX, posY, tetromino->color);
                 }
-                else
-                {
-                    printf("Ignorando posição fora dos limites (%d, %d)\n", posX, posY);
-                }
             }
         }
     }
 }
 
+void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (tetromino->pattern[i][j] == 1)
+            {
+                int posX = tetromino->x + j;
+                int posY = tetromino->y + i;
 
-void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino) {
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tetromino->pattern[i][j] == 1) {
-                int posX = tetromino->x + j;  
-                int posY = tetromino->y + i;  
-
-                if (posX >= 0 && posX < COLUMNS && posY >= 0 && posY < LINES) {
+                if (posX >= 0 && posX < COLUMNS && posY >= 0 && posY < LINES)
+                {
                     boardMatrix[posY][posX].isNotEmpty = 0;
                     boardMatrix[posY][posX].color = 0;
                 }

@@ -533,7 +533,7 @@
 
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]) {
     for (int i = 0; i < LINES; i++) {
-        printf("%d",i+1);
+        printf("%.2d",i+1);
         for (int j = 0; j < COLUMNS; j++) {
             if (boardMatrix[i][j].isNotEmpty != 0) {
                
