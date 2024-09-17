@@ -1,7 +1,7 @@
-
 #include "prototype.h"
+#include <stdio.h>
 
-// cd ./TEC499/TP01/G02 
+// cd ./TEC499/TP01/G02
 // make -f makefile.txt
 
 int main()
@@ -9,51 +9,64 @@ int main()
     /* Inicialização dos periféricos */
 
     /* Botões */
-    int state_game, buttons;
-    KEY_open();
-    KEY_read(&buttons);
+    int state_game = 1, buttons;
+    //KEY_open();
+    //KEY_read(&buttons);
 
     int ready, tap, dtap, velX, velY, velZ, mg_per_lsb;
-    accel_open();
-    accel_init();
-    accel_calibrate();
+    //accel_open();
+    //accel_init();
+    //accel_calibrate();
 
     video_open();
 
-    int score = 0;
-    Tetris tetris;
+    Tetromino currentTetromino;
+    PartTetromino boardMatrix[LINES][COLUMNS];
+    int dx = 1, dy = 1, moved = 1, score;
 
     while (1)
     {
 
-        state_game = 1;
-        initTetris(&tetris);
+        // drawBoardTerminal(boardMatrix);
+        // drawCurrentTetrominoTerminal(currentTetromino);
 
-        //while (checkLose(&tetris))
+        // while (checkLose(&tetris))
         //{
 
-            KEY_read(&buttons);
-            change_state(&state_game, &buttons);
+        // KEY_read(&buttons);
+        // change_state(&state_game, &buttons);
 
-            video_clear();
-            video_erase();
+        video_clear();
+        video_erase();
 
-            if (state_game == 1)
+        score = 0;
+        resetBoard(boardMatrix);
+        initTetromino(&currentTetromino, boardMatrix);
+
+        while (!checkGameOver(boardMatrix))
+        {
+            // accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
+            if (!moved)
             {
-                game_field(score, state_game);
-                accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
-
-                updateTetris(&tetris);
-
-
-                video_show();
-                //applyGravity(&tetris); // Aplica a gravidade
+                initTetromino(&currentTetromino, boardMatrix);
             }
-            if (state_game == 0)
-            { // Estado de pausa/menu
-                // Lógica para exibir o menu inicial ou pausa
-                video_show();
-            }
+            drawBoardTerminal(boardMatrix);
+            moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
+            drawTetrominoTerminal(currentTetromino);
+            video_open();
+            video_clear();
+            game_field(score, state_game);
+            drawBoard(boardMatrix);
+            video_show();
+            video_close();
+            getchar();
+            //  updateTetris(&currentTetromino, boardMatrix);
+        }
+        if (state_game == 0)
+        { // Estado de pausa/menu
+
+             video_show();
+        }
         //}
 
         // if (checkLose(&tetris) == 0)

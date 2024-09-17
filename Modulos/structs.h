@@ -3,28 +3,22 @@
 
 #include "prototype.h"
 
+typedef struct
+{
 
-typedef struct {
-
-    int pattern[4][4];
+    int x, y, currentRotation;
+    int pattern[MAX_ROTATIONS][4][4];
     unsigned int color;
-    void (*generate)(struct Tetromino*);
+    void (*generate)(struct Tetromino *);
 
 } Tetromino;
 
-typedef struct {
+typedef struct
+{
 
-    int grid[LINES][COLUMNS];
+    int isNotEmpty;
+    unsigned int color;
 
-} Board;
-
-typedef struct {
-
-    Board board;
-    Tetromino currentTetromino;
-    int x, y;
-
-} Tetris;
-
+} PartTetromino;
 
 #endif

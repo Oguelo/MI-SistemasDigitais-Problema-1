@@ -1,4 +1,6 @@
 #include "ADXL345.h"
+#include "address_map_arm.h"
+#include "physical.h"
 #include <stdio.h>
 
 int main(void){
@@ -8,7 +10,7 @@ int main(void){
     int16_t XYZ[3];
     
     // Configure Pin Muxing
-    Pinmux_Config();
+    //Pinmux_Config();
     
     // Initialize I2C0 Controller
     I2C0_Init();

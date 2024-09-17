@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "constants.h": "c",
+        "prototype.h": "c",
+        "stdio.h": "c"
+    }
+}
