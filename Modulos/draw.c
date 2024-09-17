@@ -531,21 +531,15 @@
 //     }
 // }
 
-void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS])
-{
-    for (int i = 0; i < LINES; i++)
-    {
-        printf("%.2d", i + 1);
-        for (int j = 0; j < COLUMNS; j++)
-        {
-            if (boardMatrix[i][j].isNotEmpty != 0)
-            {
-
+void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]) {
+    for (int i = 0; i < LINES; i++) {
+        printf("%.2d",i+1);
+        for (int j = 0; j < COLUMNS; j++) {
+            if (boardMatrix[i][j].isNotEmpty != 0) {
+               
                 printf("# ");
-            }
-            else
-            {
-
+            } else {
+                
                 printf(". ");
             }
         }
@@ -553,30 +547,27 @@ void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
-void drawTetrominoTerminal(Tetromino tetromino)
-{
+void drawTetrominoTerminal(Tetromino tetromino) {
 
     printf("Padrao:\n");
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if (tetromino.pattern[i][j] != 0)
-            {
-                printf("# ");
-            }
-            else
-            {
-                printf(". ");
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tetromino.pattern[i][j] != 0) {
+                printf("# ");  
+            } else {
+                printf(". ");  
             }
         }
-        printf("\n");
+        printf("\n");  
     }
 }
+
+
 
 void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino)
 {
 
     drawBoardTerminal(boardMatrix);
     drawTetrominoTerminal(tetromino);
+    
 }

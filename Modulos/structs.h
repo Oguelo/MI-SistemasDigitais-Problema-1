@@ -3,18 +3,17 @@
 
 #include "prototype.h"
 
-typedef struct
-{
+
+typedef struct {
 
     int x, y;
     int pattern[4][4];
     unsigned int color;
-    void (*generate)(struct Tetromino *);
+    void (*generate)(struct Tetromino*);
 
 } Tetromino;
 
-typedef struct
-{
+typedef struct {
 
     int isNotEmpty;
     unsigned int color;
