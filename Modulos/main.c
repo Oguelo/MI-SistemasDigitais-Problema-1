@@ -27,7 +27,7 @@ int main()
 
     while (1)
     {
-        
+
         // drawBoardTerminal(boardMatrix);
         // drawCurrentTetrominoTerminal(currentTetromino);
 
@@ -55,9 +55,9 @@ int main()
             drawBoardTerminal(boardMatrix);
             moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
             drawTetrominoTerminal(currentTetromino);
-            getchar();
-            // updateTetris(&currentTetromino, boardMatrix);
-            // video_show();
+            // getchar();
+            //  updateTetris(&currentTetromino, boardMatrix);
+            //  video_show();
         }
         if (state_game == 0)
         { // Estado de pausa/menu
