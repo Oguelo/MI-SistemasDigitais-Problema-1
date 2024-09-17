@@ -1,4 +1,3 @@
-
 #include "prototype.h"
 #include <stdio.h>
 
@@ -11,15 +10,15 @@ int main()
 
     /* Botões */
     int state_game = 1, buttons;
-    // KEY_open();
-    // KEY_read(&buttons);
+    //KEY_open();
+    //KEY_read(&buttons);
 
     int ready, tap, dtap, velX, velY, velZ, mg_per_lsb;
-    // accel_open();
-    // accel_init();
-    // accel_calibrate();
+    //accel_open();
+    //accel_init();
+    //accel_calibrate();
 
-    // video_open();
+    video_open();
 
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
@@ -37,8 +36,8 @@ int main()
         // KEY_read(&buttons);
         // change_state(&state_game, &buttons);
 
-        // video_clear();
-        // video_erase();
+        video_clear();
+        video_erase();
 
         score = 0;
         resetBoard(boardMatrix);
@@ -46,7 +45,6 @@ int main()
 
         while (!checkGameOver(boardMatrix))
         {
-            // game_field(score, state_game);
             // accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
             if (!moved)
             {
@@ -55,14 +53,19 @@ int main()
             drawBoardTerminal(boardMatrix);
             moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
             drawTetrominoTerminal(currentTetromino);
-            // getchar();
+            video_open();
+            video_clear();
+            game_field(score, state_game);
+            drawBoard(boardMatrix);
+            video_show();
+            video_close();
+            getchar();
             //  updateTetris(&currentTetromino, boardMatrix);
-            //  video_show();
         }
         if (state_game == 0)
         { // Estado de pausa/menu
 
-            // video_show();
+             video_show();
         }
         //}
 

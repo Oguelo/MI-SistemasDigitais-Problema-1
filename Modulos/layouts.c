@@ -27,7 +27,7 @@ void phrase(int coordX, int coordY, char *list, int lenList, short color)
         {
 
             X = coordX + i * 13;
-            // alphanumeric(X, coordY, list[i], color);
+            alphanumeric(X, coordY, list[i], color);
         }
     }
 }
@@ -55,7 +55,7 @@ void write_score(int coordX, int coordY, int score)
     for (int i = 0; i < len; i++)
     {
 
-        // alphanumeric(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
+        alphanumeric(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
     }
 }
 
@@ -87,9 +87,9 @@ void screen_defeat(int score)
         sub_coordX = 5;
     }
 
-    // phrase(100, 110, defeat_message, 9, COLOR_RED);
-    // phrase(110 - sub_coordX, 145, score_message, 6, COLOR_YELLOW);
-    // write_score(188 - sub_coordX,  145, score);
+    phrase(100, 110, defeat_message, 9, COLOR_RED);
+    phrase(110 - sub_coordX, 145, score_message, 6, COLOR_YELLOW);
+    write_score(188 - sub_coordX, 145, score);
 }
 
 /**
@@ -107,29 +107,29 @@ void game_field(int score, int state_game)
 
     char text_score[6] = "score:";
 
-    // phrase(0, 0, text_score, 6, COLOR_WHITE);
-    // write_score(70, 0, score);
+    phrase(0, 0, text_score, 6, COLOR_WHITE);
+    write_score(78, 0, score);
 
     if (state_game == 1)
     {
 
         char text_pause[11] = "";
-        // phrase(177, 0, text_pause, 11, COLOR_WHITE);
+        phrase(177, 0, text_pause, 11, COLOR_WHITE);
     }
     else if (state_game == 2)
     {
 
         char text_pause[11] = "pause<play>";
-        // phrase(177, 0, text_pause, 11, COLOR_WHITE);
+        phrase(177, 0, text_pause, 11, COLOR_WHITE);
     }
     else if (state_game == 3)
     {
 
         char text_pause[11] = "pause<exit>";
-        // phrase(177, 0, text_pause, 11, COLOR_WHITE);
+        phrase(177, 0, text_pause, 11, COLOR_WHITE);
     }
 
-    // video_box(108, 18, 110, 239, COLOR_BLUE); // LADO ESQUERDO
-    // video_box(109, 237, 209, 239, COLOR_BLUE); // CENTRO
-    // video_box(208, 18, 210, 239, COLOR_BLUE);
+    video_box(108, 18, 110, 239, COLOR_BLUE);  // LADO ESQUERDO
+    video_box(109, 237, 209, 239, COLOR_BLUE); // CENTRO
+    video_box(208, 18, 210, 239, COLOR_BLUE);  // Lado direito
 }

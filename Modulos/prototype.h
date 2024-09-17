@@ -1,9 +1,9 @@
 #ifndef PROTOTYPE_H_INCLUDED
 #define PROTOTYPE_H_INCLUDED
 
-// #include <intelfpgaup/video.h>
-// #include <intelfpgaup/accel.h>
-// #include <intelfpgaup/KEY.h>
+#include <intelfpgaup/video.h>
+#include <intelfpgaup/accel.h>
+#include <intelfpgaup/KEY.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,9 +25,9 @@ void initBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int x, int y);
 void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS]);
-// void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
+void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]);
-// void drawTetromino(Tetromino* tetromino);
+void drawTetromino(Tetromino *tetromino);
 void drawTetrominoTerminal(Tetromino tetromino);
 void initTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino);
