@@ -59,7 +59,6 @@ int verifyCollisionVertical(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino
 
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int x, int y)
 {
-    printf("Fixando o Tetromino na posição (%d, %d):\n", x, y);
 
     for (int i = 0; i < 4; i++)
     {
@@ -70,13 +69,10 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromin
                 int posX = x + j;
                 int posY = y + i;
 
-
                 if (posX >= 0 && posY < LINES && posY >= 0 && posX < COLUMNS)
                 {
                     boardMatrix[posY][posX].isNotEmpty = 1;
                     boardMatrix[posY][posX].color = tetromino->color;
-
-                    printf("Colocando bloco na posição (%d, %d), Cor: %d\n", posX, posY, tetromino->color);
                 }
             }
         }
