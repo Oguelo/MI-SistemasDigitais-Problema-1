@@ -12,6 +12,7 @@
 #include "constants.h"
 #include "structs.h"
 
+int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]);
 void phrase(int coordX, int coordY, char *list, int lenList, short cor);
 void write_score(int coordX, int coordY, int score);
 void screen_defeat(int score);

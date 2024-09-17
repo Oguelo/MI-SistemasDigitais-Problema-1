@@ -6,8 +6,8 @@
 
 typedef struct {
 
-    int x, y;
-    int pattern[4][4];
+    int x, y, currentRotation;
+    int pattern[MAX_ROTATIONS][4][4];
     unsigned int color;
     void (*generate)(struct Tetromino*);
 

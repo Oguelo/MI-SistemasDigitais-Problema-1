@@ -10,6 +10,7 @@
 #define LINES                   20
 #define COLUMNS                 10
 #define BLOCK_SIZE              5
+#define MAX_ROTATIONS           4
 
 #define COLOR_WHITE             0xFFFF
 #define COLOR_YELLOW            0xFFE0
@@ -23,10 +24,9 @@
 #define COLOR_ORANGE            0xFC00
 
 typedef enum {
-    TETROMINO_Q = 1,         
-    TETROMINO_L = 2,        
-    TETROMINO_I = 3,         
-    TETROMINO_I_ROTACIONADO = 4 
+    TETROMINO_Q = 0,         
+    TETROMINO_L = 1,        
+    TETROMINO_I = 2,       
 } TetrominoTipo;
 
 #endif

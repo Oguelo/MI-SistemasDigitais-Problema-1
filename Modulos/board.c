@@ -12,13 +12,23 @@ void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
+int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]) {
+ 
+    for (int x = 0; x < COLUMNS; x++) {
+        if (boardMatrix[0][x].isNotEmpty) {
+            return 1; 
+        }
+    }
+    return 0; 
+}
+
 int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
 {
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
-            if (tetromino->pattern[i][j] == 1)
+            if (tetromino->pattern[tetromino->currentRotation][i][j] == 1)
             {
                 int posX = tetromino->x + j;
                 int posY = tetromino->y + i;
@@ -41,7 +51,7 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromin
     {
         for (int j = 0; j < 4; j++)
         {
-            if (tetromino->pattern[i][j] == 1)
+            if (tetromino->pattern[tetromino->currentRotation][i][j] == 1)
             {
                 int posX = x + j;
                 int posY = y + i;
@@ -63,7 +73,7 @@ void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetrom
     {
         for (int j = 0; j < 4; j++)
         {
-            if (tetromino->pattern[i][j] == 1)
+            if (tetromino->pattern[tetromino->currentRotation][i][j] == 1)
             {
                 int posX = tetromino->x + j;
                 int posY = tetromino->y + i;

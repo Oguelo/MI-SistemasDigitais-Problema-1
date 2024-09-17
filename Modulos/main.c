@@ -10,7 +10,7 @@ int main()
     /* Inicialização dos periféricos */
 
     /* Botões */
-    int state_game, buttons;
+    int state_game = 1, buttons;
     // KEY_open();
     // KEY_read(&buttons);
 
@@ -23,15 +23,11 @@ int main()
 
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
-    int dx = 1, dy = 1, score = 0, moved = 1;
-
-    resetBoard(boardMatrix);
-    state_game = 1;
-    initTetromino(&currentTetromino, boardMatrix);
+    int dx = 1, dy = 1, moved = 1, score;
 
     while (1)
     {
-        // printf("Tetris Terminal State:\n");
+        
         // drawBoardTerminal(boardMatrix);
         // drawCurrentTetrominoTerminal(currentTetromino);
 
@@ -44,7 +40,11 @@ int main()
         // video_clear();
         // video_erase();
 
-        if (state_game == 1)
+        score = 0;
+        resetBoard(boardMatrix);
+        initTetromino(&currentTetromino, boardMatrix);
+
+        while (!checkGameOver(boardMatrix))
         {
             // game_field(score, state_game);
             // accel_read(&ready, &tap, &dtap, &velX, &velY, &velZ, &mg_per_lsb);
