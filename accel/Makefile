@@ -1,30 +1,34 @@
-# Nome do compilador
+# Makefile for ADXL345 I2C program
+
+# Compiler
 CC = gcc
 
-# Flags de compilação
-CFLAGS = -Wall -O2 -std=c11
+# Compiler flags
+CFLAGS = -Wall -Wextra
 
-# Nome do arquivo de saída
-TARGET = accel
+# Linker flags
+LDFLAGS =
 
-# Lista de arquivos fonte
-SRCS = accel.c
+# Source files
+SRCS = ADXL345.c
 
-# Gera o arquivo objeto a partir do arquivo fonte
-OBJS = $(SRCS:.c=.o)
+# Output executable
+TARGET = ADXL345
 
-# Regra padrão para criar o executável
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+# Default target
+all: $(TARGET)
+	@$(MAKE) run
 
-# Regra para criar arquivos objeto
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Build target
+$(TARGET): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET) $(LDFLAGS)
 
-# Limpeza dos arquivos gerados (executável e objetos)
+# Clean up build files
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f $(TARGET)
 
-# Regra para executar o programa (opcional)
+# Run the executable
 run: $(TARGET)
 	./$(TARGET)
+
+.PHONY: all clean run
