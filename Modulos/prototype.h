@@ -30,7 +30,7 @@ void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawTetrominoTerminal(Tetromino tetromino);
 void initTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino);
 void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino);
-void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int dx, int dy);
+void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino* tetromino, int dx, int dy, int *moved);
 void generateQPattern(Tetromino* tetromino);
 void generateLPattern(Tetromino* tetromino);
 void generateIPattern(Tetromino* tetromino);

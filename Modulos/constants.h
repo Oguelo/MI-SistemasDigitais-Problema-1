@@ -23,10 +23,10 @@
 #define COLOR_ORANGE            0xFC00
 
 typedef enum {
-    TETROMINO_Q,         
-    TETROMINO_L,        
-    TETROMINO_I,         
-    TETROMINO_I_ROTACIONADO 
+    TETROMINO_Q = 1,         
+    TETROMINO_L = 2,        
+    TETROMINO_I = 3,         
+    TETROMINO_I_ROTACIONADO = 4 
 } TetrominoTipo;
 
 #endif

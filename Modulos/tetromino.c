@@ -54,6 +54,7 @@ void generateIPatternRotate(Tetromino* tetromino) {
 
 void generateTetromino(Tetromino* tetromino) {
     
+    srand(time(NULL));
     int tipo = rand() % 4;
 
     switch (tipo) {
@@ -78,39 +79,39 @@ void initTetromino(Tetromino* tetromino) {
 
     generateTetromino(tetromino);
     tetromino->x = (COLUMNS / 2) - 2;
-    tetromino->y = 0;
+    tetromino->y = -1;
 
 }
 
-void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy) {
+void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy, int *moved) {
     
+    int movedX = 1;
+    int movedY = 1;
+
     clearTetromino(boardMatrix, tetromino);
 
     tetromino->x += dx;
 
     if (verifyCollision(boardMatrix, tetromino)) {
         
-        tetromino->x -= dx;    
-        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
-
-    }else{
-
-        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+        tetromino->x -= dx; 
+        movedX = 0;
+        printf(movedX); 
 
     }
-
-    clearTetromino(boardMatrix, tetromino);
 
     tetromino->y += dy;
     
     if (verifyCollision(boardMatrix, tetromino)) {
         
         tetromino->y -= dy;
-        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+        movedY = 0;
+        printf(movedY);
 
-    } else {
+    } 
 
-        fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
+    fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
 
-    }
+    *moved = movedX || movedY;
+
 }
