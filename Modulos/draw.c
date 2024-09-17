@@ -487,6 +487,7 @@
 //      }
 //  }
 
+
 // void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
 // {
 
@@ -496,13 +497,14 @@
 //         for (int j = 0; j < COLUMNS; j++)
 //         {
 
-//             if (boardMatrix[i][j].isNotEmpty != 0)
+//             if (boardMatrix[i][j].isNotEmpty)
 //             {
-
-//                 int x = j * BLOCK_SIZE;
-//                 int y = i * BLOCK_SIZE;
-
-//                 video_box(x, y, x + BLOCK_SIZE, y + BLOCK_SIZE, boardMatrix[i][j].color);
+                    //ALEX TESTES 
+//                  int Initialx1 = INITIAL_LIMIT_X + j * BLOCK_SIZE;
+//                  int Initialy1 = INITIAL_LIMIT_Y + i * BLOCK_SIZE;
+//                  int Finalx2 = x1 + BLOCK_SIZE;
+//                  int Finaly2 = y1 + BLOCK_SIZE;
+//                  video_box(Initialx1, Initialy1, Finalx2, Finaly2, boardMatrix[i][j].color);
 //             }
 //         }
 //     }
