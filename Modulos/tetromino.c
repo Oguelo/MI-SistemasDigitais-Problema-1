@@ -1,6 +1,5 @@
 #include "prototype.h"
 
-
 void generateQPattern(Tetromino* tetromino) {
     
     int q[4][4] = {
@@ -89,9 +88,8 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
 
     tetromino->x += dx;
 
-    if (verifyCollisionHorizontal(boardMatrix, tetromino)) {
+    if (verifyCollision(boardMatrix, tetromino)) {
         
-        printf("Entrei na colisão horizontal");
         tetromino->x -= dx;    
         fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
 
@@ -105,9 +103,8 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
 
     tetromino->y += dy;
     
-    if (verifyCollisionVertical(boardMatrix, tetromino)) {
+    if (verifyCollision(boardMatrix, tetromino)) {
         
-        printf("Entrei na colisão vertical");
         tetromino->y -= dy;
         fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
 

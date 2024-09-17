@@ -12,7 +12,7 @@ void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
-int verifyCollisionHorizontal(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
+int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -23,30 +23,7 @@ int verifyCollisionHorizontal(PartTetromino boardMatrix[LINES][COLUMNS], Tetromi
                 int posX = tetromino->x + j;
                 int posY = tetromino->y + i;
 
-                if (posX < 0 || posY >= COLUMNS || boardMatrix[posY][posX].isNotEmpty)
-                {
-
-                    return 1;
-                }
-            }
-        }
-    }
-
-    return 0;
-}
-
-int verifyCollisionVertical(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
-{
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if (tetromino->pattern[i][j] == 1)
-            {
-                int posX = tetromino->x + j;
-                int posY = tetromino->y + i;
-
-                if (posY < 0 || posX >= LINES || boardMatrix[posY][posX].isNotEmpty)
+                if (posX < 0 || posX >= COLUMNS || posY < 0 || posY >= LINES || boardMatrix[posY][posX].isNotEmpty)
                 {
                     return 1;
                 }

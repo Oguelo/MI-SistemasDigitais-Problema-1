@@ -24,7 +24,7 @@ int main()
     int score = 0;
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
-    int dx = 1,dy = 1;
+    int dx = 0,dy = 1;
 
     resetBoard(boardMatrix);
     state_game = 1;
