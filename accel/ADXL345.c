@@ -50,6 +50,8 @@ int main (){
     if (devid == 0xE5){
         // Inicializar o chip acelerômetro
         ADXL345_Init();
+
+        ADXL345_Calibrate();
         
         while(1){
             if (ADXL345_WasActivityUpdated()){

@@ -29,6 +29,6 @@ clean:
 
 # Run the executable
 run: $(TARGET)
-	./$(TARGET)
+	sudo ./$(TARGET)
 
 .PHONY: all clean run
