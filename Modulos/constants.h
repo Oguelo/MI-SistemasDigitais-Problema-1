@@ -3,17 +3,10 @@
 
 #define SCREEN_X 320
 #define SCREEN_Y 240
-#define WALL_WIDHT_X 3  // Aumentar
-#define WALL_WIDHT_Y 15 // Diminuir um pouco
-#define BLOCK_LENGTH 37
-#define BLOCK_WIDHT 12
-#define LINES 20
-#define COLUMNS 10
+#define LINES 40
+#define COLUMNS 20
 #define BLOCK_SIZE 5
 #define MAX_ROTATIONS 4
-//ALEX TESTES
-#define CELL_WIDTH ((208 - 108) / COLUMNS)
-#define CELL_HEIGHT 220 / LINES
 #define INITIAL_LIMIT_X 112
 #define FINAL_LIMIT_X 212
 #define INITIAL_LIMIT_Y 18
