@@ -1,20 +1,20 @@
 #ifndef PROTOTYPE_H_INCLUDED
 #define PROTOTYPE_H_INCLUDED
 
-//#include <intelfpgaup/video.h>
-//#include <intelfpgaup/accel.h>
+#include <intelfpgaup/video.h>
 //#include <intelfpgaup/KEY.h>
 
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include "constants.h"
 #include "structs.h"
+#include "ADXL345.h"
 #include <unistd.h>
-//#include <termios.h>
-#include <windows.h>
 
+void execTetris();
 int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]);
 void phrase(int coordX, int coordY, char *list, int lenList, short cor);
 void write_score(int coordX, int coordY, int score);
@@ -41,5 +41,9 @@ void generateIPattern(Tetromino *tetromino);
 void gerarIPatternRotate(Tetromino *tetromino);
 void generateTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
+
+
+int16_t XYZ[3];
+pthread_mutex_t lock;
 
 #endif

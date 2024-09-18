@@ -3,7 +3,7 @@
 
 #define SCREEN_X 320
 #define SCREEN_Y 240
-#define LINES 40
+#define LINES 43
 #define COLUMNS 20
 #define BLOCK_SIZE 5
 #define MAX_ROTATIONS 4
