@@ -102,7 +102,7 @@ int main()
                 handleArrowKeys(ch, &dx);
             } 
             }
-            Sleep(100);
+            Sleep(50);
 
             drawBoardTerminal(boardMatrix);
             moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);

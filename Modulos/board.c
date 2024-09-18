@@ -106,7 +106,7 @@ void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS], int *score)
 
         if (fullLine)
         {
-            score += 1;
+            *score += 1;
             for (int k = i; k > 0; k--)
             {
                 for (int l = 0; l < COLUMNS; l++)
