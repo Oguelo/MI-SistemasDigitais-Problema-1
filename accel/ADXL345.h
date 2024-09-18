@@ -160,4 +160,11 @@ void I2C0_Enable_FPGA_Access();
 // Pinmux Functions
 void Pinmux_Config();
 
+/* Protótipos das funções usadas para acessar endereços de memória física */
+int open_physical (int);
+void * map_physical (int, unsigned int, unsigned int);
+void close_physical (int);
+int unmap_physical (void *, unsigned int);
+
+
 #endif /*ACCELEROMETER_ADXL345_SPI_H_*/
