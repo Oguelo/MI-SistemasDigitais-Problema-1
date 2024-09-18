@@ -2,7 +2,7 @@
 
 void generateQPattern(Tetromino *tetromino)
 {
-    // Mesma configuração para todas as rotações (Q é simétrico)
+
     int q[4][4] = {
         {1, 1, 0, 0},
         {1, 1, 0, 0},
@@ -15,7 +15,7 @@ void generateQPattern(Tetromino *tetromino)
     }
 
     tetromino->color = COLOR_YELLOW;
-    tetromino->currentRotation = 0; // Começa na rotação 0
+    tetromino->currentRotation = 0; 
 }
 
 void generateLPattern(Tetromino *tetromino)
@@ -45,14 +45,13 @@ void generateLPattern(Tetromino *tetromino)
         {1, 1, 0, 0},
         {0, 0, 0, 0}};
 
-    // Armazena cada rotação no tetromino
     memcpy(tetromino->pattern[0], l0, sizeof(l0));
     memcpy(tetromino->pattern[1], l90, sizeof(l90));
     memcpy(tetromino->pattern[2], l180, sizeof(l180));
     memcpy(tetromino->pattern[3], l270, sizeof(l270));
 
     tetromino->color = COLOR_ORANGE;
-    tetromino->currentRotation = 0; // Começa na rotação 0
+    tetromino->currentRotation = 0;
 }
 
 void generateIPattern(Tetromino *tetromino)
@@ -70,14 +69,13 @@ void generateIPattern(Tetromino *tetromino)
         {1, 0, 0, 0},
         {1, 0, 0, 0}};
 
-    // Armazena as rotações
     memcpy(tetromino->pattern[0], i0, sizeof(i0));
     memcpy(tetromino->pattern[1], i90, sizeof(i90));
     memcpy(tetromino->pattern[2], i0, sizeof(i0));
     memcpy(tetromino->pattern[3], i90, sizeof(i90));
 
     tetromino->color = COLOR_CYAN;
-    tetromino->currentRotation = 0; // Começa na rotação 0
+    tetromino->currentRotation = 0;
 }
 
 void generateTetromino(Tetromino *tetromino)
@@ -135,9 +133,15 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
 
         tetromino->y -= dy;
         movedY = 0;
+        if(dx == 0){
+
+            movedX = 0;
+
+        }
     }
 
     fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
 
     *moved = movedX || movedY;
+    
 }

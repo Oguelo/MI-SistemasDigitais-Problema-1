@@ -1,9 +1,9 @@
 #ifndef PROTOTYPE_H_INCLUDED
 #define PROTOTYPE_H_INCLUDED
 
-#include <intelfpgaup/video.h>
-#include <intelfpgaup/accel.h>
-#include <intelfpgaup/KEY.h>
+//#include <intelfpgaup/video.h>
+//#include <intelfpgaup/accel.h>
+//#include <intelfpgaup/KEY.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +11,9 @@
 #include <math.h>
 #include "constants.h"
 #include "structs.h"
+#include <unistd.h>
+//#include <termios.h>
+#include <windows.h>
 
 int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]);
 void phrase(int coordX, int coordY, char *list, int lenList, short cor);
@@ -24,7 +27,7 @@ void change_state(int *pointer_state, int *pointer_buttons);
 void initBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int x, int y);
-void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS]);
+void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS], int *score);
 void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawTetromino(Tetromino *tetromino);
