@@ -10,6 +10,8 @@
 #define INITIAL_LIMIT_X 112
 #define FINAL_LIMIT_X 212
 #define INITIAL_LIMIT_Y 18
+#define SPACING 5
+#define SHADOW_OFFSET 2
 
 #define COLOR_WHITE 0xFFFF
 #define COLOR_YELLOW 0xFFE0
@@ -21,6 +23,18 @@
 #define COLOR_GREY 0xC618
 #define COLOR_PINK 0xFC18
 #define COLOR_ORANGE 0xFC00
+
+#define COLOR_WHITE_DARK    0xBDF7  
+#define COLOR_YELLOW_DARK   0xB760  
+#define COLOR_RED_DARK      0xB000  
+#define COLOR_GREEN_DARK    0x0560  
+#define COLOR_BLUE_DARK     0x0310  
+#define COLOR_CYAN_DARK     0x05B6  
+#define COLOR_MAGENTA_DARK  0xB018  
+#define COLOR_GREY_DARK     0x8C10  
+#define COLOR_PINK_DARK     0xB414  
+#define COLOR_ORANGE_DARK   0xB400  
+
 
 typedef enum
 {
