@@ -513,11 +513,7 @@ void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
                 int finalY2 = initialY1 + BLOCK_SIZE;
                 video_box(initialX1, initialY1, finalX2, finalY2, boardMatrix[i][j].color);
 
-                int shadowX1 = initialX1 + SHADOW_OFFSET;
-                int shadowY1 = initialY1 + SHADOW_OFFSET;
-                int shadowX2 = finalX2 + SHADOW_OFFSET;
-                int shadowY2 = finalY2 + SHADOW_OFFSET;
-                video_box(shadowX1, shadowY1, shadowX2, shadowY2, boardMatrix[i][j].colorShadow);
+ 
             }
         }
     }

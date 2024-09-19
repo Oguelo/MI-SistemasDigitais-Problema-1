@@ -3,15 +3,16 @@
 
 #define SCREEN_X 320
 #define SCREEN_Y 240
-#define LINES 43
-#define COLUMNS 20
+#define LINES 31
+#define COLUMNS 14
 #define BLOCK_SIZE 5
 #define MAX_ROTATIONS 4
 #define INITIAL_LIMIT_X 112
 #define FINAL_LIMIT_X 212
 #define INITIAL_LIMIT_Y 18
-#define SPACING 5
+#define SPACING 2
 #define SHADOW_OFFSET 2
+
 
 #define COLOR_WHITE 0xFFFF
 #define COLOR_YELLOW 0xFFE0

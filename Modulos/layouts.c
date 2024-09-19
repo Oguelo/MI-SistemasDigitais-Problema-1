@@ -129,7 +129,7 @@
          phrase(177, 0, text_pause, 11, COLOR_WHITE);
      }
 
-     video_box(103, 18, 105, 239, COLOR_BLUE);   //LADO ESQUERDO
-     video_box(105, 234, 213, 239, COLOR_BLUE);  //CENTRO
-     video_box(213, 18, 215, 239, COLOR_BLUE);   //Lado direito
+     video_box(105, 18, 110, 239, COLOR_BLUE);   //LADO ESQUERDO
+     video_box(106, 234, 212, 239, COLOR_BLUE);  //CENTRO
+     video_box(210, 18, 215, 239, COLOR_BLUE);   //Lado direito
  }

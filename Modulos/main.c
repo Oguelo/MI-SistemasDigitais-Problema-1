@@ -1,11 +1,10 @@
 #include "prototype.h"
 
-
-int main() {
-    
+int main()
+{
 
     pthread_t thread1, thread2;
-   
+
     pthread_mutex_init(&lock, NULL);
 
     pthread_create(&thread1, NULL, execAccel, NULL);
@@ -39,7 +38,6 @@ void execTetris()
     while (1)
     {
 
-
         // KEY_read(&buttons);
         // change_state(&state_game, &buttons);
 
@@ -52,27 +50,28 @@ void execTetris()
 
         while (!checkGameOver(boardMatrix))
         {
-            printf(XYZ[0]*mg_per_lsb);
             drawBoardTerminal(boardMatrix);
             pthread_mutex_lock(&lock);
-            if(XYZ[0]*mg_per_lsb >= 100){
+            if (XYZ[0] * mg_per_lsb >= 100)
+            {
 
                 dx = 1;
-
-            }else if(XYZ[0]*mg_per_lsb <= -100){
+            }
+            else if (XYZ[0] * mg_per_lsb <= -100)
+            {
 
                 dx = -1;
-
-            }else{
+            }
+            else
+            {
 
                 dx = 0;
-
             }
             pthread_mutex_unlock(&lock);
             moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
             if (!moved)
             {
-                removeFullLines(boardMatrix,&score);
+                removeFullLines(boardMatrix, &score);
                 initTetromino(&currentTetromino, boardMatrix);
             }
             drawTetrominoTerminal(currentTetromino);
@@ -84,8 +83,5 @@ void execTetris()
             video_close();
             usleep(500000);
         }
-
-       
     }
-
 }

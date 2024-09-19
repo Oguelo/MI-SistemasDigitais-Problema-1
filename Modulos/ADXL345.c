@@ -59,8 +59,8 @@ void execAccel (void* args){
             if (ADXL345_WasActivityUpdated()){
                 pthread_mutex_lock(&lock);
                 ADXL345_XYZ_Read(XYZ);
-                pthread_mutex_unlock(&lock);
                 printf("X=%d mg, Y=%d mg, Z=%d mg\n", XYZ[0]*mg_per_lsb, XYZ[1]*mg_per_lsb, XYZ[2]*mg_per_lsb);
+                pthread_mutex_unlock(&lock);
             }
         }
     } else {
