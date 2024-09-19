@@ -10,7 +10,7 @@ int main()
     pthread_create(&thread1, NULL, execAccel, NULL);
 
     pthread_create(&thread2, NULL, execTetris, NULL);
-
+    
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
 
@@ -18,7 +18,6 @@ int main()
 
     return 0;
 }
-
 void execTetris()
 {
     /* Inicialização dos periféricos */
@@ -33,7 +32,7 @@ void execTetris()
 
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
-    int dx = 0, dy = 1, moved = 1, score;
+    int dx = 0, dy = 1, moved = 1, score,hscore;
 
     while (1)
     {
@@ -77,11 +76,13 @@ void execTetris()
             drawTetrominoTerminal(currentTetromino);
             video_open();
             video_clear();
-            game_field(score, state_game);
+            game_field(score, state_game, hscore);
             drawBoard(boardMatrix);
             video_show();
             video_close();
-            usleep(500000);
+            usleep(350000);
+        
         }
+        hscore = score;
     }
 }

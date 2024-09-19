@@ -4,8 +4,8 @@ void generateQPattern(Tetromino *tetromino)
 {
 
     int q[4][4] = {
-        {1, 1, 0, 0},
-        {1, 1, 0, 0},
+        {0, 1, 1, 0},
+        {0, 1, 1, 0},
         {0, 0, 0, 0},
         {0, 0, 0, 0}};
 
@@ -17,6 +17,42 @@ void generateQPattern(Tetromino *tetromino)
     tetromino->color = COLOR_YELLOW;
     tetromino->colorShadow = COLOR_YELLOW_DARK;
     tetromino->currentRotation = 0; 
+}
+void generateTPattern(Tetromino *tetromino)
+{
+
+    int t0[4][4] = {
+        {1, 1, 1, 0},
+        {0, 1, 0, 0},
+        {0, 1, 0, 0},
+        {0, 0, 0, 0}};
+
+    int t90[4][4] = {
+        {0, 0, 1, 0},
+        {1, 1, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 0}};
+
+    int t180[4][4] = {
+        {0, 1, 0, 0},
+        {0, 1, 0, 0},
+        {1, 1, 1, 0},
+        {0, 0, 0, 0}};
+
+    int t270[4][4] = {
+        {1, 0, 0, 0},
+        {1, 1, 1, 0},
+        {1, 0, 0, 0},
+        {0, 0, 0, 0}};
+
+    memcpy(tetromino->pattern[0], t0, sizeof(t0));
+    memcpy(tetromino->pattern[1], t90, sizeof(t90));
+    memcpy(tetromino->pattern[2], t180, sizeof(t180));
+    memcpy(tetromino->pattern[3], t270, sizeof(t270));
+
+    tetromino->color = COLOR_PINK;
+    tetromino->colorShadow = COLOR_PINK_DARK;
+    tetromino->currentRotation = 0;
 }
 
 void generateLPattern(Tetromino *tetromino)
@@ -85,7 +121,7 @@ void generateTetromino(Tetromino *tetromino)
 {
 
     srand(time(NULL));
-    int tipo = rand() % 3;
+    int tipo = rand() % 4;
 
     switch (tipo)
     {
@@ -98,7 +134,13 @@ void generateTetromino(Tetromino *tetromino)
     case TETROMINO_I:
         tetromino->generate = generateIPattern;
         break;
+    case TETROMINO_T:
+        tetromino->generate = generateIPattern;
+        break;
     }
+    
+    
+    
 
     tetromino->generate(tetromino);
 }

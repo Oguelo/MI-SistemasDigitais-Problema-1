@@ -42,6 +42,7 @@ typedef enum
     TETROMINO_Q = 0,
     TETROMINO_L = 1,
     TETROMINO_I = 2,
+    TETROMINO_T = 3,
 } TetrominoTipo;
 
 #endif

@@ -102,14 +102,16 @@
   *
   * @return void
   */
- void game_field(int score, int state_game)
+ void game_field(int score, int state_game, int hscore)
  {
 
      char text_score[6] = "score:";
-
-     phrase(0, 0, text_score, 6, COLOR_WHITE);
-     write_score(78, 0, score);
-
+    
+     phrase(2, 2, text_score, 6, COLOR_WHITE);
+     write_score(78, 2, score);
+    char text_highscore[7] = "hscore:";
+    phrase(220, 2, text_highscore, 7, COLOR_WHITE);
+    write_score(310, 2, hscore);
      if (state_game == 1)
      {
 
