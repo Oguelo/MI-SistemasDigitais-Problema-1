@@ -63,6 +63,7 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromin
                 {
                     boardMatrix[posY][posX].isNotEmpty = 1;
                     boardMatrix[posY][posX].color = tetromino->color;
+                    boardMatrix[posY][posX].colorShadow = tetromino->colorShadow;
                 }
             }
         }
@@ -90,7 +91,7 @@ void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetrom
     }
 }
 
-void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS])
+void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS], int *score)
 {
     for (int i = 0; i < LINES; i++)
     {
@@ -106,6 +107,7 @@ void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS])
 
         if (fullLine)
         {
+            *score += 1;
             for (int k = i; k > 0; k--)
             {
                 for (int l = 0; l < COLUMNS; l++)

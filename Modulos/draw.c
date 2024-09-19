@@ -1,537 +1,545 @@
 #include "prototype.h"
 
- /**
-  *  Chamadas das funções de conexão do driver da VGA. Exibição de caracteres e imagens.
-  */
+/**
+ *  Chamadas das funções de conexão do driver da VGA. Exibição de caracteres e imagens.
+ */
 
- /**
-  * Exibição do título da tela inicial. O título exibe a palavra "TETRIS".
-  *
-  * @param coordX Coordenada X do canto superior esquerdo da região onde o título será exibido.
-  * @param coordY Coordenada Y do canto superior esquerdo da região onde o título será exibido.
-  * @return void
-  */
-  void title (int coordX, int coordY) {
+/**
+ * Exibição do título da tela inicial. O título exibe a palavra "TETRIS".
+ *
+ * @param coordX Coordenada X do canto superior esquerdo da região onde o título será exibido.
+ * @param coordY Coordenada Y do canto superior esquerdo da região onde o título será exibido.
+ * @return void
+ */
+void title(int coordX, int coordY)
+{
 
-      short color1 = 0x3f9e;
-      short color2 = 0xf81f;
-
-   //   Letra T
-
-      video_box(coordX + 8, coordY     , coordX + 17, coordY +  7, color1);
-      video_box(coordX + 18, coordY     , coordX + 19, coordY +  7, color2);
-      video_box(coordX     , coordY +  8, coordX + 25, coordY + 13, color1);
-      video_box(coordX + 26, coordY +  8, coordX + 27, coordY + 13, color2);
-      video_box(coordX +  8, coordY + 14, coordX + 17, coordY + 33, color1);
-      video_box(coordX + 18, coordY + 14, coordX + 19, coordY + 33, color2);
-
-      coordX += 30;
-
-     //Letra E
-
-      video_box(coordX +  4, coordY +  8, coordX + 21, coordY + 13, color1);
-      video_box(coordX + 22, coordY +  8, coordX + 23, coordY + 13, color2);
-      video_box(coordX     , coordY + 14, coordX +  9, coordY + 27, color1);
-      video_box(coordX + 10, coordY + 14, coordX + 11, coordY + 17, color2);
-      video_box(coordX + 10, coordY + 24, coordX + 11, coordY + 27, color2);
-      video_box(coordX + 10, coordY + 18, coordX + 25, coordY + 23, color1);
-      video_box(coordX + 20, coordY + 14, coordX + 25, coordY + 17, color1);
-      video_box(coordX + 26, coordY + 14, coordX + 27, coordY + 23, color2);
-      video_box(coordX +  4, coordY + 28, coordX + 21, coordY + 33, color1);
-      video_box(coordX + 22, coordY + 28, coordX + 23, coordY + 33, color2);
-
-      coordX += 30;
+    short color1 = 0x3f9e;
+    short color2 = 0xf81f;
 
     // Letra T
 
-      video_box(coordX + 8, coordY     , coordX + 17, coordY +  7, color1);
-      video_box(coordX + 18, coordY     , coordX + 19, coordY +  7, color2);
-      video_box(coordX     , coordY +  8, coordX + 25, coordY + 13, color1);
-      video_box(coordX + 26, coordY +  8, coordX + 27, coordY + 13, color2);
-      video_box(coordX +  8, coordY + 14, coordX + 17, coordY + 33, color1);
-      video_box(coordX + 18, coordY + 14, coordX + 19, coordY + 33, color2);
+    video_box(coordX + 8, coordY, coordX + 17, coordY + 7, color1);
+    video_box(coordX + 18, coordY, coordX + 19, coordY + 7, color2);
+    video_box(coordX, coordY + 8, coordX + 25, coordY + 13, color1);
+    video_box(coordX + 26, coordY + 8, coordX + 27, coordY + 13, color2);
+    video_box(coordX + 8, coordY + 14, coordX + 17, coordY + 33, color1);
+    video_box(coordX + 18, coordY + 14, coordX + 19, coordY + 33, color2);
 
-      coordX += 30;
+    coordX += 30;
 
-     //Letra R
+    // Letra E
 
-      video_box(coordX     , coordY +  8, coordX +  9, coordY + 33, color1);
-      video_box(coordX + 10, coordY +  8, coordX + 11, coordY + 13, color2);
-      video_box(coordX + 12, coordY +  8, coordX + 23, coordY + 13, color1);
-      video_box(coordX + 24, coordY +  8, coordX + 25, coordY + 13, color2);
-      video_box(coordX + 10, coordY + 14, coordX + 13, coordY + 19, color1);
-      video_box(coordX + 14, coordY + 14, coordX + 15, coordY + 19, color2);
-      video_box(coordX + 10, coordY + 20, coordX + 11, coordY + 33, color2);
+    video_box(coordX + 4, coordY + 8, coordX + 21, coordY + 13, color1);
+    video_box(coordX + 22, coordY + 8, coordX + 23, coordY + 13, color2);
+    video_box(coordX, coordY + 14, coordX + 9, coordY + 27, color1);
+    video_box(coordX + 10, coordY + 14, coordX + 11, coordY + 17, color2);
+    video_box(coordX + 10, coordY + 24, coordX + 11, coordY + 27, color2);
+    video_box(coordX + 10, coordY + 18, coordX + 25, coordY + 23, color1);
+    video_box(coordX + 20, coordY + 14, coordX + 25, coordY + 17, color1);
+    video_box(coordX + 26, coordY + 14, coordX + 27, coordY + 23, color2);
+    video_box(coordX + 4, coordY + 28, coordX + 21, coordY + 33, color1);
+    video_box(coordX + 22, coordY + 28, coordX + 23, coordY + 33, color2);
 
-      coordX += 29;
+    coordX += 30;
 
-     //Letra I
+    // Letra T
 
-      video_box(coordX +  4, coordY     , coordX +  5, coordY + 33, color1);
-      video_box(coordX +  2, coordY +  8, coordX +  7, coordY +  9, color2);
-      video_box(coordX +  2, coordY + 28, coordX +  7, coordY + 29, color2);
+    video_box(coordX + 8, coordY, coordX + 17, coordY + 7, color1);
+    video_box(coordX + 18, coordY, coordX + 19, coordY + 7, color2);
+    video_box(coordX, coordY + 8, coordX + 25, coordY + 13, color1);
+    video_box(coordX + 26, coordY + 8, coordX + 27, coordY + 13, color2);
+    video_box(coordX + 8, coordY + 14, coordX + 17, coordY + 33, color1);
+    video_box(coordX + 18, coordY + 14, coordX + 19, coordY + 33, color2);
 
-      coordX += 10;
+    coordX += 30;
+
+    // Letra R
+
+    video_box(coordX, coordY + 8, coordX + 9, coordY + 33, color1);
+    video_box(coordX + 10, coordY + 8, coordX + 11, coordY + 13, color2);
+    video_box(coordX + 12, coordY + 8, coordX + 23, coordY + 13, color1);
+    video_box(coordX + 24, coordY + 8, coordX + 25, coordY + 13, color2);
+    video_box(coordX + 10, coordY + 14, coordX + 13, coordY + 19, color1);
+    video_box(coordX + 14, coordY + 14, coordX + 15, coordY + 19, color2);
+    video_box(coordX + 10, coordY + 20, coordX + 11, coordY + 33, color2);
+
+    coordX += 29;
+
+    // Letra I
+
+    video_box(coordX + 4, coordY, coordX + 5, coordY + 33, color1);
+    video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color2);
+    video_box(coordX + 2, coordY + 28, coordX + 7, coordY + 29, color2);
+
+    coordX += 10;
 
     // Letra S
 
-      video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color1);
-      video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color1);
-      video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color1);
-      video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color1);
-      video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color1);
-      video_box(coordX    , coordY + 8, coordX + 9, coordY + 9, color1);
+    video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color1);
+    video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color1);
+    video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color1);
+    video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color1);
+    video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color1);
+    video_box(coordX, coordY + 8, coordX + 9, coordY + 9, color1);
+}
 
-  }
+/**
+ * Exibição de caracteres.
+ *
+ * @param coordX   Coordenada X do canto superior esquerdo da região onde o caractere será exibido.
+ * @param coordY   Coordenada Y do canto superior esquerdo da região onde o caractere será exibido.
+ * @param caracter Caractere que deve ser exibido.
+ * @param color    Cor do caractere.
+ * @return void
+ */
+void alphanumeric(int coordX, int coordY, char caracter, short color)
+{
 
- /**
-  * Exibição de caracteres.
-  *
-  * @param coordX   Coordenada X do canto superior esquerdo da região onde o caractere será exibido.
-  * @param coordY   Coordenada Y do canto superior esquerdo da região onde o caractere será exibido.
-  * @param caracter Caractere que deve ser exibido.
-  * @param color    Cor do caractere.
-  * @return void
-  */
-  void alphanumeric(int coordX, int coordY, char caracter, short color) {
+    switch (caracter)
+    {
 
-      switch (caracter) {
+    case '^':
 
-      case '^':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY + 1, coordX + 3, coordY + 8, color);
+        video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 7, color);
+        video_box(coordX + 6, coordY + 3, coordX + 7, coordY + 6, color);
+        video_box(coordX + 8, coordY + 4, coordX + 9, coordY + 5, color);
 
-          video_box(coordX    , coordY    , coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY + 1, coordX + 3, coordY + 8, color);
-          video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 7, color);
-          video_box(coordX + 6, coordY + 3, coordX + 7, coordY + 6, color);
-          video_box(coordX + 8, coordY + 4, coordX + 9, coordY + 5, color);
+        break;
 
-          break;
+    case '<':
 
-      case '<':
+        video_box(coordX + 2, coordY + 4, coordX + 3, coordY + 5, color);
+        video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 3, color);
+        video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 7, color);
+        video_box(coordX + 6, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 6, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX + 2, coordY + 4, coordX + 3, coordY + 5, color);
-          video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 3, color);
-          video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 7, color);
-          video_box(coordX + 6, coordY    , coordX + 7, coordY + 1, color);
-          video_box(coordX + 6, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case '>':
 
-      case '>':
+        video_box(coordX + 2, coordY, coordX + 3, coordY + 1, color);
+        video_box(coordX + 2, coordY + 8, coordX + 3, coordY + 9, color);
+        video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 3, color);
+        video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 7, color);
+        video_box(coordX + 6, coordY + 4, coordX + 7, coordY + 5, color);
 
-          video_box(coordX + 2, coordY    , coordX + 3, coordY + 1, color);
-          video_box(coordX + 2, coordY + 8, coordX + 3, coordY + 9, color);
-          video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 3, color);
-          video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 7, color);
-          video_box(coordX + 6, coordY + 4, coordX + 7, coordY + 5, color);
+        break;
 
-          break;
+    case ':':
 
-      case ':':
+        video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
+        video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
 
-          video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
-          video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
+        break;
 
-          break;
+    case ';':
 
-      case ';':
+        video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
+        video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 9, color);
 
-          video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
-          video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 9, color);
+        break;
 
-          break;
+    case '0':
 
-      case '0':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
 
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color);
-          video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case '1':
 
-      case '1':
+        video_box(coordX + 2, coordY, coordX + 3, coordY + 1, color);
+        video_box(coordX + 4, coordY, coordX + 5, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX + 2, coordY    , coordX + 3, coordY + 1, color);
-          video_box(coordX + 4, coordY    , coordX + 5, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case '2':
 
-      case '2':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
+        video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
+        video_box(coordX, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color);
-          video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
-          video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
-          video_box(coordX    , coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case '3':
 
-      case '3':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
+        video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX, coordY + 6, coordX + 1, coordY + 7, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color);
-          video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
-          video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX    , coordY + 6, coordX + 1, coordY + 7, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case '4':
 
-      case '4':
+        video_box(coordX, coordY, coordX + 1, coordY + 5, color);
+        video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
 
-          video_box(coordX    , coordY    , coordX + 1, coordY + 5, color);
-          video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY    , coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case '5':
 
-      case '5':
+        video_box(coordX, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        video_box(coordX, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX    , coordY    , coordX + 9, coordY + 1, color);
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
-          video_box(coordX    , coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case '6':
 
-      case '6':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY    , coordX + 9, coordY + 1, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case '7':
 
-      case '7':
+        video_box(coordX, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
+        video_box(coordX + 6, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 3, coordY + 9, color);
 
-          video_box(coordX    , coordY    , coordX + 9, coordY + 1, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
-          video_box(coordX + 6, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 3, coordY + 9, color);
+        break;
 
-          break;
+    case '8':
 
-      case '8':
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX, coordY + 6, coordX + 1, coordY + 7, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color);
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX    , coordY + 6, coordX + 1, coordY + 7, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case '9':
 
-      case '9':
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
 
-          video_box(coordX + 2, coordY    , coordX + 7, coordY + 1, color);
-          video_box(coordX    , coordY + 2, coordX + 1, coordY + 3, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX    , coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case 'a':
 
-      case 'a':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY + 2, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'b':
 
-      case 'b':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case 'c':
 
-      case 'c':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'd':
 
-      case 'd':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case 'e':
 
-      case 'e':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'f':
 
-      case 'f':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        break;
 
-          break;
+    case 'g':
 
-      case 'g':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 4, coordY + 4, coordX + 9, coordY + 5, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 4, coordY + 4, coordX + 9, coordY + 5, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'h':
 
-      case 'h':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'i':
 
-      case 'i':
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case 'j':
 
-      case 'j':
+        video_box(coordX, coordY + 4, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 7, color);
 
-          video_box(coordX, coordY + 4, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case 'k':
 
-      case 'k':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY + 4, coordX + 5, coordY + 5, color);
+        video_box(coordX + 6, coordY + 2, coordX + 7, coordY + 3, color);
+        video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 8, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY + 4, coordX + 5, coordY + 5, color);
-          video_box(coordX + 6, coordY + 2, coordX + 7, coordY + 3, color);
-          video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 8, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'l':
 
-      case 'l':
+        video_box(coordX, coordY, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'm':
 
-      case 'm':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
+        video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
+        video_box(coordX + 6, coordY + 2, coordX + 7, coordY + 3, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
-          video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
-          video_box(coordX + 6, coordY + 2, coordX + 7, coordY + 3, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'n':
 
-      case 'n':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
+        video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
+        video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY + 2, coordX + 3, coordY + 3, color);
-          video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
-          video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'o':
 
-      case 'o':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
 
-          video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case 'p':
 
-      case 'p':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 5, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 5, color);
+        break;
 
-          break;
+    case 'q':
 
-      case 'q':
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 5, color);
+        video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY + 8, coordX + 9, coordY + 9, color);
+        video_box(coordX + 2, coordY + 8, coordX + 5, coordY + 9, color);
 
-          video_box(coordX, coordY + 2, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 5, color);
-          video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY + 8, coordX + 9, coordY + 9, color);
-          video_box(coordX + 2, coordY + 8, coordX + 5, coordY + 9, color);
+        break;
 
-          break;
+    case 'r':
 
-      case 'r':
+        video_box(coordX, coordY, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
+        video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 5, color);
+        video_box(coordX + 8, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color);
-          video_box(coordX + 2, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 5, color);
-          video_box(coordX + 8, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 's':
 
-      case 's':
+        video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
+        video_box(coordX, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX + 2, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 7, color);
-          video_box(coordX, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case 't':
 
-      case 't':
+        video_box(coordX, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 9, color);
+        break;
 
-          break;
+    case 'u':
 
-      case 'u':
+        video_box(coordX, coordY, coordX + 1, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 7, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 7, color);
+        break;
 
-          break;
+    case 'v':
 
-      case 'v':
+        video_box(coordX, coordY, coordX + 1, coordY + 5, color);
+        video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
+        video_box(coordX + 4, coordY + 8, coordX + 5, coordY + 9, color);
+        video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 5, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 5, color);
-          video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
-          video_box(coordX + 4, coordY + 8, coordX + 5, coordY + 9, color);
-          video_box(coordX + 6, coordY + 6, coordX + 7, coordY + 7, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 5, color);
+        break;
 
-          break;
+    case 'w':
 
-      case 'w':
+        video_box(coordX, coordY, coordX + 1, coordY + 7, color);
+        video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 7, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 7, color);
+        video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 7, color);
-          video_box(coordX + 4, coordY + 2, coordX + 5, coordY + 7, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 7, color);
-          video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color);
+        break;
 
-          break;
+    case 'x':
 
-      case 'x':
+        video_box(coordX, coordY, coordX + 1, coordY + 3, color);
+        video_box(coordX, coordY + 6, coordX + 1, coordY + 9, color);
+        video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 3, color);
+        video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 3, color);
-          video_box(coordX, coordY + 6, coordX + 1, coordY + 9, color);
-          video_box(coordX + 2, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 3, color);
-          video_box(coordX + 8, coordY + 6, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    case 'y':
 
-      case 'y':
+        video_box(coordX, coordY, coordX + 1, coordY + 3, color);
+        video_box(coordX + 2, coordY + 4, coordX + 3, coordY + 5, color);
+        video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 9, color);
+        video_box(coordX + 6, coordY + 4, coordX + 7, coordY + 5, color);
+        video_box(coordX + 8, coordY, coordX + 9, coordY + 3, color);
 
-          video_box(coordX, coordY, coordX + 1, coordY + 3, color);
-          video_box(coordX + 2, coordY + 4, coordX + 3, coordY + 5, color);
-          video_box(coordX + 4, coordY + 6, coordX + 5, coordY + 9, color);
-          video_box(coordX + 6, coordY + 4, coordX + 7, coordY + 5, color);
-          video_box(coordX + 8, coordY, coordX + 9, coordY + 3, color);
+        break;
 
-          break;
+    case 'z':
 
-      case 'z':
+        video_box(coordX, coordY, coordX + 9, coordY + 1, color);
+        video_box(coordX + 6, coordY + 2, coordX + 7, coordY + 3, color);
+        video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
+        video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
+        video_box(coordX, coordY + 8, coordX + 9, coordY + 9, color);
 
-          video_box(coordX, coordY, coordX + 9, coordY + 1, color);
-          video_box(coordX + 6, coordY + 2, coordX + 7, coordY + 3, color);
-          video_box(coordX + 4, coordY + 4, coordX + 5, coordY + 5, color);
-          video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color);
-          video_box(coordX, coordY + 8, coordX + 9, coordY + 9, color);
+        break;
 
-          break;
+    default:
 
-      default:
-
-          break;
-      }
-  }
-
+        break;
+    }
+}
 
 void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
- {
+{
 
-     for (int i = 0; i < LINES; i++)
-     {
+    for (int i = 0; i < LINES; i++)
+    {
 
-         for (int j = 0; j < COLUMNS; j++)
-         {
+        for (int j = 0; j < COLUMNS; j++)
+        {
 
-             if (boardMatrix[i][j].isNotEmpty)
-             {
+            if (boardMatrix[i][j].isNotEmpty)
+            {
 
-                  int Initialx1 = INITIAL_LIMIT_X + j * BLOCK_SIZE;
-                  int Initialy1 = INITIAL_LIMIT_Y + i * BLOCK_SIZE;
-                  int Finalx2 = INITIAL_LIMIT_X + (j+1)* BLOCK_SIZE;
-                  int Finaly2 = INITIAL_LIMIT_Y + (i+1)* BLOCK_SIZE;
-                  video_box(Initialx1, Initialy1, Finalx2, Finaly2, boardMatrix[i][j].color);
-             }
-         }
+                //    int Initialx1 = INITIAL_LIMIT_X + j * BLOCK_SIZE;
+                //    int Initialy1 = INITIAL_LIMIT_Y + i * BLOCK_SIZE;
+                //    int Finalx2 = INITIAL_LIMIT_X + (j)* BLOCK_SIZE;
+                //    int Finaly2 = INITIAL_LIMIT_Y + (i)* BLOCK_SIZE;
+                //    video_box(Initialx1, Initialy1, Finalx2, Finaly2, boardMatrix[i][j].color);
+
+                int initialX1 = INITIAL_LIMIT_X + j * (BLOCK_SIZE + SPACING);
+                int initialY1 = INITIAL_LIMIT_Y + i * (BLOCK_SIZE + SPACING);
+                int finalX2 = initialX1 + BLOCK_SIZE;
+                int finalY2 = initialY1 + BLOCK_SIZE;
+                video_box(initialX1, initialY1, finalX2, finalY2, boardMatrix[i][j].color);
+
+ 
+            }
+        }
     }
- }
+}
 
- void drawTetromino(Tetromino* tetromino)
- {
+void drawTetromino(Tetromino *tetromino)
+{
 
-     for (int i = 0; i < 4; i++)
-     {
+    for (int i = 0; i < 4; i++)
+    {
 
-         for (int j = 0; j < 4; j++)
-         {
+        for (int j = 0; j < 4; j++)
+        {
 
-             if (tetromino->pattern[i][j] != 0)
-             {
-                  video_box(
-                  tetromino->x + j * BLOCK_SIZE,
-                  tetromino->y + i * BLOCK_SIZE,
-                  tetromino->x + (j+1) * BLOCK_SIZE,
-                  tetromino->y + (i+1) * BLOCK_SIZE,
-                  tetromino->color
-                 );
-             }
-         }
-     }
- }
+            if (tetromino->pattern[i][j] != 0)
+            {
+                video_box(
+                    tetromino->x + j * BLOCK_SIZE,
+                    tetromino->y + i * BLOCK_SIZE,
+                    tetromino->x + (j + 1) * BLOCK_SIZE,
+                    tetromino->y + (i + 1) * BLOCK_SIZE,
+                    tetromino->color);
+            }
+        }
+    }
+}
 
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS])
 {

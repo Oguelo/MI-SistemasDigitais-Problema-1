@@ -2,6 +2,8 @@
     "files.associations": {
         "constants.h": "c",
         "prototype.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "adxl345.h": "c",
+        "address_map_arm.h": "c"
     }
 }

@@ -3,20 +3,16 @@
 
 #define SCREEN_X 320
 #define SCREEN_Y 240
-#define WALL_WIDHT_X 3  // Aumentar
-#define WALL_WIDHT_Y 15 // Diminuir um pouco
-#define BLOCK_LENGTH 37
-#define BLOCK_WIDHT 12
-#define LINES 20
-#define COLUMNS 10
+#define LINES 31
+#define COLUMNS 14
 #define BLOCK_SIZE 5
 #define MAX_ROTATIONS 4
-//ALEX TESTES
-#define CELL_WIDTH ((208 - 108) / COLUMNS)
-#define CELL_HEIGHT 220 / LINES
-#define INITIAL_LIMIT_X 108
-#define FINAL_LIMIT_X 208
+#define INITIAL_LIMIT_X 112
+#define FINAL_LIMIT_X 212
 #define INITIAL_LIMIT_Y 18
+#define SPACING 2
+#define SHADOW_OFFSET 2
+
 
 #define COLOR_WHITE 0xFFFF
 #define COLOR_YELLOW 0xFFE0
@@ -29,11 +25,24 @@
 #define COLOR_PINK 0xFC18
 #define COLOR_ORANGE 0xFC00
 
+#define COLOR_WHITE_DARK    0xBDF7  
+#define COLOR_YELLOW_DARK   0xB760  
+#define COLOR_RED_DARK      0xB000  
+#define COLOR_GREEN_DARK    0x0560  
+#define COLOR_BLUE_DARK     0x0310  
+#define COLOR_CYAN_DARK     0x05B6  
+#define COLOR_MAGENTA_DARK  0xB018  
+#define COLOR_GREY_DARK     0x8C10  
+#define COLOR_PINK_DARK     0xB414  
+#define COLOR_ORANGE_DARK   0xB400  
+
+
 typedef enum
 {
     TETROMINO_Q = 0,
     TETROMINO_L = 1,
     TETROMINO_I = 2,
+    TETROMINO_T = 3,
 } TetrominoTipo;
 
 #endif

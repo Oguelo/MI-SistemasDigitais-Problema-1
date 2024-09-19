@@ -2,29 +2,32 @@
 #define PROTOTYPE_H_INCLUDED
 
 #include <intelfpgaup/video.h>
-#include <intelfpgaup/accel.h>
-#include <intelfpgaup/KEY.h>
+//#include <intelfpgaup/KEY.h>
 
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include "constants.h"
 #include "structs.h"
+#include "ADXL345.h"
+#include <unistd.h>
 
+void execTetris();
 int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]);
 void phrase(int coordX, int coordY, char *list, int lenList, short cor);
 void write_score(int coordX, int coordY, int score);
 void screen_defeat(int score);
 void create_menu();
-void game_field(int score, int state_game);
+void game_field(int score, int state_game, int hscore);
 void title(int coordX, int coordY);
 void alphanumeric(int coordX, int coordY, char caracter, short cor);
 void change_state(int *pointer_state, int *pointer_buttons);
 void initBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int x, int y);
-void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS]);
+void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS], int *score);
 void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawTetromino(Tetromino *tetromino);
@@ -38,5 +41,9 @@ void generateIPattern(Tetromino *tetromino);
 void gerarIPatternRotate(Tetromino *tetromino);
 void generateTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
+
+
+int16_t XYZ[3];
+pthread_mutex_t lock;
 
 #endif
