@@ -135,11 +135,9 @@ void generateTetromino(Tetromino *tetromino)
         tetromino->generate = generateIPattern;
         break;
     case TETROMINO_T:
-        tetromino->generate = generateIPattern;
+        tetromino->generate = generateTPattern;
         break;
     }
-    
-    
     
 
     tetromino->generate(tetromino);
