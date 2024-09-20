@@ -31,6 +31,7 @@ typedef int bool;
 
 // Lista de Registradores do ADXL345
 #define ADXL345_REG_DATA_FORMAT 	0x31
+#define XL345_DATAREADY            0x80
 #define XL345_RANGE_16G             0x03
 #define ADXL345_REG_THRESH_ACT		0x24
 #define XL345_FULL_RESOLUTION       0x08

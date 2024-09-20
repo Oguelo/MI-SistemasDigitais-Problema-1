@@ -68,6 +68,7 @@ void execTetris()
             }
             pthread_mutex_unlock(&lock);
             moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
+            dx = 0;
             if (!moved)
             {
                 removeFullLines(boardMatrix, &score);
