@@ -15,7 +15,7 @@
   * @param cor A cor dos caracteres da frase.
   * @return void
   */
- void phrase(int coordX, int coordY, char *list, int lenList, short color)
+ void generatePhrase(int coordX, int coordY, char *list, int lenList, short color)
  {
 
      int X;
@@ -27,7 +27,7 @@
          {
 
              X = coordX + i * 13;
-             alphanumeric(X, coordY, list[i], color);
+             generateChar(X, coordY, list[i], color);
          }
      }
  }
@@ -43,7 +43,7 @@
   * @param score Valor do score que deve ser exibido.
   * @return void
   */
- void write_score(int coordX, int coordY, int score)
+ void drawScore(int coordX, int coordY, int score)
  {
 
      char number_str[10];
@@ -55,7 +55,7 @@
      for (int i = 0; i < len; i++)
      {
 
-         alphanumeric(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
+         generateChar(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
      }
  }
 
@@ -69,7 +69,7 @@
   * @param score Valor do score alcançado na rodada.
   * @return void
   */
- void screen_defeat(int score)
+ void gamerOverScreen(int score)
  {
 
      char defeat_message[9] = "game over";
@@ -87,9 +87,9 @@
          sub_coordX = 5;
      }
 
-     phrase(100, 110, defeat_message, 9, COLOR_RED);
-     phrase(110 - sub_coordX, 145, score_message, 6, COLOR_YELLOW);
-     write_score(188 - sub_coordX, 145, score);
+     generatePhrase(100, 110, defeat_message, 9, COLOR_RED);
+     generatePhrase(110 - sub_coordX, 145, score_message, 6, COLOR_YELLOW);
+     drawScore(188 - sub_coordX, 145, score);
  }
 
  /**
@@ -102,33 +102,33 @@
   *
   * @return void
   */
- void game_field(int score, int state_game, int hscore)
+ void gameField(int score, int state_game, int hscore)
  {
 
      char text_score[6] = "score:";
     
-     phrase(2, 2, text_score, 6, COLOR_WHITE);
-     write_score(78, 2, score);
+     generatePhrase(2, 2, text_score, 6, COLOR_WHITE);
+     drawScore(78, 2, score);
     char text_highscore[7] = "hscore:";
-    phrase(220, 2, text_highscore, 7, COLOR_WHITE);
-    write_score(310, 2, hscore);
+    generatePhrase(220, 2, text_highscore, 7, COLOR_WHITE);
+    drawScore(310, 2, hscore);
      if (state_game == 1)
      {
 
          char text_pause[11] = "";
-         phrase(177, 0, text_pause, 11, COLOR_WHITE);
+         generatePhrase(177, 0, text_pause, 11, COLOR_WHITE);
      }
      else if (state_game == 2)
      {
 
          char text_pause[11] = "pause<play>";
-         phrase(177, 0, text_pause, 11, COLOR_WHITE);
+         generatePhrase(177, 0, text_pause, 11, COLOR_WHITE);
      }
      else if (state_game == 3)
      {
 
          char text_pause[11] = "pause<exit>";
-         phrase(177, 0, text_pause, 11, COLOR_WHITE);
+         generatePhrase(177, 0, text_pause, 11, COLOR_WHITE);
      }
 
      video_box(105, 18, 110, 239, COLOR_BLUE);   //LADO ESQUERDO

@@ -16,14 +16,13 @@
 
 void execTetris();
 int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]);
-void phrase(int coordX, int coordY, char *list, int lenList, short cor);
-void write_score(int coordX, int coordY, int score);
-void screen_defeat(int score);
-void create_menu();
-void game_field(int score, int state_game, int hscore);
-void title(int coordX, int coordY);
-void alphanumeric(int coordX, int coordY, char caracter, short cor);
-void change_state(int *pointer_state, int *pointer_buttons);
+void generatePhrase(int coordX, int coordY, char *list, int lenList, short cor);
+void drawScore(int coordX, int coordY, int score);
+void gamerOverScreen(int score);
+void gameField(int score, int state_game, int hscore);
+void generateTitle(int coordX, int coordY);
+void generateChar(int coordX, int coordY, char caracter, short cor);
+void changeGameState(int *pointer_state, int *pointer_buttons);
 void initBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int x, int y);

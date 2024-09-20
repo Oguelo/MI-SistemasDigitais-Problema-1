@@ -38,7 +38,7 @@ void execTetris()
     {
 
         // KEY_read(&buttons);
-        // change_state(&state_game, &buttons);
+        // changeGameState(&state_game, &buttons);
 
         video_clear();
         video_erase();
@@ -76,7 +76,7 @@ void execTetris()
             drawTetrominoTerminal(currentTetromino);
             video_open();
             video_clear();
-            game_field(score, state_game, hscore);
+            gameField(score, state_game, hscore);
             drawBoard(boardMatrix);
             video_show();
             video_close();

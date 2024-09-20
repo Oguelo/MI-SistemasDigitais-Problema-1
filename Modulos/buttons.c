@@ -9,7 +9,7 @@
  * @param pointer_buttons Ponteiro indicando o endereço que armazena o sinais lidos dos botões.
  * @return void
  */
-void change_state(int *pointer_state, int *pointer_buttons)
+void changeGameState(int *pointer_state, int *pointer_buttons)
 {
 
     /*
