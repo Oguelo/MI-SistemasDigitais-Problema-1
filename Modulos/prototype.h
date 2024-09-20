@@ -11,7 +11,8 @@
 #include <math.h>
 #include "constants.h"
 #include "structs.h"
-#include "ADXL345.h"
+//#include "ADXL345.h"
+#include "acelerometro.h"
 #include <unistd.h>
 
 void execTetris();
@@ -42,7 +43,8 @@ void generateTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 
 
-int16_t XYZ[3];
+//int16_t XYZ[3];
+int16_t axis_x;
 pthread_mutex_t lock;
 
 #endif

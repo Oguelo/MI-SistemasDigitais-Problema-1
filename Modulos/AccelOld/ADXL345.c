@@ -196,7 +196,7 @@ void ADXL345_Init(){
     ADXL345_REG_WRITE(ADXL345_REG_POWER_CTL, XL345_MEASURE);
 }
 
-// Calibrar o ADXL345. O DE1-SoC deve ser colocado em uma superfície plana,
+// calibrar o ADXL345. O DE1-SoC deve ser colocado em uma superfície plana,
 // e deve permanecer estacionário durante a calibração.
 void ADXL345_Calibrate(){
     
