@@ -74,3 +74,23 @@ void changeGameState(int *pointer_state, int *pointer_buttons)
         break;
     }
 }
+
+int buttonRead(){
+
+    int readValue;
+
+    KEY_open();
+    KEY_read(readValue);
+    KEY_close();
+
+}
+
+int keyRead(){
+
+    int readValue;
+
+    SW_open();
+    SW_read(readValue);
+    SW_close();
+
+}

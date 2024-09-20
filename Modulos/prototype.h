@@ -2,7 +2,8 @@
 #define PROTOTYPE_H_INCLUDED
 
 #include <intelfpgaup/video.h> 
-//#include <intelfpgaup/KEY.h>
+#include <intelfpgaup/KEY.h>
+#include <intelfpgaup/SW.h>
 
 #include <pthread.h>
 #include <stdio.h>
@@ -41,6 +42,8 @@ void generateIPattern(Tetromino *tetromino);
 void gerarIPatternRotate(Tetromino *tetromino);
 void generateTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
+int buttonRead();
+int keyRead();
 
 
 //int16_t XYZ[3];

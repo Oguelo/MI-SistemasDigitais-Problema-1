@@ -23,7 +23,7 @@ void execTetris()
     /* Inicialização dos periféricos */
 
     /* Botões */
-    int state_game = 1, buttons;
+    int state_game = 1, buttons, buttonValue;
     int16_t mg_per_lsb = 4;
     // KEY_open();
     // KEY_read(&buttons);
@@ -67,8 +67,13 @@ void execTetris()
                 dx = 0;
             }
             pthread_mutex_unlock(&lock);
-            moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
-            dx = 0;
+            buttonValue = buttonRead();
+            if(buttonValue == 0){
+
+                moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
+                dx = 0;
+
+            }
             if (!moved)
             {
                 removeFullLines(boardMatrix, &score);
