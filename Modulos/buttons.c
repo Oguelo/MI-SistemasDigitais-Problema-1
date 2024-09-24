@@ -15,14 +15,14 @@ void changePauseState(int *pointerStateGame, int *pointerButtons)
     switch (*pointerStateGame)
     {
     case 1: 
-        if (*pointerButtons == 1) 
+        if (*pointerButtons == 2) 
         {
             *pointerStateGame = 2; 
         }
         break;
 
     case 2:
-        if (*pointerButtons == 1) 
+        if (*pointerButtons == 2) 
         {
             *pointerStateGame = 1;
         }
@@ -32,10 +32,38 @@ void changePauseState(int *pointerStateGame, int *pointerButtons)
 
 void rotateTetromino(int *rotationState, int *pointerButtons)
 {
-
-    if (*pointerButtons == 2) 
+    switch (*rotationState)
     {
-        *rotationState = (*rotationState + 1) % 4; 
-    }
+    case 1: 
+        if (*pointerButtons == 1) 
+        { 
+            *pointerButtons = 1;
+            
+        }
+        break;
+
+    case 2:
+        if (*pointerButtons == 1) 
+        { 
+            *pointerButtons = 2;
+            
+        }
+        break;
+    case 3:
+        if (*pointerButtons == 1) 
+        { 
+            *pointerButtons = 3;
+            
+        }
+        break;
+    case 4:
+        if (*pointerButtons == 1) 
+        { 
+            *pointerButtons = 0;
+            
+        }
+        break;
+  
+  }
 }
 
