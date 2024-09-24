@@ -54,6 +54,7 @@ void execTetris(){
             if (pointerStateGame == 1)
             {
 
+                buttonValue = buttonRead();
                 currentTetromino.prevRotation = currentTetromino.currentRotation;
                 rotateTetromino(&pointerRotateTetromino, &buttonValue);
                 currentTetromino.currentRotation = pointerRotateTetromino;
