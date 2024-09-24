@@ -29,7 +29,6 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 	<ul>
         <li><a href="#equipamentos">  Descrição dos Equipamentos e Software Utilizados</a></li>
         <li><a href="#arq_CPU">  Arquitetura da placa DE1-SoC</a></li>
-        <li><a href="#Perifericos-utilizados"> Periféricos da Placa DE1-SoC Utilizados </a></li>
         <li><a href="#Drives"> Drives de Dispositivos de Entrada e Saída (E/S) </a></li>
         <li><a href="#Inteface-Grafica"> Interface do Usuário </a></li>
         <li><a href="#Regras-de-jogo"> Dinâmica e Regras de Jogo </a></li>
@@ -84,6 +83,7 @@ O Visual Studio Code, conhecido como VSCode, é um ambiente de desenvolvimento a
 
 O monitor utilizado no projeto foi o DELL M782p, um modelo de CRT que utiliza tubo de raios catódicos para exibição de imagens. Com uma tela de 17 polegadas e resolução máxima de 1280x1024 pixels, ele oferece uma interface VGA para conexão com computadores ou placas de desenvolvimento. Os monitores CRT, como o DELL M782p, são conhecidos por sua reprodução de cores vibrantes e tempos de resposta rápidos, tornando-os ideais para projetos que exigem interação em tempo real, como jogos e simulações.
 
+
 Abaixo estão dados detalhados sobre o monitor usado:
 
 |            Características            |      Detalhes      |
@@ -102,10 +102,11 @@ Abaixo estão dados detalhados sobre o monitor usado:
 </div>
 </div>
 
-# Interface do Usuário
 
-// pra fazer
----
+
+<div id="Drives"> 
+<h2> Drives de Dispositivos de Entrada e Saída (E/S)</h2>
+<div align="justify">
 
 # Drivers de Dispositivos de Entrada e Saída (E/S)
 
@@ -137,6 +138,11 @@ Quando uma linha é feita de tetrominos ela é destruída, e sua respectiva pont
 
 Se o conjunto de tetrominos atingirem a margem superior da tela, a partida é encerrada, assim, a tela de derrota é exibida com a frase "game over" e o score alcançado. 
 
+# Interface do Usuário
+
+// pra fazer
+--- 
+
 
 </div>
 
@@ -162,8 +168,27 @@ Se uma linha inteira do tabuleiro for preenchida com peças, essa linha é remov
 
  <h3> Pontuação </h3>
 
-A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida.
-
+A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida, sendo ela contada de 1 em 1, no final um hi score é gerado após o game over.
+<h3> Game over  </h3>
+O game over é definido quando uma das posições da matriz principal na linha 0 esta ocupada e outra peça gerada está a disputar o mesmo espaço, assim o game over será definido e uma representação será exibida na tela.
 
 </div>
+<div id="Algoritmos"> 
+<h2> Algoritmos de Jogo </h2>
+<div align="justify">
 
+<h3> Algoritmo de Colisão </h3>
+
+Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, com outras peças ou com a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo clássico de detecção de colisão entre peças e o tabuleiro .
+
+A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça atual e comparar com o estado do tabuleiro. Quando uma peça tenta mover-se para uma nova posição, o algoritmo checa se essa posição já está ocupada por outro bloco ou se ultrapassa os limites do tabuleiro. Se uma colisão é detectada, o movimento da peça é interrompido, e ela é fixada em sua posição final no tabuleiro.
+
+Em seguida, o algoritmo verifica se alguma linha foi completamente preenchida. Caso positivo, a linha é eliminada e as linhas acima dela descem, mantendo o espaço para novas peças.
+
+<h3> Algoritmo de Verificação Contínua </h3>
+
+O movimento contínuo das peças no Tetris é essencial para a jogabilidade. Para garantir que as peças se movam suavemente, o algoritmo de movimentação contínua foi implementado. Este algoritmo atualiza a posição das peças a cada intervalo de tempo, movendo-as automaticamente para baixo até que uma colisão seja detectada.
+
+Durante a queda contínua, o jogador pode mover a peça para os lados ou rotacioná-la. O algoritmo de movimentação contínua verifica se o movimento lateral ou a rotação são válidos, checando se há espaço suficiente no tabuleiro para realizar a ação desejada.
+
+Se uma colisão for detectada durante o movimento da peça, ela é fixada em sua posição atual, e uma nova peça é gerada no topo do tabuleiro, reiniciando o ciclo.
