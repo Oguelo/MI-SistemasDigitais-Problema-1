@@ -149,7 +149,7 @@ void initTetromino(Tetromino *tetromino)
     generateTetromino(tetromino);
     tetromino->x = (COLUMNS / 2) - 2;
     tetromino->y = 0;
-    tetromino->currentRotation = 1;
+    tetromino->currentRotation = 0;
 }
 
 void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy, int *moved)

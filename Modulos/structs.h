@@ -6,7 +6,7 @@
 typedef struct
 {
 
-    int x, y, currentRotation;
+    int x, y, currentRotation, prevRotation;
     int pattern[MAX_ROTATIONS][4][4];
     unsigned int color;
     unsigned int colorShadow;

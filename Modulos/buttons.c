@@ -5,92 +5,37 @@
  *
  * Utiliza o estado atual do jogo e as alterações dos sinais dos botões para indicar qual será o próximo estado.
  *
- * @param pointer_state   Ponteiro indicando o endereço que armazena o estado atual do jogo.
- * @param pointer_buttons Ponteiro indicando o endereço que armazena o sinais lidos dos botões.
+ * @param pointerStateGame   Ponteiro indicando o endereço que armazena o estado atual do jogo.
+ * @param pointerButtons Ponteiro indicando o endereço que armazena o sinais lidos dos botões.
  * @return void
  */
-void changeGameState(int *pointer_state, int *pointer_buttons)
+void changePauseState(int *pointerStateGame, int *pointerButtons)
 {
 
-    /*
-        state = 0; tela inicial
-        state = 1; jogo rodando
-        state = 2; em pausa com opção de play
-        state = 3; em pausa com opção de exit
-    */
-
-    switch (*pointer_state)
+    switch (*pointerStateGame)
     {
-
-    case 0:
-
-        if (*pointer_buttons == 1)
+    case 1: 
+        if (*pointerButtons == 1) 
         {
-
-            *pointer_state = 1;
+            *pointerStateGame = 2; 
         }
-
-        break;
-
-    case 1:
-
-        if (*pointer_buttons == 1)
-        {
-
-            *pointer_state = 2;
-        }
-
         break;
 
     case 2:
-
-        if (*pointer_buttons == 1)
+        if (*pointerButtons == 1) 
         {
-
-            *pointer_state = 3;
+            *pointerStateGame = 1;
         }
-        else if (*pointer_buttons == 2)
-        {
-
-            *pointer_state = 1;
-        }
-
-        break;
-
-    case 3:
-
-        if (*pointer_buttons == 1)
-        {
-
-            *pointer_state = 2;
-        }
-
-        else if (*pointer_buttons == 2)
-        {
-
-            *pointer_state = 0;
-        }
-
         break;
     }
 }
 
-int buttonRead(){
+void rotateTetromino(int *rotationState, int *pointerButtons)
+{
 
-    int readValue;
-
-    KEY_open();
-    KEY_read(readValue);
-    KEY_close();
-
+    if (*pointerButtons == 1) 
+    {
+        *rotationState = (*rotationState + 1) % 4; 
+    }
 }
 
-int keyRead(){
-
-    int readValue;
-
-    SW_open();
-    SW_read(readValue);
-    SW_close();
-
-}

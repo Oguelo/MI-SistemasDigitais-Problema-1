@@ -37,57 +37,64 @@ void execTetris()
     while (1)
     {
 
-        // KEY_read(&buttons);
-        // changeGameState(&state_game, &buttons);
-
         video_clear();
         video_erase();
 
         score = 0;
         resetBoard(boardMatrix);
         initTetromino(&currentTetromino, boardMatrix);
+        int pointerStateGame = 1, pointerRotateTetromino = 0;
 
         while (!checkGameOver(boardMatrix))
         {
-            drawBoardTerminal(boardMatrix);
-            pthread_mutex_lock(&lock);
-            if (axis_x * mg_per_lsb >= 100)
-            {
-
-                dx = 1;
-            }
-            else if (axis_x * mg_per_lsb <= -100)
-            {
-
-                dx = -1;
-            }
-            else
-            {
-
-                dx = 0;
-            }
-            pthread_mutex_unlock(&lock);
             buttonValue = buttonRead();
-            if(buttonValue == 0){
+            changePauseState(&pointerStateGame, &buttonValue);
+            if (pointerStateGame == 1)
+            {
 
+                currentTetromino->prevRotation = currentTetromino->currentRotation;
+                changeRotateState(&pointerRotateTetromino, &buttonValue);
+                currentTetromino->currentRotation = pointerRotateTetromino;
+                drawBoardTerminal(boardMatrix);
+                pthread_mutex_lock(&lock);
+                if (axis_x * mg_per_lsb >= 100)
+                {
+
+                    dx = 1;
+                }
+                else if (axis_x * mg_per_lsb <= -100)
+                {
+
+                    dx = -1;
+                }
+                else
+                {
+
+                    dx = 0;
+                }
+                pthread_mutex_unlock(&lock);
                 moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
                 dx = 0;
-
+                if (!moved)
+                {
+                    removeFullLines(boardMatrix, &score);
+                    initTetromino(&currentTetromino, boardMatrix);
+                }
+                drawTetrominoTerminal(currentTetromino);
+                video_open();
+                video_clear();
+                gameField(score, state_game, hscore);
+                drawBoard(boardMatrix);
+                video_show();
+                video_close();
+                usleep(350000);
             }
-            if (!moved)
-            {
-                removeFullLines(boardMatrix, &score);
-                initTetromino(&currentTetromino, boardMatrix);
-            }
-            drawTetrominoTerminal(currentTetromino);
-            video_open();
-            video_clear();
-            gameField(score, state_game, hscore);
-            drawBoard(boardMatrix);
-            video_show();
-            video_close();
-            usleep(350000);
         }
+        video_open();
+        char text_gameover[9] = "GameOver";
+        generatePhrase(220, 2, text_gameover, 9, COLOR_WHITE);
+        video_show(); 
+        video_close();
         hscore = score;
     }
 }

@@ -12,7 +12,6 @@
 #include <math.h>
 #include "constants.h"
 #include "structs.h"
-//#include "ADXL345.h"
 #include "acelerometro.h"
 #include <unistd.h>
 
@@ -44,9 +43,10 @@ void generateTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 int buttonRead();
 int keyRead();
+void changePauseState(int *pointerStateGame, int *pointerButtons);
+void rotateTetromino(int *rotationState, int *pointerButtons);
 
-
-//int16_t XYZ[3];
+//Variaveis globais para o acelerometro 
 int16_t axis_x;
 pthread_mutex_t lock;
 
