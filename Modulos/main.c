@@ -3,7 +3,7 @@
 int main()
 {
 
-    pthread_t thread1, thread2;
+    pthread_t thread1, thread2, thread3;
 
     pthread_mutex_init(&lock, NULL);
 
@@ -11,15 +11,17 @@ int main()
 
     pthread_create(&thread2, NULL, execTetris, NULL);
 
+    pthread_create(&thread3, NULL, buttonRead, NULL);
+
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
+    pthread_join(thread3, NULL);
 
     pthread_mutex_destroy(&lock);
 
     return 0;
 }
-void execTetris()
-{
+void execTetris(){
     /* Inicialização dos periféricos */
 
     /* Botões */
@@ -52,9 +54,9 @@ void execTetris()
             if (pointerStateGame == 1)
             {
 
-                currentTetromino->prevRotation = currentTetromino->currentRotation;
-                changeRotateState(&pointerRotateTetromino, &buttonValue);
-                currentTetromino->currentRotation = pointerRotateTetromino;
+                currentTetromino.prevRotation = currentTetromino.currentRotation;
+                rotateTetromino(&pointerRotateTetromino, &buttonValue);
+                currentTetromino.currentRotation = pointerRotateTetromino;
                 drawBoardTerminal(boardMatrix);
                 pthread_mutex_lock(&lock);
                 if (axis_x * mg_per_lsb >= 100)
@@ -97,4 +99,21 @@ void execTetris()
         video_close();
         hscore = score;
     }
+
+    
+}
+
+int buttonRead(){
+
+    KEY_open();
+
+    int butaopont; // Changed to an int instead of a pointer
+
+    while (1) {
+        // Pass the address of butaopont
+        return KEY_read(&butaopont); 
+    }
+    
+    KEY_close();
+
 }
