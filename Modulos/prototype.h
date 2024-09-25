@@ -29,7 +29,6 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromin
 void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS], int *score);
 void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]);
-void drawTetromino(Tetromino *tetromino);
 void drawTetrominoTerminal(Tetromino tetromino);
 void initTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino);

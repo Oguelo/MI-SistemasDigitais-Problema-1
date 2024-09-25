@@ -86,7 +86,6 @@ void execTetris(){
                 video_open();
                 video_clear();
                 gameField(score, hscore);
-               
                 drawBoard(boardMatrix);
                 video_show();
                 video_close();
@@ -94,9 +93,9 @@ void execTetris(){
             }else{
                 video_open();
                 video_clear();
-                gameField(score, hscore);
+                gameField(score, hscore);   
                 drawBoard(boardMatrix);
-                generatePhrase(120, 2, text_paused, 9,COLOR_RED);
+                generatePhrase(120, 2, text_paused, 6,COLOR_RED);
                 video_show(); 
                 video_close();
             }
@@ -105,8 +104,8 @@ void execTetris(){
         video_clear();
         gameField(score, hscore);
         drawBoard(boardMatrix);
-        generatePhrase(2, 150, text_game, 9,COLOR_RED);
-        generatePhrase(240, 150, text_over, 9,COLOR_RED);
+        generatePhrase(2, 150, text_game, 4,COLOR_RED);
+        generatePhrase(240, 150, text_over, 4,COLOR_RED);
         video_show(); 
         usleep(8000000);
         video_clear();
