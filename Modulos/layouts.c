@@ -60,39 +60,6 @@ void drawScore(int coordX, int coordY, int score)
 }
 
 /**
- * Exibe a tela de derrota.
- *
- * São exibidas as frases "game over" e o valor do score alcançado, utilizando as funções
- * de escrita de frase e exibição do valor do score. Dependendo de quantos algorismos o
- * score possui, a coordenada inicial de X é alterada.
- *
- * @param score Valor do score alcançado na rodada.
- * @return void
- */
-void gamerOverScreen(int score)
-{
-
-    char defeat_message[9] = "game over";
-    char score_message[6] = "score:";
-    int sub_coordX = 0;
-
-    if (score > 100)
-    {
-
-        sub_coordX = 10;
-    }
-    else if (score > 10)
-    {
-
-        sub_coordX = 5;
-    }
-
-    generatePhrase(100, 110, defeat_message, 9, COLOR_RED);
-    generatePhrase(110 - sub_coordX, 145, score_message, 6, COLOR_YELLOW);
-    drawScore(188 - sub_coordX, 145, score);
-}
-
-/**
  * Exibe o campo de jogo.
  *
  * São mostradas: as linhas que delimitam a área de jogo; todos os blocos não destruídos;
@@ -102,40 +69,18 @@ void gamerOverScreen(int score)
  *
  * @return void
  */
-void gameField(int score, int state_game, int hscore)
+void gameField(int score, int hscore)
 {
 
     char text_score[6] = "score:";
-
     generatePhrase(2, 2, text_score, 6, COLOR_WHITE);
     drawScore(78, 2, score);
+
     char text_highscore[7] = "hscore:";
     generatePhrase(220, 2, text_highscore, 7, COLOR_WHITE);
     drawScore(310, 2, hscore);
-    if (state_game == 1)
-    {
-
-        char text_pause[11] = "";
-        generatePhrase(177, 0, text_pause, 11, COLOR_WHITE);
-    }
-    else if (state_game == 2)
-    {
-
-        char text_pause[11] = "pause<play>";
-        generatePhrase(177, 0, text_pause, 11, COLOR_WHITE);
-    }
-    else if (state_game == 3)
-    {
-
-        char text_pause[11] = "pause<exit>";
-        generatePhrase(177, 0, text_pause, 11, COLOR_WHITE);
-    }
 
     video_box(105, 18, 110, 239, COLOR_BLUE);  // LADO ESQUERDO
     video_box(106, 234, 212, 239, COLOR_BLUE); // CENTRO
     video_box(210, 18, 215, 239, COLOR_BLUE);  // Lado direito
-}
-
-void homeScreen(){
-
 }
