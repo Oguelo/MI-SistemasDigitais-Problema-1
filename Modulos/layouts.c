@@ -135,3 +135,7 @@ void gameField(int score, int state_game, int hscore)
     video_box(106, 234, 212, 239, COLOR_BLUE); // CENTRO
     video_box(210, 18, 215, 239, COLOR_BLUE);  // Lado direito
 }
+
+void homeScreen(){
+
+}
