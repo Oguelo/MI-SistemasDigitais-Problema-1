@@ -31,6 +31,9 @@ void execTetris(){
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
     int dx = 0, dy = 1, moved = 1, score, hscore;
+    char text_over[4] = "over";
+    char text_paused[6] = "paused";
+    char text_game[4] = "game";
 
     while (1)
     {
@@ -93,8 +96,7 @@ void execTetris(){
                 video_clear();
                 gameField(score, state_game, hscore);
                 drawBoard(boardMatrix);
-                char text_game[6] = "paused";
-                generatePhrase(120, 2, text_game, 9,COLOR_RED);
+                generatePhrase(120, 2, text_paused, 9,COLOR_RED);
                 video_show(); 
                 video_close();
             }
@@ -103,9 +105,7 @@ void execTetris(){
         video_clear();
         gameField(score, state_game, hscore);
         drawBoard(boardMatrix);
-        char text_game[4] = "game";
         generatePhrase(2, 150, text_game, 9,COLOR_RED);
-        char text_over[4] = "over";
         generatePhrase(240, 150, text_over, 9,COLOR_RED);
         video_show(); 
         usleep(8000000);
