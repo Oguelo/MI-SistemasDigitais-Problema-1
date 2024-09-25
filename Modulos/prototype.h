@@ -1,11 +1,11 @@
 #ifndef PROTOTYPE_H_INCLUDED
 #define PROTOTYPE_H_INCLUDED
 
-#include <intelfpgaup/video.h> 
+#include <intelfpgaup/video.h>
 #include <intelfpgaup/KEY.h>
 #include <intelfpgaup/SW.h>
 
-#include <pthread.h>    
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,21 +30,19 @@ void removeFullLines(PartTetromino boardMatrix[LINES][COLUMNS], int *score);
 void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS]);
 void drawTetrominoTerminal(Tetromino tetromino);
-void initTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
-void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino);
 void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy, int *moved);
 void generateQPattern(Tetromino *tetromino);
 void generateLPattern(Tetromino *tetromino);
 void generateIPattern(Tetromino *tetromino);
 void gerarIPatternRotate(Tetromino *tetromino);
 void generateTetromino(Tetromino *tetromino);
+void initTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 int buttonRead();
-int keyRead();
 void changePauseState(int *pointerStateGame, int *pointerButtons);
 int rotateTetromino(int *rotationState, int *pointerButtons);
 
-//Variaveis globais para o acelerometro 
+// Variaveis globais para o acelerometro
 int16_t axis_x;
 pthread_mutex_t lock;
 

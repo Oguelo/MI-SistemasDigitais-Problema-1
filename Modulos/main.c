@@ -11,7 +11,6 @@ int main()
 
     pthread_create(&thread2, NULL, execTetris, NULL);
 
-
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
 
@@ -20,12 +19,11 @@ int main()
     return 0;
 }
 void execTetris(){
-    /* Inicialização dos periféricos */
-
-    /* Botões */
+    
     int state_game = 1, buttons, buttonValue, buttonValueRotate;
     int16_t mg_per_lsb = 4;
 
+    srand(time(NULL));
     video_open();
 
     Tetromino currentTetromino;
@@ -40,11 +38,12 @@ void execTetris(){
 
         video_clear();
         video_erase();
+        video_close();
 
         score = 0;
         resetBoard(boardMatrix);
-        initTetromino(&currentTetromino, boardMatrix);
-        int pointerStateGame = 1, pointerRotateTetromino = 0, rotateFlagAnt = 0;
+        initTetromino(&currentTetromino);
+        int pointerStateGame = 1, pointerRotateTetromino = 0;
 
         while (!checkGameOver(boardMatrix))
         {
@@ -80,7 +79,7 @@ void execTetris(){
                 if (!moved)
                 {
                     removeFullLines(boardMatrix, &score);
-                    initTetromino(&currentTetromino, boardMatrix);
+                    initTetromino(&currentTetromino);
                 }
                 drawTetrominoTerminal(currentTetromino);
                 video_open();
@@ -89,7 +88,7 @@ void execTetris(){
                 drawBoard(boardMatrix);
                 video_show();
                 video_close();
-                usleep(350000);
+                usleep(35000);
             }else{
                 video_open();
                 video_clear();

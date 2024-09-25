@@ -498,7 +498,7 @@ void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
         for (int j = 0; j < COLUMNS; j++)
         {
 
-            if (boardMatrix[i][j].isNotEmpty != 0)
+            if (boardMatrix[i][j].isNotEmpty)
             {
 
                 int initialX1 = INITIAL_LIMIT_X + j * (BLOCK_SIZE + SPACING);
@@ -506,7 +506,6 @@ void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
                 int finalX2 = initialX1 + BLOCK_SIZE;
                 int finalY2 = initialY1 + BLOCK_SIZE;
                 video_box(initialX1, initialY1, finalX2, finalY2, boardMatrix[i][j].color);
-
             }
         }
     }
