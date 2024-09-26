@@ -1,9 +1,8 @@
 #ifndef PROTOTYPE_H_INCLUDED
 #define PROTOTYPE_H_INCLUDED
 
-#include <intelfpgaup/video.h>
+#include <intelfpgaup///video.h>
 #include <intelfpgaup/KEY.h>
-#include <intelfpgaup/SW.h>
 
 #include <pthread.h>
 #include <stdio.h>
@@ -16,7 +15,7 @@
 #include <unistd.h>
 
 void execTetris();
-int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS]);
+int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 void generatePhrase(int coordX, int coordY, char *list, int lenList, short cor);
 void drawScore(int coordX, int coordY, int score);
 void gameField(int score, int hscore);
@@ -43,7 +42,7 @@ void changePauseState(int *pointerStateGame, int *pointerButtons);
 int rotateTetromino(int *rotationState, int *pointerButtons);
 
 // Variaveis globais para o acelerometro
-int16_t axis_x;
-pthread_mutex_t lock;
+extern int16_t axis_x;
+extern pthread_mutex_t lock;
 
 #endif

@@ -1,4 +1,6 @@
 #include "prototype.h"
+int16_t axis_x;
+pthread_mutex_t lock;
 
 int main()
 {
@@ -45,7 +47,7 @@ void execTetris(){
         initTetromino(&currentTetromino);
         int pointerStateGame = 1, pointerRotateTetromino = 0;
 
-        while (!checkGameOver(boardMatrix))
+        while (!checkGameOver(boardMatrix,&currentTetromino))
         {
             buttonValue = buttonRead();
 
@@ -56,24 +58,23 @@ void execTetris(){
                 currentTetromino.prevRotation = currentTetromino.currentRotation;
                 currentTetromino.currentRotation = rotateTetromino(&pointerRotateTetromino, &buttonValue);
 
-                drawBoardTerminal(boardMatrix);
-                pthread_mutex_lock(&lock);
-                if (axis_x * mg_per_lsb >= 100)
-                {
+                 pthread_mutex_lock(&lock);
+                 if (axis_x * mg_per_lsb >= 100)
+                 {
 
-                    dx = 1;
-                }
-                else if (axis_x * mg_per_lsb <= -100)
-                {
+                     dx = 1;
+                 }
+                 else if (axis_x * mg_per_lsb <= -100)
+                 {
 
-                    dx = -1;
-                }
-                else
-                {
+                     dx = -1;
+                 }
+                 else
+                 {
 
-                    dx = 0;
-                }
-                pthread_mutex_unlock(&lock);
+                     dx = 0;
+                 }
+                 pthread_mutex_unlock(&lock);
                 moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
                 dx = 0;
                 if (!moved)
@@ -88,7 +89,7 @@ void execTetris(){
                 drawBoard(boardMatrix);
                 video_show();
                 video_close();
-                usleep(35000);
+                usleep(150000);
             }else{
                 video_open();
                 video_clear();
@@ -98,6 +99,7 @@ void execTetris(){
                 video_show(); 
                 video_close();
             }
+            drawBoardTerminal(boardMatrix);
         }
         video_open();
         video_clear();

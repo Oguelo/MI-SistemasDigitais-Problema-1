@@ -156,6 +156,11 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
     int movedX = 1;
     int movedY = 1;
 
+    if (verifyCollision(boardMatrix, tetromino) && tetromino->y == 0)
+    {
+        return;
+    }
+
     clearTetromino(boardMatrix, tetromino);
 
     tetromino->x += dx;
@@ -176,7 +181,6 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
         movedY = 0;
         if (dx == 0)
         {
-
             movedX = 0;
         }
     }

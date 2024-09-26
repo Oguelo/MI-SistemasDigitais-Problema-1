@@ -12,17 +12,13 @@ void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
-int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS])
+int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
 {
 
-    for (int x = 0; x < COLUMNS; x++)
-    {
-        if (boardMatrix[0][x].isNotEmpty)
-        {
-            return 1;
-        }
-    }
+    if(verifyCollision(boardMatrix, tetromino) && tetromino->y == 0)
+        return 1;
     return 0;
+
 }
 
 int verifyCollision(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
