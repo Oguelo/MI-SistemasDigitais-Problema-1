@@ -22,6 +22,7 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 <uL> 
   <li><a href="https://github.com/Oguelo">Alex da Fonseca Dantas Junior</a></li>
   <li><a href="https://github.com/BRCZ1N">Bruno Campos de Oliveira Rocha</a></li>
+  <li><a href="https://github.com/duasck">Luis Eduardo Leite Azevedo</a></li>
  
 </ul>
 
