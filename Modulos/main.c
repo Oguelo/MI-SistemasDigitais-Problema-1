@@ -111,6 +111,11 @@ void execTetris()
         usleep(8000000);
         video_clear();
         video_close();
-        hscore = score;
+        if(score > hscore){
+
+            hscore = score;
+
+        }
+        
     }
 }
