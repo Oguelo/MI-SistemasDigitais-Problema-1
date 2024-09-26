@@ -153,8 +153,8 @@ Se o conjunto de tetrominos atingirem a margem superior da tela, a partida é en
 <h2>Interface do usuário</h2>
 <div align="justify">
 A interface de usuário exibe o "score", o  "high-score" e foi criado um tabuleiro com duas barras laterais e uma inferior utilizado o video_box na construção dessas imagens, centralizados na tela, foram utilizados duas funções  para exibir o estado do jogo: uma para desenhar o tabuleiro no vídeo (interface gráfica) e outra para desenhá-lo no terminal (interface de texto). Essas funções utilizam uma matriz chamada boardMatrix que representa o estado atual do tabuleiro do jogo.
-A função drawboard desenha o tabuleiro usando a interface gráfica, onde cada célula ocupada (isNotEmpty for diferente de zero) é desenhada como um quadrado colorido. E a drawTetrominoTerminal, é usada para exibir um Tetromino individual (a peça atual em queda) no terminal.
---- 
+A função `drawboard` desenha o tabuleiro usando a interface gráfica, onde cada célula ocupada (isNotEmpty for diferente de zero) é desenhada como um quadrado colorido. E a drawTetrominoTerminal, é usada para exibir um Tetromino individual (a peça atual em queda) no terminal.
+
 
 
 </div>
@@ -186,22 +186,22 @@ No jogo, as peças que caem no tabuleiro são chamadas de Tetrominos. Elas são 
 
 No código fornecido, foram implementados quatro tipos de Tetrominos:
 
-Tetromino Q (ou O):
+`Tetromino Q (ou O):`
 
 Formato de um quadrado, composto por quatro blocos dispostos em uma matriz 2x2.
 Cor: Amarelo.
 
-Tetromino T:
+`Tetromino T:`
 
 Formato de uma letra "T", com três blocos na base e um bloco no centro superior.
 Cor: Rosa.
 
-Tetromino L:
+`Tetromino L:`
 
 Formato de uma letra "L", composto por três blocos em linha e um bloco adicional no final da linha.
 Cor: Laranja.
 
-Tetromino I:
+`Tetromino I:`
 
 Formato de uma linha reta composta por quatro blocos em sequência.
 Cor: Ciano.
