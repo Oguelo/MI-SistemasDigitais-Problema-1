@@ -27,7 +27,7 @@ void execTetris()
     int16_t mg_per_lsb = 4;
 
     srand(time(NULL));
-    
+
     video_open();
 
     Tetromino currentTetromino;
@@ -113,6 +113,10 @@ void execTetris()
         usleep(8000000);
         video_clear();
         video_close();
-        hscore = score;
+        if(score > hscore){
+
+            hscore = score;
+
+        }
     }
 }
