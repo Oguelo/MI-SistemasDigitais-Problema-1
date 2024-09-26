@@ -190,15 +190,22 @@ Tetromino Q (ou O):
 
 Formato de um quadrado, composto por quatro blocos dispostos em uma matriz 2x2.
 Cor: Amarelo.
+
 Tetromino T:
+
 Formato de uma letra "T", com três blocos na base e um bloco no centro superior.
 Cor: Rosa.
+
 Tetromino L:
+
 Formato de uma letra "L", composto por três blocos em linha e um bloco adicional no final da linha.
 Cor: Laranja.
+
 Tetromino I:
+
 Formato de uma linha reta composta por quatro blocos em sequência.
 Cor: Ciano.
+
 Esses Tetrominos são gerados aleatoriamente através da função 'generateTetromino'.
 
 </div>
