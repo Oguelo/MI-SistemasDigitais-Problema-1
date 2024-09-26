@@ -40,7 +40,7 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
           <li><a href="#conclusao"> Conclusão </a></li>
         
     
-	</ul>	
+
 </div>
 
 <div id="equipamentos"> 
