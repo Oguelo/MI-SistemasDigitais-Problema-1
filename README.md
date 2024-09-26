@@ -181,6 +181,26 @@ A pontuação no Tetris é acumulada conforme as linhas completas são removidas
 <h3> Game over  </h3>
 O game over é definido quando uma das posições da matriz principal na linha 0 esta ocupada e outra peça gerada está a disputar o mesmo espaço, assim o game over será definido e uma representação será exibida na tela.
 
+<h3> Tetrominos </h3>
+No jogo, as peças que caem no tabuleiro são chamadas de Tetrominos. Elas são compostas por quatro blocos que podem ser conectados de diferentes formas.
+
+No código fornecido, foram implementados quatro tipos de Tetrominos:
+
+Tetromino Q (ou O):
+
+Formato de um quadrado, composto por quatro blocos dispostos em uma matriz 2x2.
+Cor: Amarelo.
+Tetromino T:
+Formato de uma letra "T", com três blocos na base e um bloco no centro superior.
+Cor: Rosa.
+Tetromino L:
+Formato de uma letra "L", composto por três blocos em linha e um bloco adicional no final da linha.
+Cor: Laranja.
+Tetromino I:
+Formato de uma linha reta composta por quatro blocos em sequência.
+Cor: Ciano.
+Esses Tetrominos são gerados aleatoriamente através da função 'generateTetromino'.
+
 </div>
 <div id="Algoritmos"> 
 <h2> Algoritmos de Jogo </h2>
