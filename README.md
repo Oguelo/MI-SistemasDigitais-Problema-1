@@ -12,7 +12,7 @@ Este projeto tem como objetivo desenvolver um jogo inspirado no clássico Tetris
 Os requisitos para elaboração do sistema são apresentados a seguir:
 
 * O código carregado na DE1-SoC deve ser feito em linguagem C;
-* Um acelerômetro deve captar a movimentação feita na placa para alterar a posição da barra que irá colidir com a bola;
+* Um acelerômetro deve captar a movimentação feita na placa para alterar a posição das peças que irão cair no tabuleiro.
 * Os botões devem ser utilizados para executar comandos no jogo;
 * Os dados de imagem devem ser transmitidos de um cabo VGA para um monitor CRT.
 
@@ -32,8 +32,13 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
         <li><a href="#equipamentos">  Descrição dos Equipamentos e Software Utilizados</a></li>
         <li><a href="#arq_CPU">  Arquitetura da placa DE1-SoC</a></li>
         <li><a href="#Drives"> Drives de Dispositivos de Entrada e Saída (E/S) </a></li>
+        <li><a href="#Acelerometro"> Acelerometro </a></li>
         <li><a href="#Inteface-Grafica"> Interface do Usuário </a></li>
         <li><a href="#Regras-de-jogo"> Dinâmica e Regras de Jogo </a></li>
+        <li><a href="#Algoritmos"> Algoritmos de Jogo </a></li>
+         <li><a href="#Funcionamento"> Funcionamento do jogo </a></li>
+          <li><a href="#conclusao"> Conclusão </a></li>
+        
     
 	</ul>	
 </div>
@@ -138,9 +143,15 @@ O campo de jogo possui os seguintes elementos: o valor do score atual exibido na
 
 Quando uma linha é feita de tetrominos ela é destruída, e sua respectiva pontuação é somada no score. 
 
-Se o conjunto de tetrominos atingirem a margem superior da tela, a partida é encerrada, assim, a tela de derrota é exibida com a frase "game over" e o score alcançado. 
+Se o conjunto de tetrominos atingirem a margem superior da tela, a partida é encerrada, assim, a tela de derrota é exibida com a frase "game over" e o score alcançado. 7
 
-# Interface do Usuário
+ <div id="Acelerometro"> 
+<h2>Acelerometro</h2>
+<div align="justify">
+
+<div id="Inteface-Grafica"> 
+<h2>Interface do usuário</h2>
+<div align="justify">
 
 // pra fazer
 --- 
@@ -157,10 +168,6 @@ O objetivo principal do jogo Tetris é alcançar um score alto, fazendo os tetro
 <h2> Controles</h2>
 <h3>Deslocamento Lateral: </h3>
 O jogador inclina a placa para a direita ou esquerda com o acelerometro, o que move a peça na direção correspondente dentro do tabuleiro, respeitando as barreiras laterais.
-
-<h3>Rotação da Peça:   </h3>
-Um dos botões disponíveis na placa é responsável por rotacionar a peça em 90 graus.
-
 
 <h3>Colisões e Limitações  </h3>
 
@@ -194,3 +201,10 @@ O movimento contínuo das peças no Tetris é essencial para a jogabilidade. Par
 Durante a queda contínua, o jogador pode mover a peça para os lados ou rotacioná-la. O algoritmo de movimentação contínua verifica se o movimento lateral ou a rotação são válidos, checando se há espaço suficiente no tabuleiro para realizar a ação desejada.
 
 Se uma colisão for detectada durante o movimento da peça, ela é fixada em sua posição atual, e uma nova peça é gerada no topo do tabuleiro, reiniciando o ciclo.
+<div id="Funcionamento"> 
+<h2> Funcionamento do jogo</h2>
+<div align="justify">
+
+<div id="conclusao"> 
+<h2> Conclusão</h2>
+<div align="justify">
