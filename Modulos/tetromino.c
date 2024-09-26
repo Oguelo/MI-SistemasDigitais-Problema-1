@@ -15,7 +15,6 @@ void generateQPattern(Tetromino *tetromino)
     }
 
     tetromino->color = COLOR_YELLOW;
-    tetromino->colorShadow = COLOR_YELLOW_DARK;
     tetromino->currentRotation = 0;
 }
 void generateTPattern(Tetromino *tetromino)
@@ -51,7 +50,6 @@ void generateTPattern(Tetromino *tetromino)
     memcpy(tetromino->pattern[3], t270, sizeof(t270));
 
     tetromino->color = COLOR_PINK;
-    tetromino->colorShadow = COLOR_PINK_DARK;
     tetromino->currentRotation = 0;
 }
 
@@ -88,7 +86,6 @@ void generateLPattern(Tetromino *tetromino)
     memcpy(tetromino->pattern[3], l270, sizeof(l270));
 
     tetromino->color = COLOR_ORANGE;
-    tetromino->colorShadow = COLOR_ORANGE_DARK;
     tetromino->currentRotation = 0;
 }
 
@@ -113,7 +110,6 @@ void generateIPattern(Tetromino *tetromino)
     memcpy(tetromino->pattern[3], i90, sizeof(i90));
 
     tetromino->color = COLOR_CYAN;
-    tetromino->colorShadow = COLOR_CYAN_DARK;
     tetromino->currentRotation = 0;
 }
 

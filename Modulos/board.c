@@ -58,7 +58,7 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromin
                 {
                     boardMatrix[posY][posX].isNotEmpty = 1;
                     boardMatrix[posY][posX].color = tetromino->color;
-                    boardMatrix[posY][posX].colorShadow = tetromino->colorShadow;
+    
                 }
             }
         }
@@ -71,7 +71,7 @@ void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetrom
     {
         for (int j = 0; j < 4; j++)
         {
-            if (tetromino->pattern[tetromino->prevRotation][i][j] == 1)
+            if (tetromino->pattern[tetromino->currentRotation][i][j] == 1)
             {
                 int posX = tetromino->x + j;
                 int posY = tetromino->y + i;

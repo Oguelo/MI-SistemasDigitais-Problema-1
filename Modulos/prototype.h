@@ -39,7 +39,6 @@ void initTetromino(Tetromino *tetromino);
 void clearTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino);
 int buttonRead();
 void changePauseState(int *pointerStateGame, int *pointerButtons);
-int rotateTetromino(int *rotationState, int *pointerButtons);
 
 // Variaveis globais para o acelerometro
 extern int16_t axis_x;

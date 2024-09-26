@@ -27,6 +27,7 @@ void execTetris()
     int16_t mg_per_lsb = 4;
 
     srand(time(NULL));
+    
     video_open();
 
     Tetromino currentTetromino;
@@ -46,7 +47,7 @@ void execTetris()
         score = 0;
         resetBoard(boardMatrix);
         initTetromino(&currentTetromino);
-        int pointerStateGame = 1, pointerRotateTetromino = 0;
+        int pointerStateGame = 1;
 
         while (!checkGameOver(boardMatrix, &currentTetromino))
         {
@@ -56,8 +57,6 @@ void execTetris()
 
             if (pointerStateGame == 1)
             {
-                currentTetromino.prevRotation = currentTetromino.currentRotation;
-                currentTetromino.currentRotation = rotateTetromino(&pointerRotateTetromino, &buttonValue);
 
                 pthread_mutex_lock(&lock);
                 if (axis_x * mg_per_lsb >= 100)
