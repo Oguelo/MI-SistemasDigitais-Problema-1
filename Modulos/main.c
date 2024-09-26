@@ -28,9 +28,6 @@ void execTetris()
 
     srand(time(NULL));
     
-    video_open();
-    
-
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
     int dx = 0, dy = 1, moved = 1, score, hscore;
