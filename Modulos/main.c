@@ -27,8 +27,9 @@ void execTetris()
     int16_t mg_per_lsb = 4;
 
     srand(time(NULL));
-
+    
     video_open();
+    
 
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
@@ -39,7 +40,7 @@ void execTetris()
 
     while (1)
     {
-
+        video_open();
         video_clear();
         video_erase();
         video_close();
@@ -107,16 +108,12 @@ void execTetris()
         video_clear();
         gameField(score, hscore);
         drawBoard(boardMatrix);
-        generatePhrase(2, 150, text_game, 4, COLOR_RED);
-        generatePhrase(240, 150, text_over, 4, COLOR_RED);
+        generatePhrase(2, 100, text_game, 4, COLOR_RED);
+        generatePhrase(260, 100, text_over, 4, COLOR_RED);
         video_show();
         usleep(8000000);
         video_clear();
         video_close();
-        if(score > hscore){
-
-            hscore = score;
-
-        }
+        hscore = score;
     }
 }
