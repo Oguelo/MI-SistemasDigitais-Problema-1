@@ -21,6 +21,7 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 <h2>  Equipe: <br></h2>
 <uL> 
   <li><a href="https://github.com/Oguelo">Alex da Fonseca Dantas Junior</a></li>
+  <li><a href="https://github.com/BRCZ1N">Bruno Campos de Oliveira Rocha</a></li>
  
 </ul>
 
