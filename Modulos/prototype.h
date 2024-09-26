@@ -1,7 +1,7 @@
 #ifndef PROTOTYPE_H_INCLUDED
 #define PROTOTYPE_H_INCLUDED
 
-#include <intelfpgaup///video.h>
+#include <intelfpgaup/video.h>
 #include <intelfpgaup/KEY.h>
 
 #include <pthread.h>
