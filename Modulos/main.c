@@ -1,4 +1,4 @@
-#include "prototype.h"
+#include "interfaces.h"
 int16_t axis_x;
 pthread_mutex_t lock;
 

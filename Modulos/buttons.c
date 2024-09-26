@@ -1,4 +1,4 @@
-#include "prototype.h"
+#include "interfaces.h"
 
 /**
  * Alteração do estado atual do jogo.

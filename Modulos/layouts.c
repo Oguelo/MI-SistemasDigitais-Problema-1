@@ -1,4 +1,4 @@
-#include "prototype.h"
+#include "interfaces.h"
 
 /**
  * Desenha uma frase na tela.

@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <pthread.h>
-#include "prototype.h"
+#include "interfaces.h"
 
 // Ponteiros para os registradores I2C0 e SYSMGR (Gerenciador de Sistema)
 static unsigned int *ponteiro_base_i2c, *ponteiro_gerenciador;

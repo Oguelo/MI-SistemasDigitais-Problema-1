@@ -1,7 +1,7 @@
 #ifndef STRUCTS_H_INCLUDED
 #define STRUCTS_H_INCLUDED
 
-#include "prototype.h"
+#include "interfaces.h"
 
 typedef struct
 {

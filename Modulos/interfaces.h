@@ -1,5 +1,5 @@
-#ifndef PROTOTYPE_H_INCLUDED
-#define PROTOTYPE_H_INCLUDED
+#ifndef INTERFACES_H_INCLUDED
+#define INTERFACES_H_INCLUDED
 
 #include <intelfpgaup/video.h>
 #include <intelfpgaup/KEY.h>

@@ -1,4 +1,4 @@
-#include "prototype.h"
+#include "interfaces.h"
 
 void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS])
 {

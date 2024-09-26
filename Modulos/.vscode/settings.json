@@ -1,7 +1,7 @@
 {
     "files.associations": {
         "constants.h": "c",
-        "prototype.h": "c",
+        "interfaces.h": "c",
         "stdio.h": "c",
         "adxl345.h": "c",
         "address_map_arm.h": "c"
