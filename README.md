@@ -221,13 +221,6 @@ A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça
 
 Em seguida, o algoritmo verifica se alguma linha foi completamente preenchida. Caso positivo, a linha é eliminada e as linhas acima dela descem, mantendo o espaço para novas peças.
 
-<h3> Algoritmo de Verificação Contínua </h3>
-
-O movimento contínuo das peças no Tetris é essencial para a jogabilidade. Para garantir que as peças se movam suavemente, o algoritmo de movimentação contínua foi implementado. Este algoritmo atualiza a posição das peças a cada intervalo de tempo, movendo-as automaticamente para baixo até que uma colisão seja detectada.
-
-Durante a queda contínua, o jogador pode mover a peça para os lados ou rotacioná-la. O algoritmo de movimentação contínua verifica se o movimento lateral ou a rotação são válidos, checando se há espaço suficiente no tabuleiro para realizar a ação desejada.
-
-Se uma colisão for detectada durante o movimento da peça, ela é fixada em sua posição atual, e uma nova peça é gerada no topo do tabuleiro, reiniciando o ciclo.
 <div id="Funcionamento"> 
 <h2> Funcionamento do jogo</h2>
 <div align="justify">
