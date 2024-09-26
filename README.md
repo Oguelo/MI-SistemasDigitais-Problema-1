@@ -43,7 +43,7 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 
 Nesta seção, são apresentados os equipamentos e software utilizados durante o desenvolvimento do projeto.
 
-<h3> o kit de desenvolvimento DE1-SoC</h3>
+<h3>Kit de desenvolvimento DE1-SoC</h3>
 
 A placa DE1-SoC é um kit de desenvolvimento que integra um processador ARM Cortex-A9 dual-core com um FPGA Cyclone V da Intel, proporcionando uma poderosa plataforma para projetos que combinam software e hardware. Com uma ampla variedade de periféricos, como portas VGA, Ethernet, USB, e áudio, a DE1-SoC é ideal para aplicações em sistemas embarcados e FPGA. Devido à sua versatilidade, essa placa é amplamente utilizada em ambientes educacionais e de pesquisa, facilitando o aprendizado e o desenvolvimento de projetos em ambas as áreas.
 Abaixo estão os elementos utilizados na construção desse projeto:
@@ -76,7 +76,7 @@ A linguagem C foi escolhida por sua eficiência, portabilidade e ampla aplicaç�
 
 O GCC, abreviação de "GNU Compiler Collection" (Coleção de Compiladores GNU), é uma popular distribuição de compiladores que oferece suporte a diversas linguagens de programação, como C, C++, Objective-C, Fortran e Ada. Quando executado, o GCC realiza várias etapas, incluindo pré-processamento, compilação, montagem e vinculação. Ele também disponibiliza uma ampla variedade de opções de linha de comando, permitindo que o desenvolvedor personalize o processo de compilação conforme suas necessidades específicas
 
-<h3>Vscode</h3>
+<h3>Vistual Studio Code</h3>
 
 O Visual Studio Code, conhecido como VSCode, é um ambiente de desenvolvimento amplamente usado. Desenvolvido pela Microsoft, é um editor de código gratuito e de código aberto com recursos como realce de sintaxe, conclusão de código e depuração integrada. Suporta várias linguagens e possui extensões para personalização. No projeto ele foi utilizado para desenvolver o código fonte do jogo.
 
