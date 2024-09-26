@@ -20,8 +20,9 @@ int main()
 
     return 0;
 }
-void execTetris(){
-    
+void execTetris()
+{
+
     int state_game = 1, buttons, buttonValue, buttonValueRotate;
     int16_t mg_per_lsb = 4;
 
@@ -47,34 +48,34 @@ void execTetris(){
         initTetromino(&currentTetromino);
         int pointerStateGame = 1, pointerRotateTetromino = 0;
 
-        while (!checkGameOver(boardMatrix,&currentTetromino))
+        while (!checkGameOver(boardMatrix, &currentTetromino))
         {
             buttonValue = buttonRead();
 
             changePauseState(&pointerStateGame, &buttonValue);
-       
+
             if (pointerStateGame == 1)
             {
                 currentTetromino.prevRotation = currentTetromino.currentRotation;
                 currentTetromino.currentRotation = rotateTetromino(&pointerRotateTetromino, &buttonValue);
 
-                 pthread_mutex_lock(&lock);
-                 if (axis_x * mg_per_lsb >= 100)
-                 {
+                pthread_mutex_lock(&lock);
+                if (axis_x * mg_per_lsb >= 100)
+                {
 
-                     dx = 1;
-                 }
-                 else if (axis_x * mg_per_lsb <= -100)
-                 {
+                    dx = 1;
+                }
+                else if (axis_x * mg_per_lsb <= -100)
+                {
 
-                     dx = -1;
-                 }
-                 else
-                 {
+                    dx = -1;
+                }
+                else
+                {
 
-                     dx = 0;
-                 }
-                 pthread_mutex_unlock(&lock);
+                    dx = 0;
+                }
+                pthread_mutex_unlock(&lock);
                 moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
                 dx = 0;
                 if (!moved)
@@ -90,13 +91,15 @@ void execTetris(){
                 video_show();
                 video_close();
                 usleep(150000);
-            }else{
+            }
+            else
+            {
                 video_open();
                 video_clear();
-                gameField(score, hscore);   
+                gameField(score, hscore);
                 drawBoard(boardMatrix);
-                generatePhrase(120, 2, text_paused, 6,COLOR_RED);
-                video_show(); 
+                generatePhrase(120, 2, text_paused, 6, COLOR_RED);
+                video_show();
                 video_close();
             }
             drawBoardTerminal(boardMatrix);
@@ -105,15 +108,12 @@ void execTetris(){
         video_clear();
         gameField(score, hscore);
         drawBoard(boardMatrix);
-        generatePhrase(2, 150, text_game, 4,COLOR_RED);
-        generatePhrase(240, 150, text_over, 4,COLOR_RED);
-        video_show(); 
+        generatePhrase(2, 150, text_game, 4, COLOR_RED);
+        generatePhrase(240, 150, text_over, 4, COLOR_RED);
+        video_show();
         usleep(8000000);
         video_clear();
         video_close();
         hscore = score;
     }
-
-    
 }
-
