@@ -11,7 +11,7 @@
  * @param coordY Coordenada Y do canto superior esquerdo da região onde o título será exibido.
  * @return void
  */
-void title(int coordX, int coordY)
+void generateTitle(int coordX, int coordY)
 {
 
     short color1 = 0x3f9e;
@@ -93,7 +93,7 @@ void title(int coordX, int coordY)
  * @param color    Cor do caractere.
  * @return void
  */
-void alphanumeric(int coordX, int coordY, char caracter, short color)
+void generateChar(int coordX, int coordY, char caracter, short color)
 {
 
     switch (caracter)
@@ -501,41 +501,11 @@ void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
             if (boardMatrix[i][j].isNotEmpty)
             {
 
-                //    int Initialx1 = INITIAL_LIMIT_X + j * BLOCK_SIZE;
-                //    int Initialy1 = INITIAL_LIMIT_Y + i * BLOCK_SIZE;
-                //    int Finalx2 = INITIAL_LIMIT_X + (j)* BLOCK_SIZE;
-                //    int Finaly2 = INITIAL_LIMIT_Y + (i)* BLOCK_SIZE;
-                //    video_box(Initialx1, Initialy1, Finalx2, Finaly2, boardMatrix[i][j].color);
-
                 int initialX1 = INITIAL_LIMIT_X + j * (BLOCK_SIZE + SPACING);
                 int initialY1 = INITIAL_LIMIT_Y + i * (BLOCK_SIZE + SPACING);
                 int finalX2 = initialX1 + BLOCK_SIZE;
                 int finalY2 = initialY1 + BLOCK_SIZE;
                 video_box(initialX1, initialY1, finalX2, finalY2, boardMatrix[i][j].color);
-
- 
-            }
-        }
-    }
-}
-
-void drawTetromino(Tetromino *tetromino)
-{
-
-    for (int i = 0; i < 4; i++)
-    {
-
-        for (int j = 0; j < 4; j++)
-        {
-
-            if (tetromino->pattern[i][j] != 0)
-            {
-                video_box(
-                    tetromino->x + j * BLOCK_SIZE,
-                    tetromino->y + i * BLOCK_SIZE,
-                    tetromino->x + (j + 1) * BLOCK_SIZE,
-                    tetromino->y + (i + 1) * BLOCK_SIZE,
-                    tetromino->color);
             }
         }
     }
@@ -582,11 +552,4 @@ void drawTetrominoTerminal(Tetromino tetromino)
         }
         printf("\n");
     }
-}
-
-void updateTetris(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino tetromino)
-{
-
-    drawBoardTerminal(boardMatrix);
-    drawTetrominoTerminal(tetromino);
 }

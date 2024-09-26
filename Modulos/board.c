@@ -12,16 +12,11 @@ void resetBoard(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
-int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS])
+int checkGameOver(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino)
 {
 
-    for (int x = 0; x < COLUMNS; x++)
-    {
-        if (boardMatrix[0][x].isNotEmpty)
-        {
-            return 1;
-        }
-    }
+    if (verifyCollision(boardMatrix, tetromino) && tetromino->y == 0)
+        return 1;
     return 0;
 }
 
@@ -63,7 +58,7 @@ void fixTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromin
                 {
                     boardMatrix[posY][posX].isNotEmpty = 1;
                     boardMatrix[posY][posX].color = tetromino->color;
-                    boardMatrix[posY][posX].colorShadow = tetromino->colorShadow;
+    
                 }
             }
         }

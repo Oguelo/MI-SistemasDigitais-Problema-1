@@ -15,8 +15,7 @@ void generateQPattern(Tetromino *tetromino)
     }
 
     tetromino->color = COLOR_YELLOW;
-    tetromino->colorShadow = COLOR_YELLOW_DARK;
-    tetromino->currentRotation = 0; 
+    tetromino->currentRotation = 0;
 }
 void generateTPattern(Tetromino *tetromino)
 {
@@ -24,24 +23,24 @@ void generateTPattern(Tetromino *tetromino)
     int t0[4][4] = {
         {1, 1, 1, 0},
         {0, 1, 0, 0},
-        {0, 1, 0, 0},
+        {0, 0, 0, 0},
         {0, 0, 0, 0}};
 
     int t90[4][4] = {
         {0, 0, 1, 0},
-        {1, 1, 1, 0},
+        {0, 1, 1, 0},
         {0, 0, 1, 0},
         {0, 0, 0, 0}};
 
     int t180[4][4] = {
-        {0, 1, 0, 0},
+        {0, 0, 0, 0},
         {0, 1, 0, 0},
         {1, 1, 1, 0},
         {0, 0, 0, 0}};
 
     int t270[4][4] = {
         {1, 0, 0, 0},
-        {1, 1, 1, 0},
+        {1, 1, 0, 0},
         {1, 0, 0, 0},
         {0, 0, 0, 0}};
 
@@ -51,7 +50,6 @@ void generateTPattern(Tetromino *tetromino)
     memcpy(tetromino->pattern[3], t270, sizeof(t270));
 
     tetromino->color = COLOR_PINK;
-    tetromino->colorShadow = COLOR_PINK_DARK;
     tetromino->currentRotation = 0;
 }
 
@@ -60,7 +58,7 @@ void generateLPattern(Tetromino *tetromino)
 
     int l0[4][4] = {
         {1, 0, 0, 0},
-        {1, 1, 1, 1},
+        {1, 1, 1, 0},
         {0, 0, 0, 0},
         {0, 0, 0, 0}};
 
@@ -68,16 +66,16 @@ void generateLPattern(Tetromino *tetromino)
         {0, 1, 1, 0},
         {0, 1, 0, 0},
         {0, 1, 0, 0},
-        {0, 1, 0, 0}};
+        {0, 0, 0, 0}};
 
     int l180[4][4] = {
-        {1, 1, 1, 1},
+        {0, 1, 1, 1},
         {0, 0, 0, 1},
         {0, 0, 0, 0},
         {0, 0, 0, 0}};
 
     int l270[4][4] = {
-        {0, 1, 0, 0},
+        {0, 0, 0, 0},
         {0, 1, 0, 0},
         {0, 1, 0, 0},
         {1, 1, 0, 0}};
@@ -88,7 +86,6 @@ void generateLPattern(Tetromino *tetromino)
     memcpy(tetromino->pattern[3], l270, sizeof(l270));
 
     tetromino->color = COLOR_ORANGE;
-    tetromino->colorShadow = COLOR_ORANGE_DARK;
     tetromino->currentRotation = 0;
 }
 
@@ -113,14 +110,12 @@ void generateIPattern(Tetromino *tetromino)
     memcpy(tetromino->pattern[3], i90, sizeof(i90));
 
     tetromino->color = COLOR_CYAN;
-    tetromino->colorShadow = COLOR_CYAN_DARK;
     tetromino->currentRotation = 0;
 }
 
 void generateTetromino(Tetromino *tetromino)
 {
 
-    srand(time(NULL));
     int tipo = rand() % 4;
 
     switch (tipo)
@@ -135,12 +130,9 @@ void generateTetromino(Tetromino *tetromino)
         tetromino->generate = generateIPattern;
         break;
     case TETROMINO_T:
-        tetromino->generate = generateIPattern;
+        tetromino->generate = generateTPattern;
         break;
     }
-    
-    
-    
 
     tetromino->generate(tetromino);
 }
@@ -151,7 +143,7 @@ void initTetromino(Tetromino *tetromino)
     generateTetromino(tetromino);
     tetromino->x = (COLUMNS / 2) - 2;
     tetromino->y = 0;
-    tetromino->currentRotation = 1;
+    tetromino->currentRotation = 0;
 }
 
 void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy, int *moved)
@@ -159,6 +151,11 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
 
     int movedX = 1;
     int movedY = 1;
+
+    if (verifyCollision(boardMatrix, tetromino) && tetromino->y == 0)
+    {
+        return;
+    }
 
     clearTetromino(boardMatrix, tetromino);
 
@@ -178,15 +175,13 @@ void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromi
 
         tetromino->y -= dy;
         movedY = 0;
-        if(dx == 0){
-
+        if (dx == 0)
+        {
             movedX = 0;
-
         }
     }
 
     fixTetromino(boardMatrix, tetromino, tetromino->x, tetromino->y);
 
     *moved = movedX || movedY;
-    
 }

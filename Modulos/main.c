@@ -1,4 +1,6 @@
 #include "prototype.h"
+int16_t axis_x;
+pthread_mutex_t lock;
 
 int main()
 {
@@ -10,7 +12,7 @@ int main()
     pthread_create(&thread1, NULL, execAccel, NULL);
 
     pthread_create(&thread2, NULL, execTetris, NULL);
-    
+
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
 
@@ -20,69 +22,95 @@ int main()
 }
 void execTetris()
 {
-    /* Inicialização dos periféricos */
 
-    /* Botões */
-    int state_game = 1, buttons;
+    int state_game = 1, buttons, buttonValue, buttonValueRotate;
     int16_t mg_per_lsb = 4;
-    // KEY_open();
-    // KEY_read(&buttons);
 
-    video_open();
-
+    srand(time(NULL));
+    
     Tetromino currentTetromino;
     PartTetromino boardMatrix[LINES][COLUMNS];
-    int dx = 0, dy = 1, moved = 1, score,hscore;
+    int dx = 0, dy = 1, moved = 1, score, hscore;
+    char text_over[4] = "over";
+    char text_paused[6] = "paused";
+    char text_game[4] = "game";
 
     while (1)
     {
-
-        // KEY_read(&buttons);
-        // change_state(&state_game, &buttons);
-
+        video_open();
         video_clear();
         video_erase();
+        video_close();
 
         score = 0;
         resetBoard(boardMatrix);
-        initTetromino(&currentTetromino, boardMatrix);
+        initTetromino(&currentTetromino);
+        int pointerStateGame = 1;
 
-        while (!checkGameOver(boardMatrix))
+        while (!checkGameOver(boardMatrix, &currentTetromino))
         {
-            drawBoardTerminal(boardMatrix);
-            pthread_mutex_lock(&lock);
-            if (XYZ[0] * mg_per_lsb >= 100)
+            buttonValue = buttonRead();
+
+            changePauseState(&pointerStateGame, &buttonValue);
+
+            if (pointerStateGame == 1)
             {
 
-                dx = 1;
-            }
-            else if (XYZ[0] * mg_per_lsb <= -100)
-            {
+                pthread_mutex_lock(&lock);
+                if (axis_x * mg_per_lsb >= 100)
+                {
 
-                dx = -1;
+                    dx = 1;
+                }
+                else if (axis_x * mg_per_lsb <= -100)
+                {
+
+                    dx = -1;
+                }
+                else
+                {
+
+                    dx = 0;
+                }
+                pthread_mutex_unlock(&lock);
+                moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
+                dx = 0;
+                if (!moved)
+                {
+                    removeFullLines(boardMatrix, &score);
+                    initTetromino(&currentTetromino);
+                }
+                drawTetrominoTerminal(currentTetromino);
+                video_open();
+                video_clear();
+                gameField(score, hscore);
+                drawBoard(boardMatrix);
+                video_show();
+                video_close();
+                usleep(150000);
             }
             else
             {
-
-                dx = 0;
+                video_open();
+                video_clear();
+                gameField(score, hscore);
+                drawBoard(boardMatrix);
+                generatePhrase(120, 2, text_paused, 6, COLOR_RED);
+                video_show();
+                video_close();
             }
-            pthread_mutex_unlock(&lock);
-            moveTetromino(boardMatrix, &currentTetromino, dx, dy, &moved);
-            if (!moved)
-            {
-                removeFullLines(boardMatrix, &score);
-                initTetromino(&currentTetromino, boardMatrix);
-            }
-            drawTetrominoTerminal(currentTetromino);
-            video_open();
-            video_clear();
-            game_field(score, state_game, hscore);
-            drawBoard(boardMatrix);
-            video_show();
-            video_close();
-            usleep(350000);
-        
+            drawBoardTerminal(boardMatrix);
         }
+        video_open();
+        video_clear();
+        gameField(score, hscore);
+        drawBoard(boardMatrix);
+        generatePhrase(2, 100, text_game, 4, COLOR_RED);
+        generatePhrase(260, 100, text_over, 4, COLOR_RED);
+        video_show();
+        usleep(8000000);
+        video_clear();
+        video_close();
         hscore = score;
     }
 }
