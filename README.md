@@ -1,4 +1,7 @@
-<h1 align="center"> Tetris game</h1>
+<h1 align="center"> 🟦🟪🟨🟥🟧 TETRIS 🟧🟥🟨🟪🟦
+</h1>
+
+
 <h3 align="center"> Jogo inspirado no clássico Tetris, desenvolvido para o kit de desenvolvimento DE1-SoC utilizando linguagem C </h3>
 
 <div align="justify"> 
@@ -30,14 +33,17 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 <div id="sumario">
     <ul>
         <li><a href="#equipamentos">Descrição dos Equipamentos e Software Utilizados</a></li>
-        <li><a href="#arq_CPU">Arquitetura da placa DE1-SoC</a></li>
+        <li><a href="#arq_CPU"> Estrutura da Placa DE1-SoC </a></li>
         <li><a href="#Drives">Drives de Dispositivos de Entrada e Saída (E/S)</a></li>
         <li><a href="#Acelerometro">Acelerômetro</a></li>
         <li><a href="#Interface-Grafica">Interface do Usuário</a></li>
         <li><a href="#Regras-de-jogo">Dinâmica e Regras de Jogo</a></li>
         <li><a href="#Algoritmos">Algoritmos de Jogo</a></li>
         <li><a href="#Funcionamento">Funcionamento do jogo</a></li>
+        <li><a href="#execucao"> Como Usar </a></li>
+         <li><a href="#makefile">Makefile</a></li>  
         <li><a href="#conclusao">Conclusão</a></li>
+       
     </ul>
 </div>
 
@@ -108,6 +114,55 @@ Abaixo estão dados detalhados sobre o monitor usado:
 </div>
 </div>
 
+<div id="arq_CPU">
+<h2> Estrutura da Placa DE1-SoC </h2>
+<div align="justify">
+
+Nesta parte, será detalhada a arquitetura da placa DE1-SoC, incluindo o processador ARM Cortex-A9, a organização dos registradores, o mapeamento dos dispositivos de entrada/saída na memória, o uso da memória, a comunicação entre o processador e o FPGA, além do processo de compilação nativa diretamente na placa.
+
+<h3>Resumo dos Recursos do Processador ARM Cortex-A9 </h3>
+
+O ARM Cortex-A9 é baseado em uma arquitetura RISC (Reduced Instruction Set Computing), onde operações aritméticas e lógicas são realizadas nos registradores de propósito geral. A movimentação de dados entre memória e registradores é feita através de instruções Load e Store, com comprimento de palavra de 32 bits e endereçamento em estilo little-endian.
+
+<h3>Organização dos Registradores</h3>
+
+O processador ARM Cortex-A9 contém 15 registradores de propósito geral (R0 a R14), um contador de programa (R15) e um registrador de status do programa atual (CPSR), todos com 32 bits. Dois registradores têm tratamento especial: R13 é o Stack Pointer, enquanto R14 atua como registrador de link em chamadas de sub-rotina.
+
+<h3>Instruções e Modo Thumb</h3>
+
+As instruções têm 32 bits e são armazenadas na memória com alinhamento de palavras. O conjunto de instruções Thumb oferece uma versão reduzida com instruções de 16 bits, o que diminui os requisitos de memória, algo útil em sistemas embarcados.
+
+<h3>Memória Utilizada</h3>
+
+O HPS (Hard Processor System) conta com uma interface de memória que conecta o ARM MPCORE a uma memória DDR3 de 1 GB. Esta memória serve como armazenamento de dados e programas para os processadores ARM. Organizada como 256M x 32 bits, ela pode ser acessada por palavras de 32 bits, meias palavras e bytes.
+
+<h3>Mapeamento de Dispositivos de Entrada/Saída</h3>
+
+Os dispositivos de E/S disponíveis ao processador ARM são mapeados diretamente na memória e acessados como se fossem endereços de memória, utilizando as instruções Load e Store.
+
+<h3>Interrupções de Hardware</h3>
+
+Dispositivos de E/S podem gerar interrupções de hardware, ativando as linhas de solicitação de interrupção (IRQ ou FIQ) do processador. Quando ocorre uma interrupção, o processador entra no modo de exceção correspondente e salva o estado atual do programa. Antes de retornar à execução, o endereço salvo no registrador de link deve ser decrementado em 4.
+
+<h3>Diagrama de Blocos da Placa DE1-SoC</h3>
+
+O sistema DE1-SoC é composto pelo HPS e pelo FPGA, ambos integrados no chip Cyclone V SoC. O HPS inclui um processador ARM Cortex-A9 dual-core, uma interface de memória DDR3 e periféricos. O FPGA implementa dois processadores Intel Nios II e vários periféricos conectados.
+
+<h3>Comunicação entre o Processador e o FPGA via JTAG</h3>
+
+A interface JTAG estabelece a comunicação entre a placa DE1-SoC e o computador host, possibilitando a transferência de arquivos de configuração do FPGA e o monitoramento via o programa Intel FPGA Monitor.
+
+<h3>Compilação Nativa na DE1-SoC</h3>
+
+A compilação nativa ocorre quando o código é compilado no mesmo sistema em que será executado. Aqui, a compilação será realizada diretamente na placa, utilizando a linha de comando do Linux e as ferramentas de compilação integradas. O comando `gcc` invoca o GNU C Compiler, um compilador de código aberto muito usado para gerar executáveis no Linux.
+
+</div>
+</div>
+
+
+<div id="Drives"> 
+<h2> Drives de Dispositivos de Entrada e Saída</h2>
+<div align="justify"> 
 # Drivers de Dispositivos de Entrada e Saída (E/S)
 
 Para realizar a comunicação com os dispositivos periféricos de hardware, este projeto utiliza drivers, que são módulos de software responsáveis por fornecer a interface de controle sobre esses dispositivos. Abaixo estão descritos os módulos e funções de cada driver utilizado.
@@ -186,7 +241,12 @@ Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro 
 <h2> Funcionamento do jogo</h2>
 <div align="justify">
 
-## Makefile
+
+
+<div id="makefile"> 
+<h2>Makefile</h2>
+<div align="justify">
+
 
 Para atender aos requisitos e simplificar o processo de compilação e execução do programa em C, foi criado um `Makefile`. Este arquivo serve como uma ferramenta que automatiza a construção do projeto, facilitando o gerenciamento do processo de compilação. O `Makefile` executa as seguintes operações:
 
@@ -195,6 +255,10 @@ Para atender aos requisitos e simplificar o processo de compilação e execuçã
 - **Limpeza**: Remove arquivos temporários e o executável gerado.
 - **Execução**: Permite iniciar o programa compilado.
 
+
+<div id="execucao"> 
+<h2>Como usar</h2>
+<div align="justify">
 ### Como Usar
 
 1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto que deve ser alocado na DE1-Soc e execute o comando:
