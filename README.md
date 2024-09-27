@@ -199,7 +199,8 @@ Para atender aos requisitos e simplificar o processo de compilação e execuçã
 
 1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto e execute o comando:
    ```bash
-   make
+   m
+
 
 
 O uso de um Makefile não só simplifica o processo de construção, mas também melhora a legibilidade e a manutenção do código, permitindo que outros desenvolvedores compreendam rapidamente as dependências e os comandos necessários para executar o projeto.
