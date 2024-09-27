@@ -135,11 +135,9 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 <h2>Acelerometro</h2>
 <div align="justify">
 
-<div id="Inteface-Grafica"> 
-<h2>Interface do usuário</h2>
-<div align="justify">
-A interface de usuário exibe o "score", o  "high-score" e foi criado um tabuleiro com duas barras laterais e uma inferior utilizado o video_box na construção dessas imagens, centralizados na tela, foram utilizados duas funções  para exibir o estado do jogo: uma para desenhar o tabuleiro no vídeo (interface gráfica) e outra para desenhá-lo no terminal (interface de texto). Essas funções utilizam uma matriz chamada boardMatrix que representa o estado atual do tabuleiro do jogo.
-A função `drawboard` desenha o tabuleiro usando a interface gráfica, onde cada célula ocupada (isNotEmpty for diferente de zero) é desenhada como um quadrado colorido. E a drawTetrominoTerminal, é usada para exibir um Tetromino individual (a peça atual em queda) no terminal.
+## Interface do Usuário <a name="Interface-Grafica"></a>
+
+A interface gráfica exibe a pontuação(Score), a maior pontuação(High Score) e o tabuleiro, que apresenta duas barras laterais e uma inferior.
 
 ## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
 
@@ -153,7 +151,7 @@ O objetivo é controlar as peças (Tetrominos) que caem e formar linhas completa
 Peças colidem com o fundo do tabuleiro ou com outras peças, sendo fixadas quando atingem o limite. Linhas completas são removidas e a pontuação do jogador aumenta.
 
 ### Pontuação
-A pontuação é baseada nas linhas eliminadas. Quanto mais linhas eliminadas simultaneamente, maior a pontuação.
+A pontuação é baseada nas linhas eliminadas. Quanto mais linhas eliminadas, maior a pontuação.
 
 ### Fim de Jogo
 O jogo termina quando as peças acumulam-se até o topo do tabuleiro.
