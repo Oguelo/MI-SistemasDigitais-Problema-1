@@ -198,8 +198,7 @@ Para atender aos requisitos e simplificar o processo de compilação e execuçã
 ### Como Usar
 
 1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto e execute o comando:
-   ```bash
-   m
+   make
 
 
 
