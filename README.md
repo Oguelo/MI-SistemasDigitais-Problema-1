@@ -12,7 +12,7 @@ Este projeto tem como objetivo desenvolver um jogo inspirado no clássico Tetris
 Os requisitos para elaboração do sistema são apresentados a seguir:
 
 * O código carregado na DE1-SoC deve ser feito em linguagem C;
-* Um acelerômetro deve captar a movimentação feita na placa para alterar a posição das peças que irão cair no tabuleiro.
+* Um acelerômetro deve captar a movimentação feita na placa para alterar a posição das peças que irão se movimentar no tabuleiro.
 * Os botões devem ser utilizados para executar comandos no jogo;
 * Os dados de imagem devem ser transmitidos de um cabo VGA para um monitor CRT.
 
@@ -131,7 +131,7 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 - `KEY_read`: Lê o estado dos botões e atualiza o endereço de memória fornecido. A leitura indica se os botões foram pressionados desde a última verificação, sendo necessário limpar os dados antes de iniciar novas interações.
 - `KEY_close`: Fecha o dispositivo de botões, liberando os recursos alocados para ele durante a execução.
 
- <div id="Acelerometro"> 
+<div id="Acelerometro"> 
 <h2>Acelerometro</h2>
 <div align="justify">
 
@@ -144,59 +144,35 @@ A função `drawboard` desenha o tabuleiro usando a interface gráfica, onde cad
 
 
 </div>
-
 <div id="Regras-de-jogo"> 
 <h2> Dinâmica e Regras de Jogo </h2>
 <div align="justify">
 
 O objetivo principal do jogo Tetris é alcançar um score alto, fazendo os tetrominos formarem linhas em uma matriz. O jogador assume o controle de uma tetrominos  que eles caiam e formem um conjuntos ou conjuntos de linhas,Para garantir uma experiência dinâmica e desafiadora, o jogo conta com uma série de regras que serão apresentadas nesta seção.
 
-<h2> Controles</h2>
-<h3>Deslocamento Lateral: </h3>
-O jogador inclina a placa para a direita ou esquerda com o acelerometro, o que move a peça na direção correspondente dentro do tabuleiro, respeitando as barreiras laterais.
+## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
 
-<h3>Colisões e Limitações  </h3>
+### Objetivo do Jogo
+O objetivo é controlar as peças (Tetrominos) que caem e formar linhas completas. Quando uma linha é preenchida, ela é eliminada, e o jogador recebe pontos.
 
-As peças podem se mover livremente enquanto não colidem com outras peças já fixadas ou com as bordas do tabuleiro. Ao atingir o fundo ou outras peças, a peça é "fixada" no local, e uma nova peça é gerada.
+### Controles
+- **Deslocamento Lateral**: O acelerômetro movimenta a peça para a esquerda ou direita.
+- **Rotação de Peça**: Botões são usados para girar as peças.
 
-Se uma linha inteira do tabuleiro for preenchida com peças, essa linha é removida, liberando espaço e aumentando a pontuação do jogador. O jogo termina quando não há mais espaço para novas peças no topo do tabuleiro.
+### Colisões e Limitações
+Peças colidem com o fundo do tabuleiro ou com outras peças, sendo fixadas quando atingem o limite. Linhas completas são removidas e a pontuação do jogador aumenta.
 
- <h3> Pontuação </h3>
+### Pontuação
+A pontuação é baseada nas linhas eliminadas. Quanto mais linhas eliminadas simultaneamente, maior a pontuação.
 
-A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida na rodada, sendo ela incrementada unitariamente, além disso ao final da rodada é armazenado e exibido a maior pontuação.
+### Fim de Jogo
+O jogo termina quando as peças acumulam-se até o topo do tabuleiro.
 
-<h3> Final de jogo(Game over)  </h3>
-
-O final de jogo é definido quando há uma colisão de peças no limite máximo inicial do tabuleiro, isto é, quando outra peça é gerada e a mesma executa a tentativa de se inserir na posição inicial, com isso 
-o estado de fim de jogo(Game Over) será definido e uma representação será exibida na tela.
-
-<h3> Tetrominos </h3>
-
-No jogo, as peças fazem parte do ciclo natural do jogo são chamadas de Tetrominos. Elas são compostas por quatro blocos que podem ser conectados de diferentes formas.
-
-No código fornecido, foram implementados quatro tipos de Tetrominos:
-
-`Tetromino Q (ou O):`
-
-Formato de um quadrado, composto por quatro blocos dispostos em uma matriz 2x2.
-Cor: Amarelo.
-
-`Tetromino T:`
-
-Formato de uma letra "T", com três blocos na base e um bloco no centro superior.
-Cor: Rosa.
-
-`Tetromino L:`
-
-Formato de uma letra "L", composto por três blocos em linha e um bloco adicional no final da linha.
-Cor: Laranja.
-
-`Tetromino I:`
-
-Formato de uma linha reta composta por quatro blocos em sequência.
-Cor: Ciano.
-
-Esses Tetrominos são gerados aleatoriamente através da função 'generateTetromino'.
+### Tipos de Tetrominos
+- **Tetromino Q (ou O)**: Quadrado 2x2, cor amarela.
+- **Tetromino T**: Forma de "T", cor rosa.
+- **Tetromino L**: Forma de "L", cor laranja.
+- **Tetromino I**: Linha reta, cor ciano.
 
 </div>
 <div id="Algoritmos"> 
