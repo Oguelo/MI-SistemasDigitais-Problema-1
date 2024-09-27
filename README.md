@@ -12,7 +12,7 @@ Este projeto tem como objetivo desenvolver um jogo inspirado no clássico Tetris
 Os requisitos para elaboração do sistema são apresentados a seguir:
 
 * O código carregado na DE1-SoC deve ser feito em linguagem C;
-* Um acelerômetro deve captar a movimentação feita na placa para alterar a posição da barra que irá colidir com a bola;
+* Um acelerômetro deve captar a movimentação feita na placa para alterar a posição das peças que irão cair no tabuleiro.
 * Os botões devem ser utilizados para executar comandos no jogo;
 * Os dados de imagem devem ser transmitidos de um cabo VGA para um monitor CRT.
 
@@ -22,6 +22,7 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 <uL> 
   <li><a href="https://github.com/Oguelo">Alex da Fonseca Dantas Junior</a></li>
   <li><a href="https://github.com/BRCZ1N">Bruno Campos de Oliveira Rocha</a></li>
+  <li><a href="https://github.com/duasck">Luis Eduardo Leite Azevedo</a></li>
  
 </ul>
 
@@ -31,10 +32,15 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
         <li><a href="#equipamentos">  Descrição dos Equipamentos e Software Utilizados</a></li>
         <li><a href="#arq_CPU">  Arquitetura da placa DE1-SoC</a></li>
         <li><a href="#Drives"> Drives de Dispositivos de Entrada e Saída (E/S) </a></li>
+        <li><a href="#Acelerometro"> Acelerometro </a></li>
         <li><a href="#Inteface-Grafica"> Interface do Usuário </a></li>
         <li><a href="#Regras-de-jogo"> Dinâmica e Regras de Jogo </a></li>
+        <li><a href="#Algoritmos"> Algoritmos de Jogo </a></li>
+         <li><a href="#Funcionamento"> Funcionamento do jogo </a></li>
+          <li><a href="#conclusao"> Conclusão </a></li>
+        
     
-	</ul>	
+
 </div>
 
 <div id="equipamentos"> 
@@ -43,7 +49,7 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 
 Nesta seção, são apresentados os equipamentos e software utilizados durante o desenvolvimento do projeto.
 
-<h3> o kit de desenvolvimento DE1-SoC</h3>
+<h3>Kit de desenvolvimento DE1-SoC</h3>
 
 A placa DE1-SoC é um kit de desenvolvimento que integra um processador ARM Cortex-A9 dual-core com um FPGA Cyclone V da Intel, proporcionando uma poderosa plataforma para projetos que combinam software e hardware. Com uma ampla variedade de periféricos, como portas VGA, Ethernet, USB, e áudio, a DE1-SoC é ideal para aplicações em sistemas embarcados e FPGA. Devido à sua versatilidade, essa placa é amplamente utilizada em ambientes educacionais e de pesquisa, facilitando o aprendizado e o desenvolvimento de projetos em ambas as áreas.
 Abaixo estão os elementos utilizados na construção desse projeto:
@@ -76,7 +82,7 @@ A linguagem C foi escolhida por sua eficiência, portabilidade e ampla aplicaç�
 
 O GCC, abreviação de "GNU Compiler Collection" (Coleção de Compiladores GNU), é uma popular distribuição de compiladores que oferece suporte a diversas linguagens de programação, como C, C++, Objective-C, Fortran e Ada. Quando executado, o GCC realiza várias etapas, incluindo pré-processamento, compilação, montagem e vinculação. Ele também disponibiliza uma ampla variedade de opções de linha de comando, permitindo que o desenvolvedor personalize o processo de compilação conforme suas necessidades específicas
 
-<h3>Vscode</h3>
+<h3>Vistual Studio Code</h3>
 
 O Visual Studio Code, conhecido como VSCode, é um ambiente de desenvolvimento amplamente usado. Desenvolvido pela Microsoft, é um editor de código gratuito e de código aberto com recursos como realce de sintaxe, conclusão de código e depuração integrada. Suporta várias linguagens e possui extensões para personalização. No projeto ele foi utilizado para desenvolver o código fonte do jogo.
 
@@ -103,12 +109,6 @@ Abaixo estão dados detalhados sobre o monitor usado:
 </div>
 </div>
 
-
-
-<div id="Drives"> 
-<h2> Drives de Dispositivos de Entrada e Saída (E/S)</h2>
-<div align="justify">
-
 # Drivers de Dispositivos de Entrada e Saída (E/S)
 
 Para realizar a comunicação com os dispositivos periféricos de hardware, este projeto utiliza drivers, que são módulos de software responsáveis por fornecer a interface de controle sobre esses dispositivos. Abaixo estão descritos os módulos e funções de cada driver utilizado.
@@ -131,18 +131,16 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 - `KEY_read`: Lê o estado dos botões e atualiza o endereço de memória fornecido. A leitura indica se os botões foram pressionados desde a última verificação, sendo necessário limpar os dados antes de iniciar novas interações.
 - `KEY_close`: Fecha o dispositivo de botões, liberando os recursos alocados para ele durante a execução.
 
+ <div id="Acelerometro"> 
+<h2>Acelerometro</h2>
+<div align="justify">
 
-O campo de jogo possui os seguintes elementos: o valor do score atual exibido na parte superior esquerda; O valor do hi-score exibido no canto direito; as linhas laterais e inferio para delimitar a área que os tetrominos podem percorrer;
+<div id="Inteface-Grafica"> 
+<h2>Interface do usuário</h2>
+<div align="justify">
+A interface de usuário exibe o "score", o  "high-score" e foi criado um tabuleiro com duas barras laterais e uma inferior utilizado o video_box na construção dessas imagens, centralizados na tela, foram utilizados duas funções  para exibir o estado do jogo: uma para desenhar o tabuleiro no vídeo (interface gráfica) e outra para desenhá-lo no terminal (interface de texto). Essas funções utilizam uma matriz chamada boardMatrix que representa o estado atual do tabuleiro do jogo.
+A função `drawboard` desenha o tabuleiro usando a interface gráfica, onde cada célula ocupada (isNotEmpty for diferente de zero) é desenhada como um quadrado colorido. E a drawTetrominoTerminal, é usada para exibir um Tetromino individual (a peça atual em queda) no terminal.
 
-
-Quando uma linha é feita de tetrominos ela é destruída, e sua respectiva pontuação é somada no score. 
-
-Se o conjunto de tetrominos atingirem a margem superior da tela, a partida é encerrada, assim, a tela de derrota é exibida com a frase "game over" e o score alcançado. 
-
-# Interface do Usuário
-
-// pra fazer
---- 
 
 
 </div>
@@ -157,10 +155,6 @@ O objetivo principal do jogo Tetris é alcançar um score alto, fazendo os tetro
 <h3>Deslocamento Lateral: </h3>
 O jogador inclina a placa para a direita ou esquerda com o acelerometro, o que move a peça na direção correspondente dentro do tabuleiro, respeitando as barreiras laterais.
 
-<h3>Rotação da Peça:   </h3>
-Um dos botões disponíveis na placa é responsável por rotacionar a peça em 90 graus.
-
-
 <h3>Colisões e Limitações  </h3>
 
 As peças podem se mover livremente enquanto não colidem com outras peças já fixadas ou com as bordas do tabuleiro. Ao atingir o fundo ou outras peças, a peça é "fixada" no local, e uma nova peça é gerada.
@@ -169,27 +163,66 @@ Se uma linha inteira do tabuleiro for preenchida com peças, essa linha é remov
 
  <h3> Pontuação </h3>
 
-A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida, sendo ela contada de 1 em 1, no final um hi score é gerado após o game over.
-<h3> Game over  </h3>
-O game over é definido quando uma das posições da matriz principal na linha 0 esta ocupada e outra peça gerada está a disputar o mesmo espaço, assim o game over será definido e uma representação será exibida na tela.
+A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida na rodada, sendo ela incrementada unitariamente, além disso ao final da rodada é armazenado e exibido a maior pontuação.
+
+<h3> Final de jogo(Game over)  </h3>
+
+O final de jogo é definido quando há uma colisão de peças no limite máximo inicial do tabuleiro, isto é, quando outra peça é gerada e a mesma executa a tentativa de se inserir na posição inicial, com isso 
+o estado de fim de jogo(Game Over) será definido e uma representação será exibida na tela.
+
+<h3> Tetrominos </h3>
+
+No jogo, as peças fazem parte do ciclo natural do jogo são chamadas de Tetrominos. Elas são compostas por quatro blocos que podem ser conectados de diferentes formas.
+
+No código fornecido, foram implementados quatro tipos de Tetrominos:
+
+`Tetromino Q (ou O):`
+
+Formato de um quadrado, composto por quatro blocos dispostos em uma matriz 2x2.
+Cor: Amarelo.
+
+`Tetromino T:`
+
+Formato de uma letra "T", com três blocos na base e um bloco no centro superior.
+Cor: Rosa.
+
+`Tetromino L:`
+
+Formato de uma letra "L", composto por três blocos em linha e um bloco adicional no final da linha.
+Cor: Laranja.
+
+`Tetromino I:`
+
+Formato de uma linha reta composta por quatro blocos em sequência.
+Cor: Ciano.
+
+Esses Tetrominos são gerados aleatoriamente através da função 'generateTetromino'.
 
 </div>
 <div id="Algoritmos"> 
 <h2> Algoritmos de Jogo </h2>
 <div align="justify">
 
-<h3> Algoritmo de Colisão </h3>
+<h3>Algoritmo de detecção de colisão</h3>
 
-Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, com outras peças ou com a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo clássico de detecção de colisão entre peças e o tabuleiro .
+Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, outras peças ou a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo de detecção de colisão entre peças e o tabuleiro. A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça atual e comparar com o estado do tabuleiro. Quando uma peça tenta mover-se para uma nova posição, o algoritmo checa se essa posição já está ocupada por outro bloco ou se ultrapassa os limites do tabuleiro. Se uma colisão é detectada, o movimento da peça é interrompido, e ela é fixada em sua posição final no tabuleiro.
 
-A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça atual e comparar com o estado do tabuleiro. Quando uma peça tenta mover-se para uma nova posição, o algoritmo checa se essa posição já está ocupada por outro bloco ou se ultrapassa os limites do tabuleiro. Se uma colisão é detectada, o movimento da peça é interrompido, e ela é fixada em sua posição final no tabuleiro.
+<h3>Algoritmo de movimentação de peça</h3>
 
-Em seguida, o algoritmo verifica se alguma linha foi completamente preenchida. Caso positivo, a linha é eliminada e as linhas acima dela descem, mantendo o espaço para novas peças.
+Este algoritmo é responsável por gerenciar o movimento da peça atual dentro do tabuleiro. A peça se move automaticamente para baixo a cada ciclo de atualização do jogo, e o jogador pode controlar a peça lateralmente via acelerômetro. Para isso, o algoritmo precisa verificar se os movimentos solicitados são válidos, sem ultrapassar os limites do tabuleiro ou colidir com outras peças. A lógica do algoritmo baseia-se em aplicar o movimento solicitado pela peça, seja para a esquerda ou direita, sendo esse direcionamento de deslocamento influenciado pela coordenada fornecida pelo acelerômetro. Antes de realizar o movimento, o algoritmo utiliza o algoritmo de detecção de colisão para garantir que a nova posição não esteja ocupada por outro bloco ou fora dos limites do tabuleiro. Se o movimento for permitido, a peça é deslocada; caso contrário, o movimento é bloqueado. Quando a peça atinge o fundo do tabuleiro ou colide com outra peça, ela é fixada no local, e uma nova peça é gerada no topo do tabuleiro.
 
-<h3> Algoritmo de Verificação Contínua </h3>
+<h3>Algoritmo de geração de peças</h3>
 
-O movimento contínuo das peças no Tetris é essencial para a jogabilidade. Para garantir que as peças se movam suavemente, o algoritmo de movimentação contínua foi implementado. Este algoritmo atualiza a posição das peças a cada intervalo de tempo, movendo-as automaticamente para baixo até que uma colisão seja detectada.
+Este algoritmo é responsável por criar novas peças (tetrominos) que aparecerão no topo do tabuleiro assim que a peça anterior for fixada. As peças são geradas aleatoriamente a partir de um conjunto pré-definido de formas, e cada nova peça começa sua trajetória no topo do tabuleiro, descendo automaticamente. A lógica do algoritmo baseia-se na geração aleatória de uma peça a partir de um conjunto de tetrominos. Após a fixação de uma peça no tabuleiro, o algoritmo seleciona a próxima peça e a posiciona na parte superior central do tabuleiro. A peça começa a descer automaticamente, e o processo de movimentação e detecção de colisão se repete até que a peça seja fixada ou o jogo termine, caso o tabuleiro esteja cheio.
 
-Durante a queda contínua, o jogador pode mover a peça para os lados ou rotacioná-la. O algoritmo de movimentação contínua verifica se o movimento lateral ou a rotação são válidos, checando se há espaço suficiente no tabuleiro para realizar a ação desejada.
+<h3>Algoritmo de remoção de linhas completas</h3>
 
-Se uma colisão for detectada durante o movimento da peça, ela é fixada em sua posição atual, e uma nova peça é gerada no topo do tabuleiro, reiniciando o ciclo.
+Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro foram completamente preenchidas por blocos após a fixação de uma peça. Quando uma linha é completamente preenchida, ela é removida do tabuleiro, e todas as linhas superiores são deslocadas para baixo, liberando espaço para novas peças.A lógica do algoritmo baseia-se em percorrer cada linha do tabuleiro e verificar se todas as células daquela linha estão ocupadas por blocos. Quando uma linha completa é detectada, o algoritmo a remove, esvaziando-a, e depois desloca todas as linhas acima dela para baixo, além disso a linha removida existe o incremento da pontuação do jogador. Esse processo é repetido até que todas as linhas completas tenham sido removidas. O objetivo é liberar espaço e aumentar a pontuação do jogador, tornando o jogo mais desafiador à medida que o campo de jogo se enche novamente.
+
+<div id="Funcionamento"> 
+<h2> Funcionamento do jogo</h2>
+<div align="justify">
+
+<div id="conclusao"> 
+<h2> Conclusão</h2>
+<div align="justify">
