@@ -131,14 +131,6 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 - `KEY_read`: Lê o estado dos botões e atualiza o endereço de memória fornecido. A leitura indica se os botões foram pressionados desde a última verificação, sendo necessário limpar os dados antes de iniciar novas interações.
 - `KEY_close`: Fecha o dispositivo de botões, liberando os recursos alocados para ele durante a execução.
 
-
-O campo de jogo possui os seguintes elementos: o valor do score atual exibido na parte superior esquerda; O valor do hi-score exibido no canto direito; as linhas laterais e inferio para delimitar a área que os tetrominos podem percorrer;
-
-
-Quando uma linha é feita de tetrominos ela é destruída, e sua respectiva pontuação é somada no score. 
-
-Se o conjunto de tetrominos atingirem a margem superior da tela, a partida é encerrada, assim, a tela de derrota é exibida com a frase "game over" e o score alcançado. 7
-
  <div id="Acelerometro"> 
 <h2>Acelerometro</h2>
 <div align="justify">
