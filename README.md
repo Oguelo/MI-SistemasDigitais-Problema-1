@@ -189,19 +189,19 @@ Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro 
 
 ## Makefile
 
-Para simplificar o processo de compilação e execução do programa em C, foi criado um Makefile. Este arquivo é uma ferramenta que automatiza a construção de projetos, facilitando o gerenciamento do processo de compilação. O Makefile executa as seguintes operações:
+Para atender aos requisitos e simplificar o processo de compilação e execução do programa em C, foi criado um `Makefile`. Este arquivo serve como uma ferramenta que automatiza a construção do projeto, facilitando o gerenciamento do processo de compilação. O `Makefile` executa as seguintes operações:
 
-### 1. Compilação
-A etapa de compilação converte o código fonte escrito em C (.c) em um arquivo objeto (.o). Esta transformação é feita utilizando um compilador C, que analisa o código fonte e verifica a presença de erros de sintaxe. Caso não sejam encontrados erros, o compilador gera um arquivo objeto, que contém o código em um formato que o computador pode entender, mas ainda não é executável.
+- **Compilação**: Compila os arquivos de código-fonte em arquivos objeto.
+- **Linkagem**: Combina os arquivos objeto em um executável.
+- **Limpeza**: Remove arquivos temporários e o executável gerado.
+- **Execução**: Permite iniciar o programa compilado.
 
-### 2. Linkagem
-Após a compilação, a próxima etapa é a linkagem. Neste processo, o arquivo objeto gerado anteriormente é combinado com bibliotecas necessárias e outros arquivos objetos para criar o executável final do programa. Essa etapa garante que todas as referências a funções e variáveis externas sejam resolvidas, resultando em um arquivo executável que pode ser rodado diretamente pelo sistema operacional.
+### Como Usar
 
-### 3. Execução
-A última etapa do Makefile é a execução do programa. Uma vez que o executável foi gerado, é possível iniciar a execução do software diretamente através de um comando. Esta funcionalidade permite que os desenvolvedores testem rapidamente as alterações feitas no código, melhorando a eficiência do processo de desenvolvimento.
+1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto e execute o comando:
+   ```bash
+   make
 
-### Uso
-Para utilizar o Makefile, basta executar o comando `make` no terminal. O Makefile está configurado para realizar automaticamente todas as etapas necessárias, desde a compilação até a execução do programa, com base nas regras definidas no arquivo. Se desejar, você pode especificar alvos diferentes, como `make clean` para remover arquivos objetos e executáveis, mantendo o diretório limpo e organizado.
 
 O uso de um Makefile não só simplifica o processo de construção, mas também melhora a legibilidade e a manutenção do código, permitindo que outros desenvolvedores compreendam rapidamente as dependências e os comandos necessários para executar o projeto.
 
