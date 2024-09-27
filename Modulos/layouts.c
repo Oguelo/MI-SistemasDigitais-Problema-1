@@ -1,20 +1,6 @@
 #include "interfaces.h"
 
-/**
- * Desenha uma frase na tela.
- *
- * Esta função desenha uma frase na tela do dispositivo de vídeo VGA, onde cada caractere
- * é desenhado em escala 10x10.
- * A frase deve esta em uma lista com esse formato:
- * char letras[] = {'H', 'e', 'l', 'l', 'o'};
- *
- * @param coordX A coordenada X do canto superior esquerdo da região onde a frase será desenhada.
- * @param coordY A coordenada Y do canto superior esquerdo da região onde a frase será desenhada.
- * @param lista Um ponteiro para a string contendo a frase a ser desenhada.
- * @param tamanhoLista O tamanho da lista contendo a frase.
- * @param cor A cor dos caracteres da frase.
- * @return void
- */
+
 void generatePhrase(int coordX, int coordY, char *list, int lenList, short color)
 {
 
@@ -32,17 +18,7 @@ void generatePhrase(int coordX, int coordY, char *list, int lenList, short color
     }
 }
 
-/**
- * Exibição do valor do score.
- *
- * Converte o valor do score do tipo inteiro para um vetor do tipo char. Cada caractere do vetor
- * é percorrido e enviado para a função que irá exibir cada um dos valores.
- *
- * @param coordX A coordenada X do canto superior esquerdo da região onde o valor será exibido.
- * @param coordY A coordenada Y do canto superior esquerdo da região onde o valor será exibido.
- * @param score Valor do score que deve ser exibido.
- * @return void
- */
+
 void drawScore(int coordX, int coordY, int score)
 {
 
