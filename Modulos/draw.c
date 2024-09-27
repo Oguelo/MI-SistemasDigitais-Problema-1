@@ -443,7 +443,7 @@ void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
 }
 
 /**
- * Desenha o tabuleiro no terminal.
+ * Desenha o tabuleiro no terminal para depuração.
  * 
  * Esta função exibe o estado do tabuleiro representado pela matriz
  * `boardMatrix`. Cada linha do tabuleiro é numerada, e os blocos
@@ -475,7 +475,7 @@ void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS])
 }
 
 /**
- * Desenha o padrão do tetromino no terminal.
+ * Desenha o padrão do tetromino no terminal para depuração.
  * 
  * Esta função exibe o padrão atual do tetromino passado como
  * argumento, utilizando `#` para representar os blocos preenchidos

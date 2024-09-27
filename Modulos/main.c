@@ -5,7 +5,7 @@ pthread_mutex_t lock;
 /*
      * Função principal que inicializa o ambiente do jogo Tetris.
      * Cria duas threads: 
-     * - A primeira thread executa a função execAccel, que lida com o acelerômetro ou entrada de movimento.
+     * - A primeira thread executa a função execAccel, que lida com a função principal de execução do acelerômetro.
      * - A segunda thread executa a função execTetris, que contém a lógica principal do jogo Tetris.
      * Um mutex é inicializado para garantir que o acesso a recursos compartilhados, como a variável axis_x, seja feito de maneira segura.
      * As threads são unidas ao final da execução, garantindo que o programa aguarde a conclusão de ambas antes de encerrar.

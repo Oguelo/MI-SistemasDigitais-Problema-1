@@ -187,9 +187,9 @@ void ler_REG(uint8_t endereco, uint8_t *valor)
 }
 
 /**
- * Configura e inicia o acelerômetro ADXL345.
+ * Configura e inicia o acelerômetro.
  *
- * Esta função configura o ADXL345 para operar com uma faixa de medição de ±16g 
+ * Esta função configura-o para operar com uma faixa de medição de ±16g 
  * e resolução total, define a taxa de dados de saída para 200Hz e habilita 
  * interrupções para detectar atividade e inatividade. Ela também configura 
  * os limiares e o tempo de inatividade. Por fim, a função para e inicia o 
@@ -219,7 +219,7 @@ void iniciar_acelerometro()
 }
 
 /**
- * Realiza a calibração do acelerômetro ADXL345.
+ * Realiza a calibração do acelerômetro.
  *
  * A função calibra o acelerômetro ao colocar o dispositivo em modo de espera, 
  * ler os offsets atuais e configurar o dispositivo para uma taxa de 100Hz e 
@@ -289,7 +289,7 @@ void calibrar()
 }
 
 /**
- * Verifica se os dados do acelerômetro ADXL345 estão prontos para leitura.
+ * Verifica se os dados do acelerômetro estão prontos para leitura.
  *
  * Esta função lê o registrador de fonte de interrupção (INT_SOURCE) do 
  * acelerômetro e verifica se a bandeira de dados prontos (DATAREADY) está 
@@ -313,7 +313,7 @@ bool dados_prontos()
 }
 
 /**
- * Verifica se há atualizações nos dados do acelerômetro ADXL345.
+ * Verifica se há atualizações nos dados do acelerômetro.
  *
  * Esta função lê o registrador de fonte de interrupção (INT_SOURCE) do 
  * acelerômetro e verifica se a bandeira de atividade (ACTIVITY) está 
@@ -336,7 +336,7 @@ bool dados_atualizados()
 }
 
 /**
- * Lê os dados de aceleração do eixo X do acelerômetro ADXL345.
+ * Lê os dados de aceleração do eixo X do acelerômetro.
  *
  * Esta função lê dois bytes do registrador de dados do eixo X e combina 
  * esses bytes para formar um valor de 16 bits representando a aceleração 
@@ -357,7 +357,7 @@ int16_t ler_x()
 }
 
 /**
- * Escreve um valor em um registrador interno do acelerômetro ADXL345.
+ * Escreve um valor em um registrador interno do acelerômetro.
  *
  * Esta função envia o endereço do registrador especificado e o valor 
  * a ser escrito. O endereço é ajustado para incluir um sinal de início 
@@ -377,7 +377,7 @@ void escreve_REG(uint8_t endereco, uint8_t valor)
 }
 
 /**
- * Lê múltiplos registradores internos consecutivos do acelerômetro ADXL345.
+ * Lê múltiplos registradores internos consecutivos do acelerômetro.
  *
  * Esta função envia o endereço de um registrador e realiza leituras 
  * consecutivas, armazenando os valores em um array fornecido. O endereço 

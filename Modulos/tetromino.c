@@ -1,5 +1,10 @@
 #include "prototype.h"
 
+/**
+ * Gera o padrão "Q" (quadrado) para o Tetromino e atribui a cor correspondente.
+ *
+ * @param tetromino Ponteiro para a estrutura Tetromino que será modificada.
+ */
 void generateQPattern(Tetromino *tetromino)
 {
 
@@ -17,6 +22,12 @@ void generateQPattern(Tetromino *tetromino)
     tetromino->color = COLOR_YELLOW;
     tetromino->currentRotation = 0;
 }
+
+/**
+ * Gera o padrão "T" para o Tetromino e atribui a cor correspondente.
+ *
+ * @param tetromino Ponteiro para a estrutura Tetromino que será modificada.
+ */
 void generateTPattern(Tetromino *tetromino)
 {
 
@@ -53,6 +64,11 @@ void generateTPattern(Tetromino *tetromino)
     tetromino->currentRotation = 0;
 }
 
+/**
+ * Gera o padrão "L" para o Tetromino e atribui a cor correspondente.
+ *
+ * @param tetromino Ponteiro para a estrutura Tetromino que será modificada.
+ */
 void generateLPattern(Tetromino *tetromino)
 {
 
@@ -89,6 +105,11 @@ void generateLPattern(Tetromino *tetromino)
     tetromino->currentRotation = 0;
 }
 
+/**
+ * Gera o padrão "I" para o Tetromino e atribui a cor correspondente.
+ *
+ * @param tetromino Ponteiro para a estrutura Tetromino que será modificada.
+ */
 void generateIPattern(Tetromino *tetromino)
 {
 
@@ -113,6 +134,11 @@ void generateIPattern(Tetromino *tetromino)
     tetromino->currentRotation = 0;
 }
 
+/**
+ * Gera um tetromino aleatório a partir de um conjunto de padrões possíveis.
+ *
+ * @param tetromino Ponteiro para a estrutura Tetromino que será modificada.
+ */
 void generateTetromino(Tetromino *tetromino)
 {
 
@@ -137,6 +163,11 @@ void generateTetromino(Tetromino *tetromino)
     tetromino->generate(tetromino);
 }
 
+/**
+ * Inicializa um tetromino com uma posição e rotação padrão.
+ *
+ * @param tetromino Ponteiro para a estrutura Tetromino que será inicializada.
+ */
 void initTetromino(Tetromino *tetromino)
 {
 
@@ -146,6 +177,15 @@ void initTetromino(Tetromino *tetromino)
     tetromino->currentRotation = 0;
 }
 
+/**
+ * Movimenta o tetromino no campo de jogo com base no deslocamento horizontal e vertical.
+ *
+ * @param boardMatrix Matriz que representa o campo de jogo.
+ * @param tetromino Ponteiro para o tetromino que será movimentado.
+ * @param dx Deslocamento horizontal.
+ * @param dy Deslocamento vertical.
+ * @param moved Flag para indicar se o tetromino foi movido com sucesso.
+ */
 void moveTetromino(PartTetromino boardMatrix[LINES][COLUMNS], Tetromino *tetromino, int dx, int dy, int *moved)
 {
 
