@@ -109,12 +109,6 @@ Abaixo estão dados detalhados sobre o monitor usado:
 </div>
 </div>
 
-
-
-<div id="Drives"> 
-<h2> Drives de Dispositivos de Entrada e Saída (E/S)</h2>
-<div align="justify">
-
 # Drivers de Dispositivos de Entrada e Saída (E/S)
 
 Para realizar a comunicação com os dispositivos periféricos de hardware, este projeto utiliza drivers, que são módulos de software responsáveis por fornecer a interface de controle sobre esses dispositivos. Abaixo estão descritos os módulos e funções de cada driver utilizado.
