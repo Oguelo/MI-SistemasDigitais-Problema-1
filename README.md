@@ -28,20 +28,19 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 
 <h1 align="center"> Sumário </h1>
 <div id="sumario">
-	<ul>
-        <li><a href="#equipamentos">  Descrição dos Equipamentos e Software Utilizados</a></li>
-        <li><a href="#arq_CPU">  Arquitetura da placa DE1-SoC</a></li>
-        <li><a href="#Drives"> Drives de Dispositivos de Entrada e Saída (E/S) </a></li>
-        <li><a href="#Acelerometro"> Acelerometro </a></li>
-        <li><a href="#Inteface-Grafica"> Interface do Usuário </a></li>
-        <li><a href="#Regras-de-jogo"> Dinâmica e Regras de Jogo </a></li>
-        <li><a href="#Algoritmos"> Algoritmos de Jogo </a></li>
-         <li><a href="#Funcionamento"> Funcionamento do jogo </a></li>
-          <li><a href="#conclusao"> Conclusão </a></li>
-        
-    
-
+    <ul>
+        <li><a href="#equipamentos">Descrição dos Equipamentos e Software Utilizados</a></li>
+        <li><a href="#arq_CPU">Arquitetura da placa DE1-SoC</a></li>
+        <li><a href="#Drives">Drives de Dispositivos de Entrada e Saída (E/S)</a></li>
+        <li><a href="#Acelerometro">Acelerômetro</a></li>
+        <li><a href="#Interface-Grafica">Interface do Usuário</a></li>
+        <li><a href="#Regras-de-jogo">Dinâmica e Regras de Jogo</a></li>
+        <li><a href="#Algoritmos">Algoritmos de Jogo</a></li>
+        <li><a href="#Funcionamento">Funcionamento do jogo</a></li>
+        <li><a href="#conclusao">Conclusão</a></li>
+    </ul>
 </div>
+
 
 <div id="equipamentos"> 
 <h2> Descrição dos Equipamentos e Software Utilizados</h2>
