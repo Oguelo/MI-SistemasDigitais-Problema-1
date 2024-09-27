@@ -1,98 +1,18 @@
 #include "prototype.h"
 
 /**
- *  Chamadas das funções de conexão do driver da VGA. Exibição de caracteres e imagens.
- */
-
-/**
- * Exibição do título da tela inicial. O título exibe a palavra "TETRIS".
+ * Gera um caractere na tela nas coordenadas especificadas.
+ * 
+ * Esta função desenha o caractere fornecido na posição indicada
+ * pelas coordenadas `coordX` e `coordY`. A cor do caractere é
+ * definida pelo parâmetro `color`.
  *
- * @param coordX Coordenada X do canto superior esquerdo da região onde o título será exibido.
- * @param coordY Coordenada Y do canto superior esquerdo da região onde o título será exibido.
- * @return void
+ * @param coordX  A coordenada x onde o caractere será desenhado.
+ * @param coordY  A coordenada y onde o caractere será desenhado.
+ * @param caracter O caractere a ser desenhado.
+ * @param color    A cor do caractere a ser desenhado.
  */
-void generateTitle(int coordX, int coordY)
-{
 
-    short color1 = 0x3f9e;
-    short color2 = 0xf81f;
-
-    // Letra T
-
-    video_box(coordX + 8, coordY, coordX + 17, coordY + 7, color1);
-    video_box(coordX + 18, coordY, coordX + 19, coordY + 7, color2);
-    video_box(coordX, coordY + 8, coordX + 25, coordY + 13, color1);
-    video_box(coordX + 26, coordY + 8, coordX + 27, coordY + 13, color2);
-    video_box(coordX + 8, coordY + 14, coordX + 17, coordY + 33, color1);
-    video_box(coordX + 18, coordY + 14, coordX + 19, coordY + 33, color2);
-
-    coordX += 30;
-
-    // Letra E
-
-    video_box(coordX + 4, coordY + 8, coordX + 21, coordY + 13, color1);
-    video_box(coordX + 22, coordY + 8, coordX + 23, coordY + 13, color2);
-    video_box(coordX, coordY + 14, coordX + 9, coordY + 27, color1);
-    video_box(coordX + 10, coordY + 14, coordX + 11, coordY + 17, color2);
-    video_box(coordX + 10, coordY + 24, coordX + 11, coordY + 27, color2);
-    video_box(coordX + 10, coordY + 18, coordX + 25, coordY + 23, color1);
-    video_box(coordX + 20, coordY + 14, coordX + 25, coordY + 17, color1);
-    video_box(coordX + 26, coordY + 14, coordX + 27, coordY + 23, color2);
-    video_box(coordX + 4, coordY + 28, coordX + 21, coordY + 33, color1);
-    video_box(coordX + 22, coordY + 28, coordX + 23, coordY + 33, color2);
-
-    coordX += 30;
-
-    // Letra T
-
-    video_box(coordX + 8, coordY, coordX + 17, coordY + 7, color1);
-    video_box(coordX + 18, coordY, coordX + 19, coordY + 7, color2);
-    video_box(coordX, coordY + 8, coordX + 25, coordY + 13, color1);
-    video_box(coordX + 26, coordY + 8, coordX + 27, coordY + 13, color2);
-    video_box(coordX + 8, coordY + 14, coordX + 17, coordY + 33, color1);
-    video_box(coordX + 18, coordY + 14, coordX + 19, coordY + 33, color2);
-
-    coordX += 30;
-
-    // Letra R
-
-    video_box(coordX, coordY + 8, coordX + 9, coordY + 33, color1);
-    video_box(coordX + 10, coordY + 8, coordX + 11, coordY + 13, color2);
-    video_box(coordX + 12, coordY + 8, coordX + 23, coordY + 13, color1);
-    video_box(coordX + 24, coordY + 8, coordX + 25, coordY + 13, color2);
-    video_box(coordX + 10, coordY + 14, coordX + 13, coordY + 19, color1);
-    video_box(coordX + 14, coordY + 14, coordX + 15, coordY + 19, color2);
-    video_box(coordX + 10, coordY + 20, coordX + 11, coordY + 33, color2);
-
-    coordX += 29;
-
-    // Letra I
-
-    video_box(coordX + 4, coordY, coordX + 5, coordY + 33, color1);
-    video_box(coordX + 2, coordY + 8, coordX + 7, coordY + 9, color2);
-    video_box(coordX + 2, coordY + 28, coordX + 7, coordY + 29, color2);
-
-    coordX += 10;
-
-    // Letra S
-
-    video_box(coordX, coordY + 2, coordX + 1, coordY + 3, color1);
-    video_box(coordX + 2, coordY, coordX + 7, coordY + 1, color1);
-    video_box(coordX + 8, coordY + 2, coordX + 9, coordY + 3, color1);
-    video_box(coordX + 4, coordY + 4, coordX + 7, coordY + 5, color1);
-    video_box(coordX + 2, coordY + 6, coordX + 3, coordY + 7, color1);
-    video_box(coordX, coordY + 8, coordX + 9, coordY + 9, color1);
-}
-
-/**
- * Exibição de caracteres.
- *
- * @param coordX   Coordenada X do canto superior esquerdo da região onde o caractere será exibido.
- * @param coordY   Coordenada Y do canto superior esquerdo da região onde o caractere será exibido.
- * @param caracter Caractere que deve ser exibido.
- * @param color    Cor do caractere.
- * @return void
- */
 void generateChar(int coordX, int coordY, char caracter, short color)
 {
 
@@ -489,6 +409,17 @@ void generateChar(int coordX, int coordY, char caracter, short color)
     }
 }
 
+/**
+ * Desenha o tabuleiro na tela usando a matriz fornecida.
+ * 
+ * Esta função itera sobre a matriz de tetrominos e desenha os blocos
+ * correspondentes em suas posições no tabuleiro. Blocos que não estão vazios
+ * são desenhados com a cor especificada.
+ *
+ * @param boardMatrix A matriz que representa o estado do tabuleiro, onde cada 
+ *                    elemento contém informações sobre o bloco, incluindo 
+ *                    sua cor e se está vazio ou não.
+ */
 void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
 {
 
@@ -511,6 +442,16 @@ void drawBoard(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
+/**
+ * Desenha o tabuleiro no terminal.
+ * 
+ * Esta função exibe o estado do tabuleiro representado pela matriz
+ * `boardMatrix`. Cada linha do tabuleiro é numerada, e os blocos
+ * preenchidos são representados por `#`, enquanto os espaços vazios
+ * são representados por `.`. 
+ *
+ * @param boardMatrix A matriz que representa o estado do tabuleiro.
+ */
 void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS])
 {
     for (int i = 0; i < LINES; i++)
@@ -533,6 +474,16 @@ void drawBoardTerminal(PartTetromino boardMatrix[LINES][COLUMNS])
     }
 }
 
+/**
+ * Desenha o padrão do tetromino no terminal.
+ * 
+ * Esta função exibe o padrão atual do tetromino passado como
+ * argumento, utilizando `#` para representar os blocos preenchidos
+ * e `.` para os espaços vazios. O padrão é exibido de acordo com
+ * a rotação atual do tetromino.
+ *
+ * @param tetromino O tetromino a ser desenhado.
+ */
 void drawTetrominoTerminal(Tetromino tetromino)
 {
 

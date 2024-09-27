@@ -1,19 +1,18 @@
 #include "prototype.h"
 
 /**
- * Desenha uma frase na tela.
+ * Gera uma frase na tela com caracteres individuais.
+ * 
+ * Esta função itera sobre uma lista de caracteres e chama a função
+ * `generateChar` para desenhar cada caractere em uma posição especificada.
+ * Os caracteres são espaçados uniformemente, e os espaços são ignorados
+ * durante o processo de geração.
  *
- * Esta função desenha uma frase na tela do dispositivo de vídeo VGA, onde cada caractere
- * é desenhado em escala 10x10.
- * A frase deve esta em uma lista com esse formato:
- * char letras[] = {'H', 'e', 'l', 'l', 'o'};
- *
- * @param coordX A coordenada X do canto superior esquerdo da região onde a frase será desenhada.
- * @param coordY A coordenada Y do canto superior esquerdo da região onde a frase será desenhada.
- * @param lista Um ponteiro para a string contendo a frase a ser desenhada.
- * @param tamanhoLista O tamanho da lista contendo a frase.
- * @param cor A cor dos caracteres da frase.
- * @return void
+ * @param coordX A coordenada X inicial onde a frase será desenhada.
+ * @param coordY A coordenada Y onde a frase será desenhada.
+ * @param list A lista de caracteres que compõem a frase.
+ * @param lenList O comprimento da lista de caracteres.
+ * @param color A cor a ser usada para desenhar os caracteres.
  */
 void generatePhrase(int coordX, int coordY, char *list, int lenList, short color)
 {
@@ -33,15 +32,18 @@ void generatePhrase(int coordX, int coordY, char *list, int lenList, short color
 }
 
 /**
- * Exibição do valor do score.
+ * Desenha a pontuação na tela utilizando a função `generateChar`.
+ * 
+ * Esta função converte um número inteiro representando a pontuação
+ * em uma string e desenha cada dígito na tela usando a função
+ * `generateChar`. Os caracteres são espaçados uniformemente, cada um
+ * ocupando uma posição específica baseada em coordenadas.
  *
- * Converte o valor do score do tipo inteiro para um vetor do tipo char. Cada caractere do vetor
- * é percorrido e enviado para a função que irá exibir cada um dos valores.
- *
- * @param coordX A coordenada X do canto superior esquerdo da região onde o valor será exibido.
- * @param coordY A coordenada Y do canto superior esquerdo da região onde o valor será exibido.
- * @param score Valor do score que deve ser exibido.
- * @return void
+ * @param coordX A coordenada X inicial onde a pontuação será desenhada.
+ * @param coordY A coordenada Y onde a pontuação será desenhada.
+ * @param score O valor da pontuação a ser exibida na tela, representado
+ *              como um inteiro. Cada dígito será desenhado como um
+ *              caractere colorido na tela.
  */
 void drawScore(int coordX, int coordY, int score)
 {
@@ -54,20 +56,22 @@ void drawScore(int coordX, int coordY, int score)
 
     for (int i = 0; i < len; i++)
     {
-
         generateChar(coordX + (13 * i), coordY, number_str[i], COLOR_YELLOW);
     }
 }
 
 /**
- * Exibe o campo de jogo.
+ * Desenha o campo de jogo exibindo a pontuação atual e a pontuação máxima.
  *
- * São mostradas: as linhas que delimitam a área de jogo; todos os blocos não destruídos;
- * a bola e a barra, nas suas determinadas posições; o valor do score; e a mensagem indicando
- * se o jogo está pausado e se a opção a ser selecionada no momento é de continuar o jogo ou
- * voltar para a tela inicial.
+ * Esta função utiliza a função `generatePhrase` para exibir o texto
+ * "score:" e "hscore:", seguido pelos valores atuais de pontuação
+ * e a maior pontuação (high score). As pontuações são desenhadas
+ * na tela em posições específicas, e bordas são desenhadas usando
+ * a função `video_box` para delimitar o campo de jogo.
  *
- * @return void
+ * @param score A pontuação atual do jogador, que será exibida na tela.
+ * @param hscore A maior pontuação registrada, que será exibida ao lado
+ *               da pontuação atual.
  */
 void gameField(int score, int hscore)
 {

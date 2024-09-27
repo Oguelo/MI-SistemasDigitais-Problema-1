@@ -2,6 +2,14 @@
 int16_t axis_x;
 pthread_mutex_t lock;
 
+/*
+     * Função principal que inicializa o ambiente do jogo Tetris.
+     * Cria duas threads: 
+     * - A primeira thread executa a função execAccel, que lida com o acelerômetro ou entrada de movimento.
+     * - A segunda thread executa a função execTetris, que contém a lógica principal do jogo Tetris.
+     * Um mutex é inicializado para garantir que o acesso a recursos compartilhados, como a variável axis_x, seja feito de maneira segura.
+     * As threads são unidas ao final da execução, garantindo que o programa aguarde a conclusão de ambas antes de encerrar.
+     */
 int main()
 {
 
@@ -20,6 +28,19 @@ int main()
 
     return 0;
 }
+/**
+ * Função principal do jogo Tetris que controla a lógica do jogo.
+ *
+ * Esta função é executada em uma thread separada e gerencia o fluxo
+ * do jogo Tetris, incluindo a inicialização do tabuleiro, controle
+ * dos tetrominos, verificação de condições de jogo, e exibição
+ * do estado do jogo na tela. O loop principal continua até que o
+ * jogo esteja terminado, e ele permite alternar entre pausar e
+ * retomar o jogo.
+ *
+ * @note A função utiliza variáveis globais para o controle do estado
+ *       do jogo e acesso a recursos de vídeo.
+ */
 void execTetris()
 {
 
