@@ -141,15 +141,6 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 A interface de usuário exibe o "score", o  "high-score" e foi criado um tabuleiro com duas barras laterais e uma inferior utilizado o video_box na construção dessas imagens, centralizados na tela, foram utilizados duas funções  para exibir o estado do jogo: uma para desenhar o tabuleiro no vídeo (interface gráfica) e outra para desenhá-lo no terminal (interface de texto). Essas funções utilizam uma matriz chamada boardMatrix que representa o estado atual do tabuleiro do jogo.
 A função `drawboard` desenha o tabuleiro usando a interface gráfica, onde cada célula ocupada (isNotEmpty for diferente de zero) é desenhada como um quadrado colorido. E a drawTetrominoTerminal, é usada para exibir um Tetromino individual (a peça atual em queda) no terminal.
 
-
-
-</div>
-<div id="Regras-de-jogo"> 
-<h2> Dinâmica e Regras de Jogo </h2>
-<div align="justify">
-
-O objetivo principal do jogo Tetris é alcançar um score alto, fazendo os tetrominos formarem linhas em uma matriz. O jogador assume o controle de uma tetrominos  que eles caiam e formem um conjuntos ou conjuntos de linhas,Para garantir uma experiência dinâmica e desafiadora, o jogo conta com uma série de regras que serão apresentadas nesta seção.
-
 ## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
 
 ### Objetivo do Jogo
