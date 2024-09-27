@@ -148,7 +148,6 @@ O objetivo é controlar as peças (Tetrominos) que caem e formar linhas completa
 
 ### Controles
 - **Deslocamento Lateral**: O acelerômetro movimenta a peça para a esquerda ou direita.
-- **Rotação de Peça**: Botões são usados para girar as peças.
 
 ### Colisões e Limitações
 Peças colidem com o fundo do tabuleiro ou com outras peças, sendo fixadas quando atingem o limite. Linhas completas são removidas e a pontuação do jogador aumenta.
