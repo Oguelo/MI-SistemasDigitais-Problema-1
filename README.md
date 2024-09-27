@@ -197,9 +197,8 @@ Para atender aos requisitos e simplificar o processo de compilação e execuçã
 
 ### Como Usar
 
-1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto e execute o comando:
+1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto que deve ser alocado na DE1-Soc e execute o comando:
    make
-
 
 
 <div id="conclusao"> 
