@@ -217,13 +217,25 @@ Esses Tetrominos são gerados aleatoriamente através da função 'generateTetro
 <h2> Algoritmos de Jogo </h2>
 <div align="justify">
 
-<h3> Algoritmo de detecção de colisão </h3>
-
-Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, outras peças ou a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo clássico de detecção de colisão entre peças e o tabuleiro.
+<h3>Algoritmo de detecção de colisão</h3>
+Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, outras peças ou a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo de detecção de colisão entre peças e o tabuleiro.
 
 A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça atual e comparar com o estado do tabuleiro. Quando uma peça tenta mover-se para uma nova posição, o algoritmo checa se essa posição já está ocupada por outro bloco ou se ultrapassa os limites do tabuleiro. Se uma colisão é detectada, o movimento da peça é interrompido, e ela é fixada em sua posição final no tabuleiro.
 
-Em seguida, o algoritmo verifica se alguma linha foi completamente preenchida. Caso positivo, a linha é eliminada e as linhas acima dela descem, mantendo o espaço para novas peças.
+<h3>Algoritmo de movimentação de peça</h3>
+Este algoritmo é responsável por gerenciar o movimento da peça atual dentro do tabuleiro. A peça se move automaticamente para baixo a cada ciclo de atualização do jogo, e o jogador pode controlar a peça lateralmente via acelerômetro. Para isso, o algoritmo precisa verificar se os movimentos solicitados são válidos, sem ultrapassar os limites do tabuleiro ou colidir com outras peças.
+
+A lógica do algoritmo baseia-se em aplicar o movimento solicitado pela peça, seja para a esquerda ou direita, sendo esse direcionamento de deslocamento influenciado pela coordenada fornecida pelo acelerômetro. Antes de realizar o movimento, o algoritmo utiliza o algoritmo de detecção de colisão para garantir que a nova posição não esteja ocupada por outro bloco ou fora dos limites do tabuleiro. Se o movimento for permitido, a peça é deslocada; caso contrário, o movimento é bloqueado. Quando a peça atinge o fundo do tabuleiro ou colide com outra peça, ela é fixada no local, e uma nova peça é gerada no topo do tabuleiro.
+
+<h3>Algoritmo de geração de peças</h3>
+Este algoritmo é responsável por criar novas peças (tetrominos) que aparecerão no topo do tabuleiro assim que a peça anterior for fixada. As peças são geradas aleatoriamente a partir de um conjunto pré-definido de formas, e cada nova peça começa sua trajetória no topo do tabuleiro, descendo automaticamente.
+
+A lógica do algoritmo baseia-se na geração aleatória de uma peça a partir de um conjunto de tetrominos (I, O, T, L, J, S, Z). Após a fixação de uma peça no tabuleiro, o algoritmo seleciona a próxima peça e a posiciona na parte superior central do tabuleiro. A peça começa a descer automaticamente, e o processo de movimentação e detecção de colisão se repete até que a peça seja fixada ou o jogo termine, caso o tabuleiro esteja cheio.
+
+<h3>Algoritmo de remoção de linhas completas</h3>
+Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro foram completamente preenchidas por blocos após a fixação de uma peça. Quando uma linha é completamente preenchida, ela é removida do tabuleiro, e todas as linhas superiores são deslocadas para baixo, liberando espaço para novas peças.
+
+A lógica do algoritmo baseia-se em percorrer cada linha do tabuleiro e verificar se todas as células daquela linha estão ocupadas por blocos. Quando uma linha completa é detectada, o algoritmo a remove, esvaziando-a, e depois desloca todas as linhas acima dela para baixo, além disso a linha removida existe o incremento da pontuação do jogador. Esse processo é repetido até que todas as linhas completas tenham sido removidas. O objetivo é liberar espaço e aumentar a pontuação do jogador, tornando o jogo mais desafiador à medida que o campo de jogo se enche novamente.
 
 <div id="Funcionamento"> 
 <h2> Funcionamento do jogo</h2>
