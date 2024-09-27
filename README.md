@@ -186,6 +186,25 @@ Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro 
 <h2> Funcionamento do jogo</h2>
 <div align="justify">
 
+## Makefile
+
+Para atender aos requisitos e simplificar o processo de compilação e execução do programa em C, foi criado um `Makefile`. Este arquivo serve como uma ferramenta que automatiza a construção do projeto, facilitando o gerenciamento do processo de compilação. O `Makefile` executa as seguintes operações:
+
+- **Compilação**: Compila os arquivos de código-fonte em arquivos objeto.
+- **Linkagem**: Combina os arquivos objeto em um executável.
+- **Limpeza**: Remove arquivos temporários e o executável gerado.
+- **Execução**: Permite iniciar o programa compilado.
+
+### Como Usar
+
+1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto e execute o comando:
+   ```bash
+   make
+
+
+O uso de um Makefile não só simplifica o processo de construção, mas também melhora a legibilidade e a manutenção do código, permitindo que outros desenvolvedores compreendam rapidamente as dependências e os comandos necessários para executar o projeto.
+
+
 <div id="conclusao"> 
 <h2> Conclusão</h2>
 <div align="justify">
