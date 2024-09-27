@@ -177,12 +177,16 @@ Se uma linha inteira do tabuleiro for preenchida com peças, essa linha é remov
 
  <h3> Pontuação </h3>
 
-A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida, sendo ela contada de 1 em 1, no final um hi score é gerado após o game over.
-<h3> Game over  </h3>
-O game over é definido quando uma das posições da matriz principal na linha 0 esta ocupada e outra peça gerada está a disputar o mesmo espaço, assim o game over será definido e uma representação será exibida na tela.
+A pontuação no Tetris é acumulada conforme as linhas completas são removidas. Quanto mais linhas forem eliminadas simultaneamente, maior será a pontuação recebida na rodada, sendo ela incrementada unitariamente, além disso ao final da rodada é armazenado e exibido a maior pontuação.
+
+<h3> Final de jogo(Game over)  </h3>
+
+O final de jogo é definido quando há uma colisão de peças no limite máximo inicial do tabuleiro, isto é, quando outra peça é gerada e a mesma executa a tentativa de se inserir na posição inicial, com isso 
+o estado de fim de jogo(Game Over) será definido e uma representação será exibida na tela.
 
 <h3> Tetrominos </h3>
-No jogo, as peças que caem no tabuleiro são chamadas de Tetrominos. Elas são compostas por quatro blocos que podem ser conectados de diferentes formas.
+
+No jogo, as peças fazem parte do ciclo natural do jogo são chamadas de Tetrominos. Elas são compostas por quatro blocos que podem ser conectados de diferentes formas.
 
 No código fornecido, foram implementados quatro tipos de Tetrominos:
 
@@ -213,9 +217,9 @@ Esses Tetrominos são gerados aleatoriamente através da função 'generateTetro
 <h2> Algoritmos de Jogo </h2>
 <div align="justify">
 
-<h3> Algoritmo de Colisão </h3>
+<h3> Algoritmo de detecção de colisão </h3>
 
-Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, com outras peças ou com a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo clássico de detecção de colisão entre peças e o tabuleiro .
+Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, outras peças ou a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo clássico de detecção de colisão entre peças e o tabuleiro.
 
 A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça atual e comparar com o estado do tabuleiro. Quando uma peça tenta mover-se para uma nova posição, o algoritmo checa se essa posição já está ocupada por outro bloco ou se ultrapassa os limites do tabuleiro. Se uma colisão é detectada, o movimento da peça é interrompido, e ela é fixada em sua posição final no tabuleiro.
 
